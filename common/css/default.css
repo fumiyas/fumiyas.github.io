@@ -1,17 +1,8 @@
-ul.buttons {
-  list-style:none;
-}
-li.buttons {
+ul.buttons, li.buttons {
   margin: 0px;
   padding: 0px;
   display: inline;
   list-item-position: inside;
-}
-li.xbuttons {
-   float: left;
-  /*
-  display: inline;
-   */
 }
 
 html {
