@@ -1,7 +1,3 @@
-/* CSS2
-* $Id: default.css,v 1.2 2002/11/16 16:02:01 fumiya Exp $
-* ====================================================================== */
-
 html {
   margin:		0px 0px 0px 0px;
   padding:		0px 0px 0px 0px;
@@ -174,38 +170,17 @@ a:active {
 * ---------------------------------------------------------------------- */
 
 pre {
+  background-color:	#F0F0F0;
   overflow:		auto;
-}
-pre.code {
   margin:		0.2em 0em 1em 0em;
   border:		solid 1px black;
   border-right-width:	2px;
   border-bottom-width:	2px;
   width:		auto;
   padding:		5px;
-  color:		black;
-  background-color:	white;
   font-size:		small;
-  line-height:		1.1em;
   white-space:		pre;
-}
-pre.terminal {
-  border:		solid 1px black;
-  border-right-width:	2px;
-  border-bottom-width:	2px;
-  margin:		0.2em 0em 1em 0em;
-  width:		auto;
-  padding:		5px;
-  color:		white;
-  background-color:	#5050A0;
-  font-size:		small;
   line-height:		1.1em;
-  white-space:		pre;
-}
-pre kbd {
-  border-color:		#FF9966;
-  border-bottom-style:	solid;
-  border-bottom-width:	1px;
 }
 
 ul {

@@ -1,5 +1,7 @@
 default: build
 
+.PHONY: b build s server css
+
 b build:
 	jekyll build
 

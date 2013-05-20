@@ -1,5 +1,4 @@
 ---
-title: ダメ出し Blog
 layout: default
 ---
 ダメ出し Blog
