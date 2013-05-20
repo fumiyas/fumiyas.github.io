@@ -2,6 +2,8 @@ ul.buttons {
   list-style:none;
 }
 li.buttons {
+  margin: 0px;
+  padding: 0px;
   display: inline;
   list-item-position: inside;
 }
