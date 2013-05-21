@@ -18,16 +18,16 @@ Linux オートマウント
 
 Debian / Ubuntu の場合:
 
-{% highlight console %}
+``` console
 # apt-get install autofs
-{% endhighlight %}
+```
 
 RHEL の場合:
 
-{% highlight console %}
+``` console
 # yum install autofs
 # chkconfig autofs on
-{% endhighlight %}
+```
 
 ホームディレクトリの自動作成
 ----------------------------------------------------------------------
@@ -49,9 +49,9 @@ LDAP サーバーでユーザー情報を管理している場合など、
 ホームディレクトリの自動作成とマップ情報を提供する実行プログラムを指定
 する設定を記述します。
 
-{% highlight sh %}
+``` console
 /home   program:/etc/auto.home
-{% endhighlight %}
+```
 
 `/etc/auto.home` ファイルを作成し、内容を次のような動作をするシェルスクリプトにします。
 
@@ -63,7 +63,7 @@ LDAP サーバーでユーザー情報を管理している場合など、
      オートマウンターがマップ情報として受け取り、結果、自動マウントされる。
      (オプションも渡したい場合は「`-<オプション>[,...] localhost:<マウント元ディレクトリ>`」を出力する)
 
-{% highlight sh %}
+``` sh
 #!/bin/sh
 
 set -u
@@ -87,27 +87,27 @@ fi
 echo "- localhost:$user_home"
 
 exit 0
-{% endhighlight %}
+```
 
 `/etc/auto.home` に実行権限を与えておきます。
 
-{% highlight console %}
+``` console
 # chmod u+x /etc/auto.home
-{% endhighlight %}
+```
 
 autofs サービスを再起動して `/etc/auto.master` の設定変更を反映します。
 
-{% highlight console %}
+``` console
 # service autofs restart
-{% endhighlight %}
+```
 
 ユーザーのホームディレクトリにアクセスし、自動的にディレクトリが作成・マウントされることを確認します。
 
-{% highlight console %}
+``` console
 # ls -la /home/ユーザー名
 ...
 # ls -la /export/home/ユーザー名
 ...
 # mount |grep ユーザー名
 ...
-{% endhighlight %}
+```
