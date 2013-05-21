@@ -11,7 +11,7 @@ Linux オートマウント
 
 あとで書く。いつか書く。
 
-`autofs`(8), `automount`(8), `auto.master`(5)
+`autofs`(8), `automount`(8), `auto.master`(5), `autofs`(5)
 
 インストール
 ----------------------------------------------------------------------
@@ -49,7 +49,7 @@ LDAP サーバーでユーザー情報を管理している場合など、
 ホームディレクトリの自動作成とマップ情報を提供する実行プログラムを指定
 する設定を記述します。
 
-``` console
+``` autofs
 /home   program:/etc/auto.home
 ```
 
@@ -84,7 +84,7 @@ if [ ! -d "$user_home" ]; then
   chown -hR "$user_name:" "$user_home"
 fi
 
-echo "- localhost:$user_home"
+echo "localhost:$user_home"
 
 exit 0
 ```
