@@ -2,6 +2,10 @@ default: build
 
 .PHONY: b build s server css
 
+p push:
+	$(MAKE) build
+	git push --tags origin master
+
 b build:
 	jekyll build
 
