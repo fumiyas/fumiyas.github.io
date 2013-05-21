@@ -3,8 +3,11 @@
 <html lang="ja">
 {% include head.html %}
 <body>
+<h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+<div class="body">
 {% include header.html %}
 {{ content }}
 {% include footer.html %}
+</div>
 </body>
 </html>
