@@ -45,18 +45,6 @@ a:active {
   text-decoration:	none;
 }
 
-div.content {
-  padding:		1em;
-}
-
-div.footer {
-  margin:		1em 0 0 0;
-  border-top:		solid 1px #336666;
-  padding:		0.5em 1em 0.5em 1em;
-  background-color:	#F0F0FF;
-  font-size:		small;
-}
-
 h1 {
   margin:		0em;
   background-color:	#F0F0FF;
@@ -93,6 +81,23 @@ h1 {
 
 .content h6 {
   font-size:		100%;
+}
+
+.top {
+  vertical-align:	middle;
+  font-size:		70%;
+}
+
+div.content {
+  padding:		1em;
+}
+
+div.footer {
+  margin:		1em 0 0 0;
+  border-top:		solid 1px #336666;
+  padding:		0.5em 1em 0.5em 1em;
+  background-color:	#F0F0FF;
+  font-size:		small;
 }
 
 p {

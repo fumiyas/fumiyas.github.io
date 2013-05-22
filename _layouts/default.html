@@ -3,7 +3,11 @@
 <html lang="ja">
 {% include head.html %}
 <body>
-<h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+<h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+{% if page.title %}
+<span class="top"> - <a href="/">{{ site.title }}</a></span>
+{% endif %}
+</h1>
 {% include header.html %}
 <div class="content">
 {{ content }}
