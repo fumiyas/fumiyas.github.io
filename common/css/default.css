@@ -62,25 +62,11 @@ h1 {
 }
 
 .content h3 {
-  border-bottom:	solid #004444 1px;
-  padding-left:		3pt;
-  font-size:		130%;
-}
-
-.content h4 {
   margin-left:		0.2em;
   margin-right:		0.2em;
   border-left:		solid 1em #000090;
   padding-left:		0.2em;
   font-size:		110%;
-}
-
-.content h5 {
-  font-size:		110%;
-}
-
-.content h6 {
-  font-size:		100%;
 }
 
 .top {
