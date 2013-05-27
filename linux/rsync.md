@@ -128,6 +128,13 @@ rsync \
 
 ### バックアップ先ホスト backup-host での環境構築
 
+バックアップ先ホスト backup-host
+にバックアップ実行ユーザー `backup-user` を作成します。
+
+```
+# useradd --system --create-home backup-user
+```
+
 バックアップ先ホスト backup-host のバックアップ実行ユーザーの SSH 認可ファイル
 `~backup-user/.ssh/authorized_keys` に
 SSH 公開鍵を登録します。
@@ -140,6 +147,14 @@ IO 優先度を調整したい場合は `ionice -n7 `
 
 ```
 command="rsync --server --daemon --config=/srv/etc/backup/rsyncd.conf .",no-agent-forwarding,no-port-forwarding,no-pty,no-x11-forwarding <target-host:/srv/etc/backup/id_rsa.pub の内容>
+```
+
+設定ファイルとバックアップデータ保存先のディレクトリを作成します。
+
+```
+# mkdir -m 0755 -p /srv/etc/backup
+# mkdir -m 0755 -p /srv/var/backup/target-host
+# chown backup-user: /srv/var/backup/target-host
 ```
 
 バックアップ先ホスト backup-host で rsync デーモンの設定ファイル
