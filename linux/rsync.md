@@ -91,6 +91,14 @@ dst="backup-user@backup-host::target-host"
 
 ## ======================================================================
 
+## 以下の rsync オプションの使用も検討すること:
+##  * --acls
+##    POSIX ACL を利用している場合
+##  * --xattrs
+##    拡張属性を利用している場合
+##  * --hard-links
+##    ハードリンクを利用している場合
+
 rsync \
   --rsh "ssh -i '$ssh_id' $ssh_opts" \
   --archive \
@@ -202,6 +210,8 @@ rsync で圧縮転送を利用するために `--compress` オプションを指
 ```
 
 ### リストアの例
+
+必要に応じて rsync に `--acls`, `--xattrs`, `--hard-links` オプションを指定すること。
 
 ``` console
 # rsync \
