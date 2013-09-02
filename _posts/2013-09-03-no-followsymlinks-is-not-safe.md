@@ -95,3 +95,10 @@ Linux の特定バージョン依存とはいえ、有効な対策となりそ�
 
   * https://twitter.com/a4lg/status/374443046466617344
 
+適当に書いた攻撃用のコードを晒しておく。あまり効率がよくなく、
+CPU 負荷をかけるので注意。Linux であれば `inotify`(7) で監視するなどして、
+Apache HTTPD が `stat`(2), `lstat`(2) しに来たタイミングでダミーを消して
+シンボリックリンクを貼るのがいいと思う。
+
+  * https://gist.github.com/fumiyas/445d2b8263a789cfcb52
+
