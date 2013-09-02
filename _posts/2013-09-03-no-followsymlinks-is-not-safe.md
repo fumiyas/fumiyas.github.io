@@ -57,13 +57,13 @@ http://httpd.apache.org/docs/2.4/ja/mod/core.html#options :
 
 Twitter で [@a4lg](https://twitter.com/a4lg) さんに教えてもらったのだが、
 この問題は「TOCTOU」(もしくは「TOCTTOU」、「Time Of Check to Time Of Use」)
-というらしい。知らなかった…。
+と呼ばれる問題の一種とのこと。名前が付いているのは知らなかった…。
 
   * Bug #811428 “Apache does not honor -FollowSymlinks due to TOCTOU...” : Bugs : “apache2” package : Ubuntu
     * https://bugs.launchpad.net/ubuntu/+source/apache2/+bug/811428
 
 同じく Twitter で [@tnozaki](https://twitter.com/tnozaki) さんに
-TOCTTOU について参考になるページを紹介してもらった。
+TOCTTOU について具体的に解説していて参考になるページを紹介してもらった。
 
   * IPA 独立行政法人 情報処理推進機構：情報セキュリティ技術動向調査（2008 年下期）
     * http://www.ipa.go.jp/security/fy20/reports/tech1-tg/2_05.html
@@ -82,14 +82,15 @@ TOCTTOU について参考になるページを紹介してもらった。
 ## おまけ
 
 さくらインターネットの社長が「うちは対策済み」とツイートしているが、
-上記の解説の通り、わずかながら穴があり不完全かもしれない。
+上記の解説の通り、わずかながら穴があるはず。よって対策は不完全だと思う。
 誰か検証してくれないかな。
 
   * https://twitter.com/kunihirotanaka/status/373423792451645441
 
 Linux 2.6.39 以降で実装されているという `open`(2) の
 `O_PATH` オプションを利用すればシンボリックリンクを直接開くことが可能で、
-これを利用すればシンボリックリンクを避けたファイルのオープンが実装可能な様相。
+これと `fstatat`(2) や `openat`(2) などを組み合わせれば、
+シンボリックリンクを避けたファイルのオープンが実装可能な様相。
 Linux の特定バージョン依存とはいえ、有効な対策となりそう。
 
   * https://twitter.com/a4lg/status/374443046466617344
