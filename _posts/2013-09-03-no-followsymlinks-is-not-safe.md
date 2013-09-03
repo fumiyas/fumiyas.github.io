@@ -74,8 +74,9 @@ TOCTTOU について具体的に解説していて参考になるページを紹
 しかない。具体的には次のような対策が挙げられる。
 
   * SSH, SFTP など、シンボリックリンクを作成可能なサービスの利用をユーザーに許可しない。
-    (SFTP であれば、シンボリックリンクを拒否するよう改造した `sftp-server`
-    を利用する)
+    * SFTP であれば、 シンボリックリンクを拒否するよう `sftp-server`
+      を改造するとよいかもしれない。そのようなパッチがあるかどうかは未調査。
+    * OpenSSH の `sftp-server` にはそのような機能はない。
   * VFAT など、シンボリックリンクが利用できないファイルシステムを利用する。
     ([@knok](https://twitter.com/knok) さん案)
   * etc.
@@ -85,7 +86,7 @@ TOCTTOU について具体的に解説していて参考になるページを紹
 といった方法で回避もできると思う。
 後者の実装としては mod_process_security がよさげな印象。
 
-  * 人間とウェブの未来 - mod_process_security – Apache上でスレッド単位で権限分離を行うファイルのアクセス制御アーキテクチャ（前半編）
+  * 人間とウェブの未来 - mod_process_security – Apache上でスレッド単位で権限分離を行うファイルのアクセス制御アーキテクチャ
     * https://github.com/matsumoto-r/mod_process_security
     * http://blog.matsumoto-r.jp/?p=1972
     * http://blog.matsumoto-r.jp/?p=1989
