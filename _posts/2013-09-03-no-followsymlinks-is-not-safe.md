@@ -57,7 +57,7 @@ http://httpd.apache.org/docs/2.4/ja/mod/core.html#options :
 
 Twitter で [@a4lg](https://twitter.com/a4lg) さんに教えてもらったのだが、
 この問題は「TOCTOU」(もしくは「TOCTTOU」、「Time Of Check to Time Of Use」)
-と呼ばれる問題の一種とのこと。名前が付いているのは知らなかった…。
+と呼ばれる問題の一種とのこと。原理は知っていたが、名前が付いているのは知らなかった…。
 
   * Time of check to time of use - Wikipedia, the free encyclopedia
     * http://en.wikipedia.org/wiki/Time_of_check_to_time_of_use
@@ -73,7 +73,9 @@ TOCTTOU について具体的に解説していて参考になるページを紹
 ## 対策
 
 というわけで、この攻撃の根本的な対策方法は「シンボリックリンクを作らせない」
-しかない。具体的には次のような対策が挙げられる。
+もしくは「シンボリックリンクを無効もしくは使用不可にする」しかない。
+
+具体的には次のような対策が挙げられる。
 
   * SSH, SFTP など、シンボリックリンクを作成可能なサービスの利用をユーザーに許可しない。
     * SFTP であれば、 シンボリックリンクを拒否するよう `sftp-server`
@@ -85,7 +87,8 @@ TOCTTOU について具体的に解説していて参考になるページを紹
       * https://github.com/fumiyas/symlink-busters
   * VFAT など、シンボリックリンクが利用できないファイルシステムを利用する。
     ([@knok](https://twitter.com/knok) さん案)
-  * FreeBSD で実装されている `mount`(8) オプション `nosymfollow` を利用する。
+  * FreeBSD で実装されている `mount`(8) オプション `nosymfollow` を利用して、
+    シンボリックリンクが辿れないようにする。
     ([@koie](https://twitter.com/koie) さん案)
   * etc.
 
@@ -101,7 +104,7 @@ TOCTTOU について具体的に解説していて参考になるページを紹
 
 ## おまけ
 
-さくらインターネットの社長の田中さんが「うちは対策済み」とツイートしているが、
+さくらインターネット社長の田中さんが「うちは対策済み」とツイートしているが、
 上記の解説の通り、わずかながら穴があるはず。よって対策は不完全だと思う。
 誰か検証してくれないかな。
 
