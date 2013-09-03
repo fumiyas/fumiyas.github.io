@@ -71,11 +71,6 @@ h1 {
   font-size:		70%;
 }
 
-p {
-  padding-left:		1em;
-  padding-right:	1em;
-}
-
 div.meta {
   padding:		0em 4em 0em 0em;
   text-align:		right;
@@ -94,7 +89,9 @@ div.footer {
 }
 
 p {
-  line-height:		1.2em;
+  padding-left:		0.5em;
+  padding-right:	1em;
+  line-height:		1.5em;
 }
 
 dt, dl, li {
@@ -116,7 +113,7 @@ code {
   -webkit-border-radius:3px;
   -moz-background-clip:	padding;
   -webkit-background-clip:padding-box;
-  padding:		0px 5px 2px;
+  padding:		1px 4px 1px 4px;
   background-clip:	padding-box;
   font-family:		Monaco,"DejaVu Sans Mono","Courier New",monospace;
   color:		#363;
@@ -151,9 +148,36 @@ pre {
   line-height:		1.1em;
 }
 
+blockquote {
+  padding:		0.5em 1em;
+  background-color:	#E0E0F0;
+  position:		relative;
+}
+blockquote:before {
+  content:		"“";
+  font-size:		2em;
+  color:		#AAA;
+  position:		absolute;
+  left:			0;
+  top:			0.2em;
+}
+blockquote:after {
+  content:		"”";
+  font-size:		2em;
+  color:		#AAA;
+  position:		absolute;
+  right:		0;
+  bottom:		0;
+}
+
 ul {
   margin-left:		1em;
-  padding-left:		1em;
+  padding-left:		2em;
+}
+
+ol {
+  margin-left:		1em;
+  padding-left:		2em;
 }
 
 table tbody tr th {
