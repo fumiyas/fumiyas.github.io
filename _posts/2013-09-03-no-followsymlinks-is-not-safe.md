@@ -77,6 +77,10 @@ TOCTTOU について具体的に解説していて参考になるページを紹
     * SFTP であれば、 シンボリックリンクを拒否するよう `sftp-server`
       を改造するとよいかもしれない。そのようなパッチがあるかどうかは未調査。
     * OpenSSH の `sftp-server` にはそのような機能はない。
+    * `symlink`(2) を拒否するラッパーライブラリーとスクリプトを作ってみた。
+      `symlink-filter` 下で `sftp-server` や `httpd` を動作させることで、
+      シンボリックリンクの作成を抑制できるはず。
+      * https://github.com/fumiyas/symlink-busters
   * VFAT など、シンボリックリンクが利用できないファイルシステムを利用する。
     ([@knok](https://twitter.com/knok) さん案)
   * etc.
