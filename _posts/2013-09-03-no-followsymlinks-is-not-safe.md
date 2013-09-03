@@ -83,6 +83,12 @@ TOCTTOU について具体的に解説していて参考になるページを紹
 もちろん、「ユーザーごとに別権限の Web サーバーを立ち上げる」や
 「ユーザーごとに別権限でコンテンツをアクセスする Web サーバーにする」
 といった方法で回避もできると思う。
+後者の実装としては mod_process_security がよさげな印象。
+
+  * 人間とウェブの未来 - mod_process_security – Apache上でスレッド単位で権限分離を行うファイルのアクセス制御アーキテクチャ（前半編）
+    * https://github.com/matsumoto-r/mod_process_security
+    * http://blog.matsumoto-r.jp/?p=1972
+    * http://blog.matsumoto-r.jp/?p=1989
 
 ## おまけ
 
