@@ -83,6 +83,8 @@ TOCTTOU について具体的に解説していて参考になるページを紹
       * https://github.com/fumiyas/symlink-busters
   * VFAT など、シンボリックリンクが利用できないファイルシステムを利用する。
     ([@knok](https://twitter.com/knok) さん案)
+  * FreeBSD で実装されている `mount`(8) オプション `nosymfollow` を利用する。
+    ([@koie](https://twitter.com/koie) さん案)
   * etc.
 
 もちろん、「ユーザーごとに別権限の Web サーバーを立ち上げる」や
@@ -112,6 +114,9 @@ Linux 2.6.39 以降で実装されているという `open`(2) の
 Linux の特定バージョン依存とはいえ、有効な対策となりそう。
 
   * https://twitter.com/a4lg/status/374443046466617344
+
+TODO: [Symlink Busters プロジェクト](https://github.com/fumiyas/symlink-busters)
+のネタとして実装する予定。
 
 適当に書いた攻撃用のコードを晒しておく。あまり効率がよくなく、
 CPU 負荷をかけるので注意。Linux であれば `inotify`(7) で監視するなどして、
