@@ -59,6 +59,8 @@ Twitter で [@a4lg](https://twitter.com/a4lg) さんに教えてもらったの�
 この問題は「TOCTOU」(もしくは「TOCTTOU」、「Time Of Check to Time Of Use」)
 と呼ばれる問題の一種とのこと。名前が付いているのは知らなかった…。
 
+  * Time of check to time of use - Wikipedia, the free encyclopedia
+    * http://en.wikipedia.org/wiki/Time_of_check_to_time_of_use
   * Bug #811428 “Apache does not honor -FollowSymlinks due to TOCTOU...” : Bugs : “apache2” package : Ubuntu
     * https://bugs.launchpad.net/ubuntu/+source/apache2/+bug/811428
 
