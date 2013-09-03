@@ -98,6 +98,7 @@ TOCTTOU について具体的に解説していて参考になるページを紹
 誰か検証してくれないかな。
 
   * https://twitter.com/kunihirotanaka/status/373423792451645441
+  * http://tanaka.sakura.ad.jp/2013/09/symlink-attack.html
 
 Linux 2.6.39 以降で実装されているという `open`(2) の
 `O_PATH` オプションを利用すればシンボリックリンクを直接開くことが可能で、
