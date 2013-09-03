@@ -1,4 +1,6 @@
 url: http://fumiyas.github.io
+scm:
+  commits: https://github.com/fumiyas/fumiyas.github.io/commits/master
 title: "ダメ出し Blog"
 author: "SATOH Fumiyasu (佐藤 文優, fumiyas)"
 markdown: redcarpet
