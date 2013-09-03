@@ -71,13 +71,18 @@ h1 {
   font-size:		70%;
 }
 
+p {
+  padding-left:		1em;
+  padding-right:	1em;
+}
+
 div.meta {
-  padding-right:	8em;
+  padding:		0em 4em 0em 0em;
   text-align:		right;
 }
 
 div.content {
-  padding:		1em;
+  padding:		0em 1em 0.5em 1em;
 }
 
 div.footer {
