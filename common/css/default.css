@@ -1,11 +1,4 @@
-html {
-  margin:		0px 0px 0px 0px;
-  padding:		0px 0px 0px 0px;
-}
-
 body {
-  margin:		0;
-  padding:		0;
   background-color:	white;
   color:		black;
 }
@@ -76,6 +69,11 @@ h1 {
 .top {
   vertical-align:	middle;
   font-size:		70%;
+}
+
+div.meta {
+  padding-right:	8em;
+  text-align:		right;
 }
 
 div.content {

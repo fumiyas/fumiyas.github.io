@@ -8,10 +8,10 @@
 <span class="top"> - <a href="/">{{ site.title }}</a></span>
 {% endif %}
 </h1>
-<div>
+<div class="meta">
 {{ page.date |date: '%Y-%m-%d(%a)' }}
-{% if page.title %}[{{ page.tags |join: '][' }}]
-[{% endif %}<a href="{{ site.scm.commits }}/{{ page.path}}">変更履歴</a>]
+{% if page.title %}[{{ page.tags |join: '][' }}]{% endif %}
+[<a href="{{ site.scm.commits }}/{{ page.path}}">変更履歴</a>]
 </div>
 {% include header.html %}
 <div class="content">
