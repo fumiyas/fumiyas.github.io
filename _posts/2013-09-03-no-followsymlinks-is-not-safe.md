@@ -117,6 +117,14 @@ TOCTTOU について具体的に解説していて参考になるページを紹
   * http://tanaka.sakura.ad.jp/2013/09/symlink-attack.html
   * https://twitter.com/kunihirotanaka/status/378308333272195072
 
+さくらインターネットのは `default-handler` を置き換えるモジュールらしいので、
+対抗して出力フィルター版のモジュールを作ってみた。
+`default-handler` は Apache HTTPD のバージョンによって処理内容が微妙に
+異なるので、フィルター版のほうが安全性と汎用性が高いと思う。
+
+  * [Apache HTTPD: mod_allowfileowner](apache/mod-allowfileowner.html)
+    * {{ site.url}}/apache/mod-allowfileowner.html
+
 Linux 2.6.39 以降で実装されているという `open`(2) の
 `O_PATH` オプションを利用すればシンボリックリンクを直接開くことが可能で、
 これと `fstatat`(2) と `AT_SYMLINK_NOFOLLOW` フラグ、
