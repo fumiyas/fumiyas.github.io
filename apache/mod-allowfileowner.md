@@ -72,8 +72,11 @@ LoadModule allowfileowner_module modules/mod_allowfileowner.so
 <VirtualHost *:80>
   ## ...
 
-  ## 出力フィルターに設定
+  ## 既定の出力フィルターに設定
   SetOutputFilter ALLOWFILEOWNER
+
+  ## 既存の出力フィルターに追加
+  AddOutputFilter ALLOWFILEOWNER;INCLUDES .shtml
 
   DocumentRoot /var/www
   <Directory /var/www>
