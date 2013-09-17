@@ -18,6 +18,8 @@ TOCTOU (Time Of Check to Time Of Use) 問題はありません。
 ## 何が嬉しいの?
 
 共有 Web サーバーサービスにおいて、一部のシンボリックリンク攻撃を防ぐことができます。
+この攻撃は `Options -FollowSymLinks` や `Options SymLinksIfOwnerMatch`
+設定では完全には防ぐことはできません。
 
 参考:
 
