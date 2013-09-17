@@ -106,10 +106,11 @@ LoadModule allowfileowner_module modules/mod_allowfileowner.so
 
   * CGI や PHP などのサーバーサイドスクリプト
     * suEXEC などを利用して制限ユーザー権限でスクリプトを実行し回避すること。
-  * SSI (mod_include) の `<!--#include file="..." -->`
-    * 調査、試験をしていないが、恐らく駄目。
-    * `<!--#include virtual="..." -->` は問題ないと思われる。(未確認)
-    * SSI を無効にする、もしくは mod_include を改造して
-      `<!--#include file="..." -->` を無効化するなどして対処すること。
+  * <del>SSI (mod_include) の `<!--#include file="..." -->`</del>
+    * SSI によるインクルードも制限されることを確認。
+    * <del>調査、試験をしていないが、恐らく駄目。</del>
+    * <del>`<!--#include virtual="..." -->` は問題ないと思われる。(未確認)</del>
+    * <del>SSI を無効にする、もしくは mod_include を改造して</del>
+      <del>`<!--#include file="..." -->` を無効化するなどして対処すること。</del>
   * そのほか?
 
