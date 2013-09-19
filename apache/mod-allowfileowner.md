@@ -101,7 +101,8 @@ LoadModule allowfileowner_module modules/mod_allowfileowner.so
 ## 制限
 
 出力フィルター対象の大本のソースがファイルでない場合
-(`default-handler` が利用されない場合) や、
+([`default-handler`](http://httpd.apache.org/docs/2.2/handler.html#definition)
+が利用されない場合) や、
 出力フィルターが利用されないファイルアクセス手段が利用された場合は、
 当モジュールによる制限は効きません。
 
