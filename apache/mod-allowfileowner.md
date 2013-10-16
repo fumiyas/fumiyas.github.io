@@ -80,9 +80,10 @@ LoadModule allowfileowner_module modules/mod_allowfileowner.so
 
   DocumentRoot /var/www
   <Directory /var/www>
-    ## 静的コンテンツファイルへのアクセスは所有者が webadmin の場合だけ
-    ## 許可する (注意: CGI, PHP などは対象外)
-    AllowFileOwner webadmin
+    ## 静的コンテンツファイルへのアクセスは所有者が指定のユーザーと
+    ## グループの場合だけ許可する (注意: CGI, PHP などは対象外)
+    AllowFileOwner webadmin apache
+    AllowFileOwnerGroup webusers
     ## ...
   </Directory>
 
