@@ -17,7 +17,7 @@ Twitter の俺の TL にこんなネタが流れてきた。現実逃避には�
 というわけで、ピュアシェルスクリプトをどうぞ。
 
 ``` bash
-read i;s=${i%% *};let p=x=s-1;f(){((n-p-1))&&{((p-x))&&o=$o-$p;o=$o,\ $n;x=$n;};};for n in $i;do f;p=$n;done;let n++;f;echo $s${o#-$s}.
+read i;s=${i%% *};let p=x=s-1;for n in $i x;do((n-p-1))&&{((p-x))&&o=$o-$p;o=$o,\ $n;x=$n;};p=$n;done;o=$s${o#-$s};echo ${o%, x}.
 ```
 
 …ツイート用に 140文字以内に収めるのに必死ですみません。
@@ -36,20 +36,17 @@ read i
 s=${i%% *}
 let p=x=s-1
 
-f() {
+
+for n in $i x; do
   ((n-p-1)) && {
     ((p-x)) && o=$o-$p
     o=$o,\ $n
     x=$n
   }
-}
-
-for n in $i; do
-  f
   p=$n
 done
-let n++
-f
-echo $s${o#-$s}.
+
+o=$s${o#-$s}
+echo ${o%, x}.
 ```
 
