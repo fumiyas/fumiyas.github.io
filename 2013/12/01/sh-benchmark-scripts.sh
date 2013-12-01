@@ -1,9 +1,9 @@
 ## Parameter Expansion 1: "$PARAMETER"
-i=$(zsh -c "echo {1..100000}"); time (: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";)
+i=$(zsh -c "echo {1..100000}"); time (: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";: "$i";)
 ## Parameter Expansion 2: $PARAMETER
-i=$(zsh -c "echo {1..100000}"); time (: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;)
+i=$(zsh -c "echo {1..100000}"); time (: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;: $i;)
 ## Parameter Expansion 3: "${PARAMETER##*/}" (modifier)
-path=/foo/bar; time (for i in {1..100000}; do : "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}"; done)
+path=/foo/bar; time (for i in {1..100000}; do : "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}";: "${path##*/}"; done)
 ## Array Parameter Expansion 1: "${ARRAY[1]}" (one element)
 i=($(zsh -c "echo {1..1000000}")); time (for j in {1..10000}; do : "${i[1]}";: "${i[20]}";: "${i[300]}";: "${i[4000]}";: "${i[50000]}"; done)
 ## Array Parameter Expansion 2: "${ARRAY[@]}" (all elements)

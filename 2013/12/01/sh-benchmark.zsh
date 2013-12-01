@@ -62,7 +62,7 @@ typeset -A real
 typeset -A user
 typeset -A sys
 
-cat sh-benchmark.txt \
+cat sh-benchmark-scripts.sh \
 |while read -r script; do
   if [[ -z ${script##\#*} ]]; then
     test_name="${script#* }"
