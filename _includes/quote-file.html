@@ -1,5 +1,4 @@
-{% if quote_file %}
-<a href="{{ site.scm.root }}/{{ quote_file }}">{{ quote_file |split: '/' |last }}</a>
+{% if quote_file -%}<a href="{{ site.scm.root }}/{{ quote_file }}">{{ quote_file |split: '/' |last }}</a>
 <script src="http://gist-it.appspot.com/github/fumiyas/fumiyas.github.io/raw/master/{{ quote_file }}"></script>
 {% assign quote_file = nil %}
 {% endif %}

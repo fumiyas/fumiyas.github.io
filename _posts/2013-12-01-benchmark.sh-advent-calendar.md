@@ -65,13 +65,9 @@ $ zsh ./sh-benchmark.zsh
 ksh は fork 以外 (プロセス置換以外かも)、zsh は配列パラメーターの展開以外、
 bash より高速であることがわかりました。
 
-各ベンチマークの内容:
-
-{% assign quote_file = "2013/12/01/sh-benchmark-scripts.sh" %}
+各ベンチマークの内容: {% assign quote_file = "2013/12/01/sh-benchmark-scripts.sh" %}
 {% include quote-file.html %}
 
-ベンチマークスクリプト:
-
-{% assign quote_file = "2013/12/01/sh-benchmark.zsh" %}
+ベンチマークスクリプト: {% assign quote_file = "2013/12/01/sh-benchmark.zsh" %}
 {% include quote-file.html %}
 
