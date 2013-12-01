@@ -69,6 +69,20 @@ bash より高速であることがわかりました。
 各ベンチマークの内容: {% assign quote_file = "2013/12/01/sh-benchmark-scripts.sh" %}
 {% include quote-file.html %}
 
+変なところに bash, ksh, zsh の違いがあったり、
+`{1..1000000}` の右辺を増やしすぎると ksh が `Memory fault` と言って死んだり、
+意外と作るのに苦労しました。
+
+ベンチマークの前処理で `$(zsh -c "echo {1..1000000}")` のように一部
+zsh を利用していますが、これは今回利用した bash 4.2 に
+`{1..1000000}` に絡む処理をやらせた場合に、異様に遅い問題があったためです。
+たとえば次の例を実行したとき数分待っても終わらないんですが。
+bash 3.0, 3.2, 4.1 では数秒で終了します。
+
+``` console
+$ time bash -c 'i=( {1..1000000} );'
+```
+
 ベンチマークスクリプト: {% assign quote_file = "2013/12/01/sh-benchmark.zsh" %}
 {% include quote-file.html %}
 
