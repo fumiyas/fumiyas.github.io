@@ -10,10 +10,10 @@
 ## License: GNU General Public Licenser version 3
 ##
 
-set -u
-
 ## For zsh
 builtin emulate -R ksh 2>/dev/null
+
+set -u
 
 pdie() {
   echo "$0: ERROR: $1" 1>&2
