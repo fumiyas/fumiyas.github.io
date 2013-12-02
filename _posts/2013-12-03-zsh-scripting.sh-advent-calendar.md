@@ -132,10 +132,11 @@ typesetsilent       off on
 
   * `bsdecho` (`BSD_ECHO`)
     * echo 組込みコマンドを BSD echo 互換にする。
+      bash 互換。ksh は Linux や *BSD など、SystemV でない OS 上なら互換(だと思う。後述)。
     * zsh のデフォルトは bash の `echo -e <引数>` 相当、
       つまり引数中のエスケープシーケンスを解釈する。余計なことをしやがる…。
   * `ksharrays` (`KSH_ARRAYS`)
-    * 配列パラメーターの添字を 0 オリジンにします。ksh, bash と互換。
+    * 配列パラメーターの添字を 0 オリジンする。ksh, bash と互換。
     * zsh のデフォルトは 1 オリジン。なんでだよ…。
   * `globsubst` (`GLOB_SUBST`)
     * クォートなしのパラメーター展開時に展開後の値で glob 展開する。
