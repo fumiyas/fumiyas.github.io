@@ -136,7 +136,7 @@ typesetsilent       off on
     * zsh のデフォルトは bash の `echo -e <引数>` 相当、
       つまり引数中のエスケープシーケンスを解釈する。余計なことをしやがる…。
   * `ksharrays` (`KSH_ARRAYS`)
-    * 配列パラメーターの添字を 0 オリジンする。ksh, bash と互換。
+    * 配列パラメーターの添字を 0 オリジンにする。ksh, bash と互換。
     * zsh のデフォルトは 1 オリジン。なんでだよ…。
   * `globsubst` (`GLOB_SUBST`)
     * クォートなしのパラメーター展開時に展開後の値で glob 展開する。
