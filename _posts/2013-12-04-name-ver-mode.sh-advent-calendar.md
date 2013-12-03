@@ -13,7 +13,9 @@ layout: default
 私はあります。ポータブルなシェルスクリプトを書きたい、
 しかし、互換性の問題などでシェルの種類に依存するコードを書き分けないといけない場合です。
 
-ざっくり、こんな感じでしょうか: {% assign quote_file = "2013/12/04/sh-detect-name-ver-mode.sh" %}
+ざっくりとシェルの種類、バージョン、
+動作モードを判定するスクリプトを作ってみました: {%
+assign quote_file = "2013/12/04/sh-detect-name-ver-mode.sh" %}
 {% include quote-file.html %}
 
 bash は `$BASH_VERSION`、zsh は `$ZSH_VERSION`
