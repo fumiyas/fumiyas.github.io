@@ -88,7 +88,5 @@ $ time bash -c 'i=( {1..1000000} );'
 
 * * *
 
-ところで12月25日はクリスマスな上に、
-OSS 界隈で地味に活躍されているふみやすさんの誕生日ですね。
+{% include wishlist-dec.html %}
 
-っ http://www.amazon.co.jp/registry/wishlist/27M7TV8CEEF6G?sort=priority

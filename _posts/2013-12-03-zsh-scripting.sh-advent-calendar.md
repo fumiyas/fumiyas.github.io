@@ -200,7 +200,5 @@ Advent Calendar ネタが尽きたら `echo` コマンドの闇に迫りたい�
 
 * * *
 
-ところで12月25日はクリスマスな上に、
-OSS 界隈で地味に活躍されているふみやすさんの誕生日ですね。
+{% include wishlist-dec.html %}
 
-っ http://www.amazon.co.jp/registry/wishlist/27M7TV8CEEF6G?sort=priority
