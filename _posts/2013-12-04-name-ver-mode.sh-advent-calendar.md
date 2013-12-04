@@ -14,8 +14,8 @@ layout: default
 しかし、互換性の問題などでシェルの種類に依存するコードを書き分けないといけない場合です。
 
 ざっくりとシェルの種類、バージョン、
-動作モードを判定するスクリプトを作ってみました: {% assign quote_file = "2013/12/04/sh-detect-name-ver-mode.sh" %}
-{% include quote-file.html %}
+動作モードを判定するスクリプトを作ってみました: {% assign github_quote_file = "2013/12/04/sh-detect-name-ver-mode.sh" %}
+{% include github-quote-file.html %}
 
 bash は `$BASH_VERSION`、zsh は `$ZSH_VERSION`
 というシェル変数にバージョン文字列が入るため、これで種類の判定ができます。

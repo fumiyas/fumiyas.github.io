@@ -66,8 +66,8 @@ $ zsh ./sh-benchmark.zsh
 ksh は fork 以外 (プロセス置換以外かも)、zsh は配列パラメーターの展開以外、
 bash より高速であることがわかりました。
 
-各ベンチマークの内容: {% assign quote_file = "2013/12/01/sh-benchmark-scripts.sh" %}
-{% include quote-file.html %}
+各ベンチマークの内容: {% assign github_quote_file = "2013/12/01/sh-benchmark-scripts.sh" %}
+{% include github-quote-file.html %}
 
 変なところに bash, ksh, zsh の違いがあったり、
 `{1..1000000}` の右辺を増やしすぎると ksh が `Memory fault` と言って死んだり、
@@ -83,8 +83,8 @@ bash 3.0, 3.2, 4.1 では数秒で終了します。
 $ time bash -c 'i=( {1..1000000} );'
 ```
 
-ベンチマークスクリプト: {% assign quote_file = "2013/12/01/sh-benchmark.zsh" %}
-{% include quote-file.html %}
+ベンチマークスクリプト: {% assign github_quote_file = "2013/12/01/sh-benchmark.zsh" %}
+{% include github-quote-file.html %}
 
 * * *
 
