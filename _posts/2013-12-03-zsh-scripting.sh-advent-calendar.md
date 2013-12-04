@@ -72,8 +72,8 @@ $ zshoptions_normalize() {
 
 ``` console
 $ diff --side-by-side \
-  <(zsh -c 'setopt KSH_OPTION_PRINT;setopt' |zshoptions_normalize) \
-  <(zsh -c 'emulate ksh; setopt' |zshoptions_normalize) \
+  <(zsh -c 'setopt KSH_OPTION_PRINT; setopt' |zshoptions_normalize) \
+  <(zsh -c 'emulate -R ksh; setopt' |zshoptions_normalize) \
   |awk '/\|/{printf "%-20s%-4s%-4s\n", $1,$2,$5}'
 badpattern          on  off 
 banghist            on  off 
