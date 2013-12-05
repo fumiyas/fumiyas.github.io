@@ -13,7 +13,7 @@ layout: default
 何が問題でどうすればいいのでしょうか。
 いきなりですが、最初にどうすればいいかを紹介します。
 スクリプトの先頭を以下のように書くだけです。
-(`setopt BSD_ECHO` は後述します)
+(`set -o BSD_ECHO` は後述します)
 
 ``` sh
 #!/bin/zsh
@@ -21,7 +21,7 @@ layout: default
 ## ksh エミュレーションモード
 emulate -R ksh
 ## echo 組込みコマンドを BSD echo 互換にする
-setopt BSD_ECHO
+set -o BSD_ECHO
 
 ## 以下、ふつうに sh なシェルスクリプトを実装…
 ```
@@ -34,30 +34,30 @@ zsh は sh, ksh, csh (誰が使うの?) のエミュレーション機能を持�
 に近い動きになります。
 
 では、`emulate -R ksh` で具体的にどんなオプションが変化するのか見てみましょう。
-`setopt` は `zshoptions`(1) 記載のオプションを設定する組込みコマンドですが、
-引数なしに実行すると現在の設定を表示します。
-ただし `KSH_OPTION_PRINT` オプションを有効にしないと既定値のものが表示されないので、
-次のようにして一覧表示します。
+`set -o` は `zshoptions`(1) 記載のオプションを設定する組込みコマンドですが、
+オプション名指定なしで実行すると現在の設定を表示します。
 
 ``` console
-$ zsh -c 'setopt KSH_OPTION_PRINT; setopt'
+$ zsh -c 'set -o'
 noaliases             off
 allexport             off
 ...省略...
-kshoptionprint        on
-...省略...
 nohashdirs            on
 ...省略...
+nonomatch             off
+nonotify              off
+...省略...
 ```
-
-この実行例のように、オプション名は `zshoptions`(1) 記載の
-「大文字とアンダーバー」ではなく「小文字」で表示されます。
-また、オプションは `setopt NO_オプション名` や `setopt NOオプション名`
-のように指定(オプション名は大文字・小文字無視!、アンダーバー無視!)
-すると無効にできるのですが、`setopt`
+`zshoptions`(1) 記載のオプション名は「大文字とアンダーバー」なのですが、
+`set -o` の出力ではこの実行例のように「小文字」で表示されます。
+また、オプションは `set -o NO<オプション名>` や `set +o <オプション名>`
+のように指定すると無効にできるのですが、`set -o`
 による一覧表示では左辺のオプション名の先頭に `no` が付いたり、 
 代わりに右辺が `off` になったり、`no` であって `off` になったり(二重否定死ね)、
-統一されていません。なんてわかりにくいんだ…。
+統一されていません。
+しかも `set`
+に指定するオプション名は大文字・小文字を無視し、アンダーバーも無視します。
+なんてわかりにくいんだ、zsh …。
 
 そこで、まずはこの表示を正規化するフィルターを用意します。
 (すべてシェルで実装してもいいのだけど素直に sed で :-)
@@ -72,8 +72,8 @@ $ zshoptions_normalize() {
 
 ``` console
 $ diff --side-by-side \
-  <(zsh -c 'setopt KSH_OPTION_PRINT; setopt' |zshoptions_normalize) \
-  <(zsh -c 'emulate -R ksh; setopt' |zshoptions_normalize) \
+  <(zsh -c 'set -o' |zshoptions_normalize) \
+  <(zsh -c 'emulate -R ksh; set -o' |zshoptions_normalize) \
   |awk '/\|/{printf "%-20s%-4s%-4s\n", $1,$2,$5}'
 badpattern          on  off 
 banghist            on  off 
@@ -144,7 +144,7 @@ typesetsilent       off on
   * `nomatch` (`NOMATCH`)
     * glob 展開でマッチするファイルが存在しない場合に展開後の値を glob パターンそのままとする。
     * zsh のデフォルトはエラーになる。`zsh: no matches found: <glob パターン>`
-    * 無効にするには `setopt NONOMATCH` のように二重否定にする。気持ち悪い。
+    * 無効にするには `set -o NONOMATCH` のように二重否定にする。気持ち悪い。
   * `shwordsplit` (`SH_WORD_SPLIT`)
     * クォートなしのパラメーター展開時に展開された値を空白文字で分割(ワード分割)する。
     * zsh のデフォルトは空白文字分割しない。
@@ -152,10 +152,10 @@ typesetsilent       off on
 `globsubst` と `shwordsplit` がよくわからない人のためのデモ:
 
 ``` console
-$ zsh -c 'v="/*"; echo $v; setopt GLOB_SUBST; echo $v'
+$ zsh -c 'v="/*"; echo $v; set -o GLOB_SUBST; echo $v'
 /*
 /bin /boot /dev /etc /home /lib /lib32 /lib64 /lost+found /media /mnt /opt /proc /root /run /sbin /srv /sys /tmp /usr /var
-$ zsh -c 'v=" foo "" bar "; echo $v; setopt SH_WORD_SPLIT; echo $v'
+$ zsh -c 'v=" foo "" bar "; echo $v; set -o SH_WORD_SPLIT; echo $v'
  foo  bar 
 foo bar
 ```
@@ -174,11 +174,11 @@ zsh 特有の挙動を利用したスクリプトを書く場合、
 ``` sh
 #!/bin/zsh
 
-setopt BSD_ECHO
-setopt KSH_ARRAYS
-setopt GLOB_SUBST
-setopt NO_NOMATCH
-setopt SH_WORD_SPLIT
+set -o BSD_ECHO
+set -o KSH_ARRAYS
+set -o GLOB_SUBST
+set -o NO_NOMATCH
+set -o SH_WORD_SPLIT
 ## ほかにもあれば、適宜 on / off する
 
 ## 以下、ふつうに sh なシェルスクリプトを実装…
