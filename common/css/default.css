@@ -115,8 +115,9 @@ code {
   -webkit-background-clip:padding-box;
   padding:		1px 4px 1px 4px;
   background-clip:	padding-box;
+  background-color:	#FFFFE8;
   font-family:		Monaco,"DejaVu Sans Mono","Courier New",monospace;
-  color:		#363;
+  color:		#633;
 }
 
 pre > code {
