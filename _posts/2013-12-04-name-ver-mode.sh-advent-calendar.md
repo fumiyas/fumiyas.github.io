@@ -52,9 +52,9 @@ zsh の場合、バージョンごとに処理を切り替えには `is-at-least
 autoload -U is-at-least
 
 if is-at-least 4.3.0; then
-  setopt PROMPT_CR
+  set -o PROMPT_CR
 else
-  setopt PROMPT_SP
+  set -o PROMPT_SP
 fi
 ```
 
