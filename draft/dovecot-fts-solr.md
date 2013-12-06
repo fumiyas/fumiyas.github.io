@@ -25,6 +25,7 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
   echo '.'		## テキストの追加を終了
   echo '%s/\(<field name="hdr" type="text\)/\1_ja/'
   echo '%s/\(<field name="body" type="text\)/\1_ja/'
+  echo '%s/\(<field name="subject" type="text\)/\1_ja/'
   echo 'w'		## 書き込み
 ) |ed schema.xml
 …
@@ -55,7 +56,7 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
   </types>
  
  
-@@ -43,8 +95,8 @@
+@@ -43,14 +95,14 @@
     <field name="box" type="string" indexed="true" stored="true" required="true" />
     <field name="user" type="string" indexed="true" stored="true" required="true" />
  
@@ -66,5 +67,12 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
  
     <field name="from" type="text" indexed="true" stored="false" />
     <field name="to" type="text" indexed="true" stored="false" />
+    <field name="cc" type="text" indexed="true" stored="false" />
+    <field name="bcc" type="text" indexed="true" stored="false" />
+-   <field name="subject" type="text" indexed="true" stored="false" />
++   <field name="subject" type="text_ja" indexed="true" stored="false" />
+
+    <!-- Used by Solr internally: -->
+    <field name="_version_" type="long" indexed="true" stored="true"/>
 ```
 
