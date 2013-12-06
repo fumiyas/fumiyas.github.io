@@ -9,7 +9,7 @@
 ##               <http://fumiyas.github.io/>
 ##               <http://www.osstech.co.jp/>
 ##
-## License: GNU General Public Licenser version 3
+## License: GNU General Public License version 3
 ##
 
 ## For zsh
