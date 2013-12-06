@@ -76,3 +76,10 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
     <field name="_version_" type="long" indexed="true" stored="true"/>
 ```
 
+FIXME: <filed>
+  sortMissingLast=false			?
+  sortMissingFirst=false		?
+  omitNorms=false			?
+  omitTermFreqAndPositions=false	?
+  omitPositions=false			true?
+

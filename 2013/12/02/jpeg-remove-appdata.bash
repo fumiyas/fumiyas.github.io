@@ -6,6 +6,8 @@
 ##
 ## JPEG: Remove application-specific data (e.g., EXIF)
 ## Copyright (c) 2013 SATOH Fumiyasu @ OSS Technology Corp., Japan
+##               <http://fumiyas.github.io/>
+##               <http://www.osstech.co.jp/>
 ##
 ## License: GNU General Public Licenser version 3
 ##
