@@ -2,6 +2,12 @@
 # or
 #!/bin/ksh
 #!/bin/zsh
+##
+## mktemp(1) clone
+## Copyright (c) 2013 SATOH Fumiyasu @ OSS Technology Corp., Japan
+##
+## License: GNU General Public Licenser version 3
+##
 
 if [[ -n $ZSH_VERSION ]]; then
   emulate -R ksh
@@ -15,8 +21,8 @@ fi
 set -u
 
 pdie() {
-  echo "$0: ERROR: $1"
-  exit 1
+  echo "$0: ERROR: $1" 1>&2
+  exit ${2-1}
 }
 
 template="${1-/tmp/tmp.XXXXXXXXXX}"
