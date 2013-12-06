@@ -22,6 +22,12 @@ layout: default
 
 * * *
 
+参考までに、RHEL の場合は RHEL Server Optional チャンネルを有効にする必要がある。
+
+``` console
+# rhn-channel -a -c rhel-`uname -i`-server-optional-`lsb_release -sr |sed 's/\..*//'`
+```
+
 OpenJDK 1.7 と Tomcat 6 をインストールする。
 
 ``` console
@@ -36,9 +42,10 @@ Solr 4.6.0 をダウンロードしてインストールする。
 # tar xzf solr-4.6.0.tgz
 # unzip -d /var/lib/tomcat6/webapps/solr solr-4.6.0/dist/solr-4.6.0.war
 # cp -p --no-clobber solr-4.6.0/dist/solrj-lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
-# mkdir -p -m 02770 /var/solr
+# mkdir -p -m 02750 /var/solr
 # cp -rp solr-4.6.0/example/solr/* /var/solr/
-# chown -hR tomcat:tomcat /var/solr
+# chown -hR root:tomcat /var/solr
+# chown -hR tomcat /var/solr/collection1/data
 ```
 
 `/etc/sysconfig/tomcat6` の最後のほうに
