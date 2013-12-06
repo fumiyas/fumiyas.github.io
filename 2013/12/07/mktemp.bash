@@ -52,14 +52,14 @@ if [[ $x_num -lt 3 ]]; then
 fi
 
 suffix_seeds_num="${#suffix_seeds[@]}"
-let try='x_num * 10'
+let try='suffix_seeds_num ** 3'
 
 while [[ $try -gt 0 ]]; do
   let try--
 
   temp_file="$prefix"
-  for (( x=x_num; x >0; x-- )); do
-    temp_file+="${suffix_seeds[$(($RANDOM % $suffix_seeds_num))]}"
+  for (( x = x_num; x > 0; x-- )); do
+    temp_file+="${suffix_seeds[$RANDOM % $suffix_seeds_num]}"
   done
 
   error=$(umask 0077; set -o noclobber; : 2>&1 >"$temp_file")
