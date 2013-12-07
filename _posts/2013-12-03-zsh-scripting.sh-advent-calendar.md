@@ -136,17 +136,17 @@ typesetsilent       off on
     * zsh のデフォルトは bash の `echo -e <引数>` 相当、
       つまり引数中のエスケープシーケンスを解釈する。余計なことをしやがる…。
   * `ksharrays` (`KSH_ARRAYS`)
-    * 配列パラメーターの添字を 0 オリジンにする。ksh, bash と互換。
+    * 配列変数の添字を 0 オリジンにする。ksh, bash と互換。
     * zsh のデフォルトは 1 オリジン。なんでだよ…。
   * `globsubst` (`GLOB_SUBST`)
-    * クォートなしのパラメーター展開時に展開後の値で glob 展開する。
+    * クォートなしの変数展開時に展開後の値で glob 展開する。
     * zsh のデフォルトは glob 展開しない。
   * `nomatch` (`NOMATCH`)
     * glob 展開でマッチするファイルが存在しない場合に展開後の値を glob パターンそのままとする。
     * zsh のデフォルトはエラーになる。`zsh: no matches found: <glob パターン>`
     * 無効にするには `set -o NONOMATCH` のように二重否定にする。気持ち悪い。
   * `shwordsplit` (`SH_WORD_SPLIT`)
-    * クォートなしのパラメーター展開時に展開された値を空白文字で分割(ワード分割)する。
+    * クォートなしの変数展開時に展開された値を空白文字で分割(ワード分割)する。
     * zsh のデフォルトは空白文字分割しない。
 
 `globsubst` と `shwordsplit` がよくわからない人のためのデモ:
