@@ -18,8 +18,8 @@ layout: default
 ``` sh
 #!/bin/zsh
 
-## ksh エミュレーションモード
-emulate -R ksh
+## sh エミュレーションモード
+emulate -R sh
 ## echo 組込みコマンドを BSD echo 互換にする
 set -o BSD_ECHO
 
@@ -30,10 +30,10 @@ zsh は sh, ksh, csh (誰が使うの?) のエミュレーション機能を持�
 それを切り替えるのが組込みコマンド `emulate` です。
 `-R` オプションを指定すると、各種シェルオプション (`zshoptions`(1) を参照)
 を指定したシェルエミュレーションに合ったデフォルト値にリセットします。
-こうすることで概ね ksh 互換の動きとなり、概ね POSIX sh や bash
+こうすることで概ね POSIX sh 互換の動きとなり、概ね POSIX sh や bash
 に近い動きになります。
 
-では、`emulate -R ksh` で具体的にどんなオプションが変化するのか見てみましょう。
+では、`emulate -R sh` で具体的にどんなオプションが変化するのか見てみましょう。
 `set -o` は `zshoptions`(1) 記載のオプションを設定する組込みコマンドですが、
 オプション名指定なしで実行すると現在の設定を表示します。
 
@@ -73,53 +73,51 @@ $ zshoptions_normalize() {
 ``` console
 $ diff --side-by-side \
   <(zsh -c 'set -o' |zshoptions_normalize) \
-  <(zsh -c 'emulate -R ksh; set -o' |zshoptions_normalize) \
-  |awk '/\|/{printf "%-20s%-4s%-4s\n", $1,$2,$5}'
-badpattern          on  off 
-banghist            on  off 
-bareglobqual        on  off 
-bgnice              on  off 
-checkjobs           on  off 
-cprecedences        off on  
-equals              on  off 
-evallineno          on  off 
-functionargzero     on  off 
-globalexport        on  off 
-globsubst           off on  
-hashdirs            off on  
-hup                 on  off 
-interactivecomments off on  
-ksharrays           off on  
-kshautoload         off on  
-kshglob             off on  
-kshtypeset          off on  
-localoptions        off on  
-localtraps          off on  
-multifuncdef        on  off 
-multios             on  off 
-nomatch             on  off 
-notify              on  off 
-pathscript          off on  
-posixaliases        off on  
-posixbuiltins       off on  
-posixcd             off on  
-posixidentifiers    off on  
-posixjobs           off on  
-posixstrings        off on  
-posixtraps          off on  
-promptbang          off on  
-promptpercent       on  off 
-promptsubst         off on  
-rmstarsilent        off on  
-sharehistory        off on  
-shfileexpansion     off on  
-shglob              off on  
-shnullcmd           off on  
-shoptionletters     off on  
-shortloops          on  off 
-shwordsplit         off on  
-singlelinezle       off on  
-typesetsilent       off on  
+  <(zsh -c 'emulate -R sh; set -o' |zshoptions_normalize) \
+  |awk '/\|/{printf "%-20s%-4s%s\n", $1, $2, $5}'
+badpattern          on  off
+banghist            on  off
+bareglobqual        on  off
+bgnice              on  off
+bsdecho             off on
+checkjobs           on  off
+cprecedences        off on
+equals              on  off
+evallineno          on  off
+functionargzero     on  off
+globalexport        on  off
+globsubst           off on
+hashdirs            off on
+hup                 on  off
+ignorebraces        off on
+interactivecomments off on
+ksharrays           off on
+kshautoload         off on
+multibyte           on  off
+multifuncdef        on  off
+multios             on  off
+nomatch             on  off
+notify              on  off
+octalzeroes         off on
+pathscript          off on
+posixaliases        off on
+posixbuiltins       off on
+posixcd             off on
+posixidentifiers    off on
+posixjobs           off on
+posixstrings        off on
+posixtraps          off on
+promptpercent       on  off
+promptsubst         off on
+rmstarsilent        off on
+shfileexpansion     off on
+shglob              off on
+shnullcmd           off on
+shoptionletters     off on
+shortloops          on  off
+shwordsplit         off on
+typesetsilent       off on
+
 ```
 
 思ったより沢山あったわ…。
@@ -131,8 +129,8 @@ typesetsilent       off on
 (詳細は `zshoptions`(1) を参照。括弧内のオプション名は `zshoptions`(1) 記載の名前)
 
   * `bsdecho` (`BSD_ECHO`)
-    * echo 組込みコマンドを BSD echo 互換にする。
-      bash 互換。ksh は Linux や *BSD など、SystemV でない OS 上なら互換(だと思う。後述)。
+    * echo 組込みコマンドを BSD echo 互換にする。bash 互換。
+    * ksh は Linux や *BSD など、SystemV でない OS 上なら互換(だと思う。後述)。
     * zsh のデフォルトは bash の `echo -e <引数>` 相当、
       つまり引数中のエスケープシーケンスを解釈する。余計なことをしやがる…。
   * `ksharrays` (`KSH_ARRAYS`)
@@ -166,7 +164,7 @@ foo bar
 
 * * *
 
-`emulate -R ksh` を利用せずに個別にオプションを設定して他 sh
+`emulate -R sh` を利用せずに個別にオプションを設定して他 sh
 との互換性を高める例を示します。
 zsh 特有の挙動を利用したスクリプトを書く場合、
 一部の挙動だけ他 sh 互換にしたいときはこのようにします。
@@ -187,7 +185,7 @@ set -o SH_WORD_SPLIT
 zsh 専用のモジュールの中には zsh の既定のシェルオプション設定に依存しているものがあります。
 外部モジュールを利用した zsh シェルスクリプトを書く場合は注意しましょう。
 ログインシェルに zsh を利用しているなら、
-`~/.zshrc` の先頭のほうに `emulate -R ksh` と書いてログインしてみると実感できるかと。
+`~/.zshrc` の先頭のほうに `emulate -R sh` と書いてログインしてみると実感できるかと。
 
 * * *
 
@@ -197,6 +195,8 @@ zsh 専用のモジュールの中には zsh の既定のシェルオプショ�
 なんてこった。
 
 Advent Calendar ネタが尽きたら `echo` コマンドの闇に迫りたいと思います。
+
+[書きました](/2013/12/08/echo.sh-advent-calendar.html)。
 
 * * *
 
