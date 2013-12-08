@@ -1,14 +1,15 @@
-#!/bin/bash
+#!/bin/zsh
 
 if [[ -z ${XZUUGREP+set} ]]; then
   export XZUUGREP="set"
-  export BASH_ENV="$0";
-  exec xzgrep "$@"
+  export ENV="$0";
+  exec -a /bin/sh /bin/zsh /usr/bin/xzgrep "$@"
   exit 1
 fi
 
 xz() {
-  local arg=("$@")
+  typeset -a arg
+  arg=("$@")
 
   shift $(($# - 1))
   read -r line <"$1"
@@ -22,4 +23,6 @@ xz() {
     ;;
   esac
 }
+
+alias /usr/bin/xz=xz
 
