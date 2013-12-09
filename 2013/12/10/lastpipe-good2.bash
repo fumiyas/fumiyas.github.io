@@ -2,7 +2,7 @@
 
 shopt -s lastpipe || exit 1
 
-groups_wo_member=()
+typeset -a groups_wo_member
 
 getent group \
   |sed -n 's#:.*[^:]$##p' \
@@ -12,5 +12,5 @@ getent group \
 ;
 
 echo "${#groups_wo_member[*]}"
-(IFS=,; echo "${groups_wo_member[*]}")
+(IFS=,; echo "${groups_wo_member[@]:-NOT FOUND}")
 
