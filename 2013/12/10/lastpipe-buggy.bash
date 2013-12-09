@@ -10,5 +10,5 @@ getent group \
 ;
 
 echo "${#groups_wo_member[*]}"
-(IFS=,; echo "${groups_wo_member[@]:-NOT FOUND}")
+(IFS=,; echo "${groups_wo_member[*]:-NOT FOUND}")
 
