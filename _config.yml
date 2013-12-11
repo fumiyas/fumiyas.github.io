@@ -1,7 +1,7 @@
 url: http://fumiyas.github.io
-scm:
-  root: https://github.com/fumiyas/fumiyas.github.io/blob/master
-  commits: https://github.com/fumiyas/fumiyas.github.io/commits/master
+github:
+  root: https://github.com
+  repo: fumiyas/fumiyas.github.io
 twitter:
   id: satoh_fumiyasu
   tweet: https://twitter.com/?status=
