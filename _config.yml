@@ -2,6 +2,9 @@ url: http://fumiyas.github.io
 scm:
   root: https://github.com/fumiyas/fumiyas.github.io/blob/master
   commits: https://github.com/fumiyas/fumiyas.github.io/commits/master
+twitter:
+  id: satoh_fumiyasu
+  tweet: https://twitter.com/?status=
 title: "ダメ出し Blog"
 author: "SATOH Fumiyasu (佐藤 文優, fumiyas)"
 markdown: redcarpet
