@@ -83,3 +83,25 @@ FIXME: <filed>
   omitTermFreqAndPositions=false	?
   omitPositions=false			true?
 
+`dovecot.conf` の設定。
+
+```
+mail_plugins = $mail_plugins fts fts_solr
+
+plugin {
+  fts = solr
+  fts_solr = url=http://dovecot:password@localhost:8080/solr/
+  ## Dovecot 2.2.9+
+  #fts_autoindex = yes
+  fts_decoder = decode2text
+}
+
+service decode2text {
+  executable = script /usr/libexec/dovecot/decode2text.sh
+  user = dovecot
+  group = mail
+  unix_listener decode2text {
+    mode = 0660
+  }
+}
+```
