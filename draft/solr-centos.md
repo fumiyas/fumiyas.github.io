@@ -17,8 +17,8 @@ layout: default
 ファイル構成:
 
   * `/etc/tomcat6`
-  * `/var/lib/tomcat6/webapps`
-  * `/var/solr`
+  * `/var/lib/tomcat6/webapps/solr` (Solr サーブレット)
+  * `/var/solr` (Solr ホームディレクトリ)
 
 * * *
 
@@ -49,7 +49,7 @@ Solr 4.6.0 をダウンロードしてインストールする。
 ```
 
 `/etc/sysconfig/tomcat6` の最後のほうに
-Solr の作業ディレクトリの場所を指定する記述を追加する。
+Solr のホームディレクトリの場所を指定する記述を追加する。
 (`/etc/tomcat6/tomcat6.conf` でもよいが、
 複数の Tomcat インスタンスを起動する場合は避けること。
 `/etc/sysconfig/tomcat6` ファイル先頭のコメント参照)
@@ -62,13 +62,50 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 `/etc/tomcat6/server.xml` の
 `<Connector port="8080" 〜 />` に `useBodyEncodingForURI="true"` を追加する。
 
-```
+``` xml
 …省略…
     <Connector port="8080" protocol="HTTP/1.1"
                useBodyEncodingForURI="true"
                connectionTimeout="20000"
                redirectPort="8443" />
 …省略…
+```
+
+`/etc/tomcat6/tomcat-users.xml` に Solr
+管理者とクライアント用のロールとユーザーを追加する。
+(FIXME: 管理用とクライアント用のロールを個別に用意する)
+
+``` xml
+<tomcat-users>
+…省略…
+  <role rolename="solr-admin" />
+  <user username="solr-admin" password="パスワード" roles="solr-admin" />
+  <user username="dovecot" password="パスワード" roles="solr-admin" />
+</tomcat-users>
+```
+
+`/var/lib/tomcat6/webapps/solr/WEB-INF/web.xml` に Solr
+へのアクセスのセキュリティ制約とログインの設定を追加する。
+(FIXME: 管理用とクライアント用のロール別に許可する URL を分ける)
+
+``` xml
+<web-app>
+…省略…
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Solr Admin</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+       <role-name>solr-admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Solr</realm-name>
+  </login-config>
+</web-app>
 ```
 
 ブート時の Tomcat 自動起動を有効化し、Tomcat サービスを起動する。
@@ -78,10 +115,9 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 # service tomcat6 start
 ```
 
-http://ホスト名:8080/solr にアクセス!
+http://ホスト名:8080/solr/ にアクセス!
 
 TODO:
 
   * Solr 設定
-  * アクセス制限
 
