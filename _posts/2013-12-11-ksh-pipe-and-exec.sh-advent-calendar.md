@@ -132,12 +132,14 @@ $ /bin/ksh -c 'true | true; exec cat'
 
 これではやや再現する確率が低いです。
 後述の原因がわかると、こうするとさらに再現しやすいことがわかります。
+(パイプライン前段の終了を遅らせる)
 
 ``` console
 $ /bin/ksh -c 'sleep 1 | true; exec cat'
 ```
 
 理由はよくわからないですが、こうするとさらに再現しやすいようです。
+(パイプラインの最後を外部コマンドにする)
 
 ``` console
 $ /bin/ksh -c 'sleep 1 | command true; exec cat'
