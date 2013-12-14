@@ -1,6 +1,6 @@
 ---
 title: zsh でシェルスクリプトを書くときの留意点 - 拡張 POSIX シェルスクリプト Advent Calendar 2013
-tags: [sh, shell]
+tags: [sh, shell, zsh]
 layout: default
 ---
 

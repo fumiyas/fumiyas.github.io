@@ -1,6 +1,6 @@
 ---
 title: bash, ksh, zsh の速度比較 - 拡張 POSIX シェルスクリプト Advent Calendar 2013
-tags: [sh, shell]
+tags: [sh, shell, benchmark]
 layout: default
 ---
 
