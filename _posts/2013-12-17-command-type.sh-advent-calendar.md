@@ -83,6 +83,8 @@ true is a shell builtin
 % type true
 true is a shell function
 % alias true='/bin/true'
+% type true
+true is an alias for /bin/true
 % exit
 ```
 
@@ -98,7 +100,7 @@ $ command コマンド名 [引数]...
 
 bash や ksh
 であれば、コマンドにパス名を含めることでも外部コマンドの起動になります。
-しかし zsh はエイリアス名や関数名にパス名を含めることができるため、確実ではありません。
+しかし zsh はエイリアス名や関数名にパス区切り文字 `/` を含めることができるため、確実ではありません。
 `command` コマンドの利用を推奨します。
 
 組込みコマンドを明示的に起動するには、
