@@ -157,6 +157,30 @@ fi
 この例中の `pipestatus()` 関数は、パイプラインの全コマンドの終了コードが 0
 であれば 0 (真)を、そうでなければ 1 (偽) を返すようになっています。
 
+bash の `pipefail` シェルオプション
+----------------------------------------------------------------------
+
+bash 3.0 以降には `pipefail` というシェルオプションが実装されていて、
+これを有効にすると、
+パイプライン中のコマンドのうち 0 を返さなかった最右辺のコマンドの終了コードが
+`$?` に設定されるようになります。
+
+``` console
+$ set -o pipefail
+$ sh -c 'exit 11' | sh -c 'exit 22' | sh -c 'exit 33'
+$ echo $?
+33
+$ sh -c 'exit 11' | sh -c 'exit 22' | true
+$ echo $?
+22
+$ true | sh -c 'exit 22' | true
+$ echo $?
+22
+$ sh -c 'exit 11' | true | true
+$ echo $?
+11
+```
+
 * * *
 
 {% include wishlist-dec.html %}
