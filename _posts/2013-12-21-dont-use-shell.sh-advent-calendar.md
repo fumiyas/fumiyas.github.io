@@ -214,7 +214,8 @@ C 以外の各種言語にも `system`(3) と同名あるいは同等の API が
 ``` sh
 #!/bin/bash
 ##
-## 引数をそのままコマンドとその引数として実行するスクリプト
+## 引数をそのままコマンドとその引数として実行するスクリプト。
+## ただし、外部の /bin/sh (あるいはそれ相当) を利用すること。
 ## (未完成)
 ##
 
@@ -228,7 +229,7 @@ for arg in "$@"; do
   args+=($arg)
 done
 
-/bin/sh -c "${args[*]}" # あるいは eval "${args[*]}"
+/bin/sh -c "${args[*]}"  ## あるいは eval "${args[*]}"
 ```
 
 もし「簡単だよ! できたよ!!」という方は、そのスクリプトの引数に
@@ -241,7 +242,8 @@ done
 ``` sh
 #!/bin/bash
 ##
-## 引数をそのままコマンドとその引数として実行するスクリプト
+## 引数をそのままコマンドとその引数として実行するスクリプト。
+## ただし、外部の /bin/sh (あるいはそれ相当) を利用すること。
 ##
 
 typeset -a args
@@ -250,7 +252,7 @@ for arg in "$@"; do
   args+=("'${arg//'/'\\''}'")
 done
 
-/bin/sh -c "${args[*]}" # あるいは eval "${args[*]}"
+/bin/sh -c "${args[*]}"  ## あるいは eval "${args[*]}"
 ```
 
 OS コマンド実行にシェルの介在を無くす
@@ -260,18 +262,21 @@ http://blog.tokumaru.org/2013/12/php_21.html
 
 ``` ruby
 #!/usr/bin/ruby
-cmdline = ['printf', '%s\n', *ARGV]
-ret = system([cmdline[0], cmdline[0]], *cmdline[1..-1])
+## 引数をそのままコマンドとその引数として実行するスクリプト
+
+ret = system([ARGV[0], ARGV[0]], *ARGV[1..-1])
 exit($?.exitstatus)
 ```
 
 ``` perl
 #!/usr/bin/perl
+## 引数をそのままコマンドとその引数として実行するスクリプト
+
 use strict;
 use warnings;
 use POSIX;
-my @cmdline = ('printf', '%s\n', @ARGV);
-my $cmdstatus = system {$cmdline[0]} @cmdline;
+
+my $cmdstatus = system {$ARGV[0]} @ARGV;
 exit(POSIX::WEXITSTATUS($cmdstatus));
 ```
 
@@ -279,18 +284,19 @@ exit(POSIX::WEXITSTATUS($cmdstatus));
 
 ``` python
 #!/usr/bin/python
+## 引数をそのままコマンドとその引数として実行するスクリプト
+
 import sys
 import os
-cmdline = ['printf', '%s\n'] + sys.argv[1:]
-sys.exit(os.spawnvp(os.P_WAIT, cmdline[0], cmdline))
+
+sys.exit(os.spawnvp(os.P_WAIT, sys.argv[1], sys.argv[1:]))
 ```
 
 ``` sh
 #!/bin/sh
-set -u
-cmd='printf'
-set -- '%s\n' "$@"
-command "$cmd" "$@"
+## 引数をそのままコマンドとその引数として実行するスクリプト
+
+"$@"
 exit $?
 ```
 
