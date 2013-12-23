@@ -87,7 +87,7 @@ $ cd linux-legacynetcmd2iproute2
 ``` console
 $ ./ifconfig2.bash
 ip address
-./ifconfig2.bash eth0
+$ ./ifconfig2.bash eth0
 ip address show dev eth0
 $ ./ifconfig2.bash eth0 192.168.0.1 netmask 255.255.0.0
 ip address add 192.168.0.1/255.255.0.0 dev eth0
