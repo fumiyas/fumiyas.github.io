@@ -128,7 +128,7 @@ $ sudo install -m 0755 ifconfig2.bash /usr/local/sbin/ifconfig
 $ sudo install -m 0755 netstat2.bash /usr/local/bin/netstat
 $ /usr/local/sbin/ifconfig <ifconfig(8) のオプション>
 …
-$ /usr/local/sbin/netstat <netstat(8) のオプション>
+$ /usr/local/bin/netstat <netstat(8) のオプション>
 …
 ```
 
