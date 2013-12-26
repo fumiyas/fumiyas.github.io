@@ -11,7 +11,7 @@ Blog、再開しました。
   * Apache HTTPD
     * [mod_allowfileowner](apache/mod-allowfileowner.html)
   * Apache Solr
-    * [Apache Solr 4 + Tomcat 6 を CentOS 6 にインストール](solr/solr-centos.html)
+    * [Apache Solr + Tomcat を CentOS にインストール](solr/solr-centos.html)
   * Dovecot
     * [Dovecot FTS + Apache Solr](dovecot/dovecot-fts-solr.html)
 
