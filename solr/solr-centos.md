@@ -1,5 +1,5 @@
 ---
-title: Apache Solr 4.6.0 を CentOS 6 にインストール
+title: Apache Solr + Tomcat を CentOS にインストール
 tags: [solr]
 layout: default
 ---
@@ -22,7 +22,7 @@ layout: default
 
 * * *
 
-参考までに、RHEL の場合は RHEL Server Optional チャンネルを有効にする必要がある。
+RHEL の場合は RHEL Server Optional チャンネルを有効にする必要がある。
 
 ``` console
 # rhn-channel -a -c rhel-`uname -i`-server-optional-`lsb_release -sr |sed 's/\..*//'`
