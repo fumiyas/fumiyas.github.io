@@ -28,7 +28,7 @@ OS の種類により一部非互換な仕様はありますが、ほとんど�
 で似たような機能とインターフェイスを備えています。
 
 一方、Linux には `ip`(8) というコマンドも用意されています。
-iproute (REHL 系、旧 Debian 系) あるいは iproute2 (Debian 系)
+iproute (RHEL 系、旧 Debian 系) あるいは iproute2 (Debian 系)
 という名前のパッケージに含まれているコマンドです。
 (正式名称は「iproute2」のようですが何が「2」なのかは調べていません)
 `ip` コマンドは 1990 年代後半には各種 Linux
@@ -59,7 +59,7 @@ net-tools パッケージは非推奨となり、iproute2 で置き換えられ�
 幸い、最近の iproute2 はマニュアルが整備されていますし、関連情報も増えつつあります。
 しかし、旧来のコマンドに慣れたユーザーにとっては辛いところです。
 
-旧来のコマンドと iproute2 のコマンドの対応表を用意してくれているページを紹介します。
+旧来のコマンドと iproute2 のコマンドの対応表を紹介してくれているページを紹介します。
 
   * Deprecated Linux networking commands and their replacements | Doug Vitale Tech
 Blog
@@ -106,9 +106,9 @@ ss -a -n -t -p
 
 ``` console
 $ ./ifconfig2.bash --x <ifconfig(8) のオプション>
-…
+…ip のコマンドラインに変換して表示・実行…
 $ ./netstat2.bash --x <netstat(8) のオプション>
-…
+…ip あるいは ss のコマンドラインに変換して表示・実行…
 ```
 
 `ifconfig`, `netstat` のコマンドラインから `ip`, `ss`
@@ -116,20 +116,21 @@ $ ./netstat2.bash --x <netstat(8) のオプション>
 
 ``` console
 $ ./ifconfig2.bash --xx <ifconfig(8) のオプション>
-…
+…ip のコマンドラインに変換して実行…
 $ ./netstat2.bash --xx <netstat(8) のオプション>
-…
+…ip あるいは ss のコマンドラインに変換して実行…
 ```
 
-インストールしてラッパーとして利用する:
+旧来のコマンド名でインストールするとラッパーとして動作し、
+旧来のコマンドと同等に実行することもできます:
 
 ``` console
 $ sudo install -m 0755 ifconfig2.bash /usr/local/sbin/ifconfig
 $ sudo install -m 0755 netstat2.bash /usr/local/bin/netstat
 $ /usr/local/sbin/ifconfig <ifconfig(8) のオプション>
-…
+…ip のコマンドラインに変換して実行…
 $ /usr/local/bin/netstat <netstat(8) のオプション>
-…
+…ip あるいは ss のコマンドラインに変換して実行…
 ```
 
 Enjoy!
