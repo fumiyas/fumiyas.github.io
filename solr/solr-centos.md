@@ -34,6 +34,12 @@ OpenJDK 1.7 と Tomcat 6 をインストールする。
 # yum install -y java-1.7.0-openjdk tomcat6
 ```
 
+`/etc/tomcat6/tomcat-users.xml` が誰でも読めるモードになっているので修正する。
+
+``` console
+# chmod o-r /etc/tomcat6/tomcat-users.xml
+```
+
 Solr 4.7.1 をダウンロードしてインストールする。
 依存 JAR は付属のものを利用する。
 
