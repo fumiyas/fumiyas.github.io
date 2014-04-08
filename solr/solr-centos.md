@@ -10,9 +10,9 @@ layout: default
 ソフトウェア構成：
 
   * CentOS 6
-  * Tomcat 6 (CentOS RPM パッケージ)
   * OpenJDK 1.7 (CentOS RPM パッケージ)
-  * Apache Solr 4.6.0 (Apache Solr サイトから `solr-<バージョン>.tgz` を入手)
+  * Tomcat 6 (CentOS RPM パッケージ)
+  * Apache Solr 4.7.1 (Apache Solr サイトから `solr-<バージョン>.tgz` を入手)
 
 ファイル構成:
 
@@ -34,16 +34,16 @@ OpenJDK 1.7 と Tomcat 6 をインストールする。
 # yum install -y java-1.7.0-openjdk tomcat6
 ```
 
-Solr 4.6.0 をダウンロードしてインストールする。
+Solr 4.7.1 をダウンロードしてインストールする。
 依存 JAR は付属のものを利用する。
 
 ``` console
-# wget -q http://apache.claz.org/lucene/solr/4.6.0/solr-4.6.0.tgz
-# tar xzf solr-4.6.0.tgz
-# unzip -d /var/lib/tomcat6/webapps/solr solr-4.6.0/dist/solr-4.6.0.war
-# cp -p --no-clobber solr-4.6.0/dist/solrj-lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
+# wget http://ftp.jaist.ac.jp/pub/apache/lucene/solr/4.7.1/solr-4.7.1.tgz
+# tar -xzf solr-4.7.1.tgz --no-same-owner
+# unzip -d /var/lib/tomcat6/webapps/solr solr-4.7.1/dist/solr-4.7.1.war
+# cp -p --no-clobber solr-4.7.1/dist/solrj-lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
 # mkdir -p -m 02750 /var/solr
-# cp -rp solr-4.6.0/example/solr/* /var/solr/
+# cp -rp solr-4.7.1/example/solr/* /var/solr/
 # chown -hR root:tomcat /var/solr
 # chown -hR tomcat /var/solr/collection1/data
 ```
