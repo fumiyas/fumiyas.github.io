@@ -108,7 +108,6 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 
 `/var/lib/tomcat6/webapps/solr/WEB-INF/web.xml` に Solr
 へのアクセスのセキュリティ制約とログインの設定を追加する。
-(FIXME: 管理用とクライアント用のロール別に許可する URL を分ける)
 
 ``` xml
 <web-app ...>
