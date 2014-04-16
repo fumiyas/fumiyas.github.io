@@ -18,7 +18,7 @@ layout: default
 
   * `/etc/tomcat6`
   * `/var/lib/tomcat6/webapps/solr` (Solr サーブレット)
-  * `/var/solr` (Solr ホームディレクトリ)
+  * `/var/solr` (`$SOLR_HOME`)
 
 そのほか:
 
@@ -58,7 +58,7 @@ Solr 4.7.1 をダウンロードしてインストールする。
 # mkdir -p -m 02750 /var/solr
 ```
 
-`$SOLR_HOME` の作成し、その中に Solr コアの例として `dovecot-fts` を作成する。
+`$SOLR_HOME` を作成し、その中に Solr コアの例として `dovecot-fts` を作成する。
 
 ```
 # cp -rp solr-4.7.1/example/solr/* /var/solr/
@@ -109,7 +109,7 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 へのアクセスのセキュリティ制約とログインの設定を追加する。
 
 ``` xml
-<web-app ...>
+<web-app …>
 …省略…
   <security-constraint>
     <web-resource-collection>
