@@ -20,6 +20,13 @@ layout: default
   * `/var/lib/tomcat6/webapps/solr` (Solr サーブレット)
   * `/var/solr` (Solr ホームディレクトリ)
 
+そのほか:
+
+  * Tomcat にロール `solr-admin`, `solr-dovecot`、
+    ユーザー `admin`, `dovecot` を作成する。
+  * Solr コア `dovecot-fts` を作成し、ロール `solr-dovecot`
+    にはこのコアだけアクセス許可する。
+
 * * *
 
 RHEL の場合は RHEL Server Optional チャンネルを有効にする必要がある。
@@ -49,9 +56,18 @@ Solr 4.7.1 をダウンロードしてインストールする。
 # unzip -d /var/lib/tomcat6/webapps/solr solr-4.7.1/dist/solr-4.7.1.war
 # cp -p --no-clobber solr-4.7.1/dist/solrj-lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
 # mkdir -p -m 02750 /var/solr
+```
+
+`$SOLR_HOME` の作成し、その中に Solr コアの例として `dovecot-fts` を作成する。
+
+```
 # cp -rp solr-4.7.1/example/solr/* /var/solr/
 # chown -hR root:tomcat /var/solr
-# chown -hR tomcat /var/solr/collection1/data
+# mv /var/solr/collection1 /var/solr/dovecot-fts
+# find dovecot-fts -type f -exec grep -l collection1 /dev/null {} + \
+  |xargs sed -i 's/collection1/dovecot-fts/g'
+# mkdir -m 02750 /var/solr/dovecot-fts/data
+# chown tomcat: /var/solr/dovecot-fts/data
 ```
 
 `/etc/sysconfig/tomcat6` の最後のほうに
@@ -78,15 +94,15 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 ```
 
 `/etc/tomcat6/tomcat-users.xml` に Solr
-管理者とクライアント用のロールとユーザーを追加する。
-(FIXME: 管理用とクライアント用のロールを個別に用意する)
+管理者と Solr コア用のロールとユーザーを追加する。
 
 ``` xml
 <tomcat-users>
 …省略…
   <role rolename="solr-admin" />
-  <user username="solr-admin" password="パスワード" roles="solr-admin" />
-  <user username="dovecot" password="パスワード" roles="solr-admin" />
+  <role rolename="solr-dovecot" />
+  <user username="admin" password="パスワード" roles="solr-admin" />
+  <user username="dovecot" password="パスワード" roles="solr-dovecot" />
 </tomcat-users>
 ```
 
@@ -95,7 +111,7 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 (FIXME: 管理用とクライアント用のロール別に許可する URL を分ける)
 
 ``` xml
-<web-app>
+<web-app ...>
 …省略…
   <security-constraint>
     <web-resource-collection>
@@ -104,6 +120,16 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
     </web-resource-collection>
     <auth-constraint>
        <role-name>solr-admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Solr Dovecot FTS</web-resource-name>
+      <url-pattern>/dovecot-fts/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+       <role-name>solr-dovecot</role-name>
     </auth-constraint>
   </security-constraint>
 
