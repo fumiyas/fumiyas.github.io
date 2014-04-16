@@ -8,7 +8,8 @@ layout: default
 まだほとんど使用していないので穴があるかもしれない。
 
 FIXME: 自前で Solr Core ディレクトリツリーを作成する方法。とりあえず
-Solr アーカイブ中の `example/solr/collection1` を利用する。
+Solr アーカイブ中の `example/solr/collection1` から作成した
+`dovecot-fts` Core を利用するものとする。
 
 Dovecot の Solr スキーマをインストールし、日本語対応のトークナイザー設定をする。
 
@@ -76,12 +77,14 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
     <field name="_version_" type="long" indexed="true" stored="true"/>
 ```
 
+```
 FIXME: <filed>
   sortMissingLast=false			?
   sortMissingFirst=false		?
   omitNorms=false			?
   omitTermFreqAndPositions=false	?
   omitPositions=false			true?
+```
 
 `dovecot.conf` の設定。
 
@@ -90,10 +93,10 @@ mail_plugins = $mail_plugins fts fts_solr
 
 plugin {
   fts = solr
-  fts_solr = url=http://dovecot:password@localhost:8080/solr/
+  fts_solr = url=http://dovecot:password@localhost:8080/solr/dovecot-fts/
+  fts_decoder = decode2text
   ## Dovecot 2.2.9+
   #fts_autoindex = yes
-  fts_decoder = decode2text
 }
 
 service decode2text {
