@@ -9,7 +9,7 @@ layout: default
 
 FIXME: 自前で Solr Core ディレクトリツリーを作成する方法。とりあえず
 Solr アーカイブ中の `example/solr/collection1` から作成した
-`dovecot-fts` Core を利用するものとする。
+`dovecot-fts` core を利用するものとする。
 
 Dovecot の Solr スキーマをインストールし、日本語対応のトークナイザー設定をする。
 

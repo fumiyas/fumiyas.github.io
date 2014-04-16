@@ -22,7 +22,7 @@ layout: default
 
 そのほか:
 
-  * Tomcat にロール `solr-admin`, `solr-dovecot`、
+  * Tomcat にロール `solr`, `solr-dovecot`、
     ユーザー `admin`, `dovecot` を作成する。
   * Solr コア `dovecot-fts` を作成し、ロール `solr-dovecot`
     にはこのコアだけアクセス許可する。
@@ -99,9 +99,9 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 ``` xml
 <tomcat-users>
 …省略…
-  <role rolename="solr-admin" />
+  <role rolename="solr" />
   <role rolename="solr-dovecot" />
-  <user username="admin" password="パスワード" roles="solr-admin" />
+  <user username="admin" password="パスワード" roles="solr" />
   <user username="dovecot" password="パスワード" roles="solr-dovecot" />
 </tomcat-users>
 ```
@@ -119,7 +119,7 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
       <url-pattern>/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
-       <role-name>solr-admin</role-name>
+       <role-name>solr</role-name>
     </auth-constraint>
   </security-constraint>
 
@@ -129,6 +129,7 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
       <url-pattern>/dovecot-fts/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
+       <role-name>solr</role-name>
        <role-name>solr-dovecot</role-name>
     </auth-constraint>
   </security-constraint>
