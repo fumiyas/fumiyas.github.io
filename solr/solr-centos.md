@@ -64,8 +64,7 @@ Solr 4.7.1 をダウンロードしてインストールする。
 # cp -rp solr-4.7.1/example/solr/* /var/solr/
 # chown -hR root:tomcat /var/solr
 # mv /var/solr/collection1 /var/solr/dovecot-fts
-# find dovecot-fts -type f -exec grep -l collection1 /dev/null {} + \
-  |xargs sed -i 's/collection1/dovecot-fts/g'
+# find dovecot-fts -type f -exec grep -l collection1 /dev/null {} + |xargs perl -pi -e 's/collection1/dovecot-fts/g'
 # mkdir -m 02750 /var/solr/dovecot-fts/data
 # chown tomcat: /var/solr/dovecot-fts/data
 ```
