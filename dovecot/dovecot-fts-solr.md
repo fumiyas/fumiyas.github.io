@@ -7,11 +7,16 @@ layout: default
 メモ。必要最低限のパッケージと作業のみを記述。
 まだほとんど使用していないので穴があるかもしれない。
 
-FIXME: 自前で Solr Core ディレクトリツリーを作成する方法。とりあえず
+FIXME: 自前で Solr コアディレクトリツリーを作成する方法。とりあえず
 Solr アーカイブ中の `example/solr/collection1` から作成した
-`dovecot-fts` core を利用するものとする。
+`dovecot-fts` コアを利用するものとする。
 
-Dovecot の Solr スキーマをインストールし、日本語対応のトークナイザー設定をする。
+Dovecot の Solr スキーマをインストールする。
+日本語対応のトークナイザーを使用するフィールド型
+`text_cjk` (N-gram。デフォルトは N=2 らしい) を定義し、
+メールメッセージのヘッダー `hdr`、本文 `body`、`Subject` ヘッダー `subject`
+フィールドに適用する。
+(フィールド型 `text_ja` (日本語形態素解析) も定義しているが今回は未使用)
 
 ``` console
 # cd /var/solr/collection1/conf
@@ -22,11 +27,15 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
   echo '/<\/types>'	## 「/</types>」を検索
   echo '-'		## 1行前に移動
   echo 'a'		## テキストの追加を開始
-  sed -n '/<!-- Japanese /,/<\/fieldType>/p' schema.xml.dist
+  sed -n \
+    -e '/<!-- CJK bigram /,/<\/fieldType>/p' \
+    -e '/<!-- Japanese /,/<\/fieldType>/p' \
+    schema.xml.dist \
+  ;
   echo '.'		## テキストの追加を終了
-  echo '%s/\(<field name="hdr" type="text\)/\1_ja/'
-  echo '%s/\(<field name="body" type="text\)/\1_ja/'
-  echo '%s/\(<field name="subject" type="text\)/\1_ja/'
+  echo '%s/\(<field name="hdr" type="text\)/\1_cjk/'
+  echo '%s/\(<field name="body" type="text\)/\1_cjk/'
+  echo '%s/\(<field name="subject" type="text\)/\1_cjk/'
   echo 'w'		## 書き込み
 ) |ed schema.xml
 …
@@ -34,25 +43,29 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
 …
 ```
 
-ここでは `ed` を利用して元の `schema.xml` から
+このコマンドラインは `ed`(1) を利用しており、元の `schema.xml` から
+`<fieldType name="text_cjk" 〜>〜</fieldType>` と
 `<fieldType name="text_ja" 〜>〜</fieldType>` を抽出して差し込み、
-`<field name="hdr" 〜>` と `<field name="body" 〜>` に `type="text_ja"`
-を適用している。
+`<field name="hdr" 〜>`、`<field name="body" 〜>`、`<field name="subject" 〜>`
+に `type="text_cij"` を適用している。
 
-設定変更前後の差分。
+Dovecot の元の `schema.xml` からの変更前後の差分は以下の通り。
 
 ``` diff
 --- schema.xml.dovecot.dist	2013-12-05 09:14:53.000000000 +0000
 +++ schema.xml	2013-12-05 10:31:34.329703482 +0000
-@@ -34,6 +34,58 @@
+@@ -34,6 +34,69 @@
          <filter class="solr.EnglishMinimalStemFilterFactory"/>
        </analyzer>
      </fieldType>
++    <!-- CJK bigram (see text_ja for a Japanese configuration using morphological analysis) -->
+  …省略…
++    </fieldType>
 +    <!-- Japanese using morphological analysis (see text_cjk for a configuration using bigramming)
-…省略…
+  …省略…
 +    -->
 +    <fieldType name="text_ja" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="false">
-…省略…
+  …省略…
 +    </fieldType>
   </types>
  
@@ -63,15 +76,15 @@ Dovecot の Solr スキーマをインストールし、日本語対応のトー
  
 -   <field name="hdr" type="text" indexed="true" stored="false" />
 -   <field name="body" type="text" indexed="true" stored="false" />
-+   <field name="hdr" type="text_ja" indexed="true" stored="false" />
-+   <field name="body" type="text_ja" indexed="true" stored="false" />
++   <field name="hdr" type="text_cjk" indexed="true" stored="false" />
++   <field name="body" type="text_cjk" indexed="true" stored="false" />
  
     <field name="from" type="text" indexed="true" stored="false" />
     <field name="to" type="text" indexed="true" stored="false" />
     <field name="cc" type="text" indexed="true" stored="false" />
     <field name="bcc" type="text" indexed="true" stored="false" />
 -   <field name="subject" type="text" indexed="true" stored="false" />
-+   <field name="subject" type="text_ja" indexed="true" stored="false" />
++   <field name="subject" type="text_cjk" indexed="true" stored="false" />
 
     <!-- Used by Solr internally: -->
     <field name="_version_" type="long" indexed="true" stored="true"/>
