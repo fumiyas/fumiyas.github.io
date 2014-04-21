@@ -22,9 +22,10 @@ VirtualBox の NAT ネットワークとそこで稼動している DHCP サー�
     * 10.0.2.2
     * DNS プロクシーとして動作し、ホスト OS が参照している DNS
       キャッシュサーバーを利用して名前解決される。
-    * DNS プロクシーに欠陥があり、ゲストが OS 上の glibc のとき、
+    * この DNS プロクシーには欠陥があり、ゲスト OS 上が glibc のとき、
       `/etc/resolv.conf` で `options single-request`
-      しないとホスト名の名前解決が失敗する。(VirtualBox 4.3.10 で不具合を確認)
+      設定をしないとホスト名の名前解決が失敗する。
+      (VirtualBox 4.3.10 で不具合を確認)
 
 これらは VirtualBox の `vboxmanage` コマンドで調整可能だが、
 `Vagrantfile` ファイルから `vboxmanage` コマンドを間接的に呼ぶこともできる。
