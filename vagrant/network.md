@@ -28,7 +28,7 @@ VirtualBox の NAT ネットワークとそこで稼動している DHCP サー�
       (VirtualBox 4.3.10 で不具合を確認)
 
 これらは VirtualBox の `vboxmanage` コマンドで調整可能だが、
-`Vagrantfile` ファイルから `vboxmanage` コマンドを間接的に呼ぶこともできる。
+`Vagrantfile` から `vboxmanage` コマンドを間接的に呼ぶこともできる。
 
 ```ruby
 Vagrant.configure("2") do |config|
