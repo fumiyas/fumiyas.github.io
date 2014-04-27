@@ -26,6 +26,7 @@ layout: default
     ユーザー `admin`, `dovecot` を作成する。
   * Solr コア `dovecot-fts` を作成し、ロール `solr-dovecot`
     にはこのコアだけアクセス許可する。
+  * Tomcat 実行ユーザーにはコア内の `data` ディレクトリだけ書き込みを許可する。
 
 * * *
 
@@ -64,7 +65,7 @@ Solr 4.7.1 をダウンロードしてインストールする。
 # cp -rp solr-4.7.1/example/solr/* /var/solr/
 # chown -hR root:tomcat /var/solr
 # mv /var/solr/collection1 /var/solr/dovecot-fts
-# find dovecot-fts -type f -exec grep -l collection1 /dev/null {} + |xargs perl -pi -e 's/collection1/dovecot-fts/g'
+# perl -pi -e 's/^(name)=.*/$1=dovecot-fts/' /var/dovecot-fts/core.properties
 # mkdir -m 02750 /var/solr/dovecot-fts/data
 # chown tomcat: /var/solr/dovecot-fts/data
 ```
