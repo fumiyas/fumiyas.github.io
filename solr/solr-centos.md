@@ -18,7 +18,8 @@ layout: default
 
   * `/etc/tomcat6`
   * `/var/lib/tomcat6/webapps/solr` (Solr サーブレット)
-  * `/var/solr` (`$SOLR_HOME`)
+  * `/var/solr` (Solr ホーム。`$SOLR_HOME`)
+  * `/var/solr/dovecot-fts` (Solr コア。Dovecot での利用を想定。名前は任意)
 
 そのほか:
 
