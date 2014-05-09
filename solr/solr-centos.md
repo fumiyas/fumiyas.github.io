@@ -60,6 +60,13 @@ Solr 4.7.1 をダウンロードしてインストールする。
 # mkdir -p -m 02750 /var/solr
 ```
 
+付属の Solr Cell プラグインと Apache Tika を利用する場合。
+
+``` console
+# cp -p --no-clobber solr-4.7.1/dist/solr-cell-* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
+# cp -p --no-clobber solr-4.7.1/contrib/extraction/lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
+```
+
 `$SOLR_HOME` を作成し、その中に Solr コアの例として `dovecot-fts` を作成する。
 
 ```
