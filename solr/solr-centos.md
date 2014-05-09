@@ -12,7 +12,7 @@ layout: default
   * CentOS 6
   * OpenJDK 1.7 (CentOS RPM パッケージ)
   * Tomcat 6 (CentOS RPM パッケージ)
-  * Apache Solr 4.7.1 (Apache Solr サイトから `solr-<バージョン>.tgz` を入手)
+  * Apache Solr 4.8.0 (Apache Solr サイトから `solr-<バージョン>.tgz` を入手)
 
 ファイル構成:
 
@@ -49,28 +49,28 @@ OpenJDK 1.7 と Tomcat 6 をインストールする。
 # chmod o-r /etc/tomcat6/tomcat-users.xml
 ```
 
-Solr 4.7.1 をダウンロードしてインストールする。
+Solr 4.8.0 をダウンロードしてインストールする。
 依存 JAR は付属のものを利用する。
 
 ``` console
-# wget http://ftp.jaist.ac.jp/pub/apache/lucene/solr/4.7.1/solr-4.7.1.tgz
-# tar -xzf solr-4.7.1.tgz --no-same-owner
-# unzip -d /var/lib/tomcat6/webapps/solr solr-4.7.1/dist/solr-4.7.1.war
-# cp -p --no-clobber solr-4.7.1/dist/solrj-lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
+# wget http://ftp.jaist.ac.jp/pub/apache/lucene/solr/4.8.0/solr-4.8.0.tgz
+# tar -xzf solr-4.8.0.tgz --no-same-owner
+# unzip -d /var/lib/tomcat6/webapps/solr solr-4.8.0/dist/solr-4.8.0.war
+# cp -p --no-clobber solr-4.8.0/dist/solrj-lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
 # mkdir -p -m 02750 /var/solr
 ```
 
 付属の Solr Cell プラグインと Apache Tika を利用する場合。
 
 ``` console
-# cp -p --no-clobber solr-4.7.1/dist/solr-cell-* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
-# cp -p --no-clobber solr-4.7.1/contrib/extraction/lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
+# cp -p --no-clobber solr-4.8.0/dist/solr-cell-* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
+# cp -p --no-clobber solr-4.8.0/contrib/extraction/lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
 ```
 
 `$SOLR_HOME` を作成し、その中に Solr コアの例として `dovecot-fts` を作成する。
 
 ```
-# cp -rp solr-4.7.1/example/solr/* /var/solr/
+# cp -rp solr-4.8.0/example/solr/* /var/solr/
 # chown -hR root:tomcat /var/solr
 # mv /var/solr/collection1 /var/solr/dovecot-fts
 # perl -pi -e 's/^(name)=.*/$1=dovecot-fts/' /var/solr/dovecot-fts/core.properties
