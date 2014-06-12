@@ -7,10 +7,6 @@ layout: default
 メモ。必要最低限のパッケージと作業のみを記述。
 まだほとんど使用していないので穴があるかもしれない。
 
-FIXME: 自前で Solr コアディレクトリツリーを作成する方法。とりあえず
-Solr アーカイブ中の `example/solr/collection1` から作成した
-`dovecot-fts` コアを利用するものとする。
-
 Dovecot の Solr スキーマをインストールする。
 日本語対応のトークナイザーを使用するフィールド型
 `text_cjk` (N-gram。デフォルトは N=2 らしい) を定義し、
@@ -19,7 +15,7 @@ Dovecot の Solr スキーマをインストールする。
 (フィールド型 `text_ja` (日本語形態素解析) も定義しているが今回は未使用)
 
 ``` console
-# cd /var/solr/collection1/conf
+# cd /var/solr/dovecot-fts/conf
 # mv schema.xml schema.xml.dist
 # wget -q -O schema.xml http://hg.dovecot.org/dovecot-2.2/file/tip/doc/solr-schema.xml
 # cp -p schema.xml schema.xml.dovecot.dist
@@ -43,7 +39,7 @@ Dovecot の Solr スキーマをインストールする。
 …
 ```
 
-このコマンドラインは `ed`(1) を利用しており、元の `schema.xml` から
+このコマンドラインは `ed`(1) を利用しており、Solr の元の `schema.xml` から
 `<fieldType name="text_cjk" 〜>〜</fieldType>` と
 `<fieldType name="text_ja" 〜>〜</fieldType>` を抽出して差し込み、
 `<field name="hdr" 〜>`、`<field name="body" 〜>`、`<field name="subject" 〜>`
