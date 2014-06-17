@@ -98,7 +98,7 @@ FIXME: <filed>
   omitPositions=false			true?
 ```
 
-`dovecot.conf` の設定。
+`dovecot.conf` の設定例。
 
 ```
 mail_plugins = $mail_plugins fts fts_solr
@@ -113,13 +113,19 @@ plugin {
 
 service decode2text {
   executable = script /usr/libexec/dovecot/decode2text.sh
-  user = dovecot
-  group = mail
+  user = nobody
   unix_listener decode2text {
     mode = 0660
+    group = mail
   }
 }
 ```
+
+`decode2text`
+サービスの実行ユーザーとソケットの所有権とモードは適宜調整する必要がある。
+上記例では、デコードスクリプトを `nobody` で実行し、
+全メールユーザーを仮想ドメイン用の `mail`
+グループでサービスすることを想定している。
 
 保守
 ----------------------------------------------------------------------
