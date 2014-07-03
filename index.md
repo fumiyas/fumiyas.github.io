@@ -14,6 +14,7 @@ Blog、再開しました。
     * [Apache Solr + Tomcat を CentOS にインストール](solr/solr-centos.html)
   * Dovecot
     * [Dovecot FTS + Apache Solr](dovecot/fts-solr.html)
+    * [Dovecot Director](dovecot/director.html)
   * Vagrant
     * [Vagrant ネットワーク](vagrant/network.html)
 
