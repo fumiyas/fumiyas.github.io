@@ -15,6 +15,7 @@ Blog、再開しました。
   * Dovecot
     * [Dovecot FTS + Apache Solr](dovecot/fts-solr.html)
     * [Dovecot Director](dovecot/director.html)
+    * [Dovecot サービスの制限設定](dovecot/limit.html)
   * Vagrant
     * [Vagrant ネットワーク](vagrant/network.html)
 

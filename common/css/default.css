@@ -181,16 +181,16 @@ ol {
   padding-left:		2em;
 }
 
-table tbody tr th {
+th {
+  border-right:		solid 0.5em #FFFFFF;
   color:		black;
   background-color:	#C0C0C0;
   text-align:		left;
   font-weight:		bold;
 }
 
-table tbody tr td {
-  border-color:		#A0A0A0;
-  border-bottom-style:	solid;
-  border-bottom-width:	1px;
+td {
+  border-right:		solid 0.5em #FFFFFF;
+  border-bottom:	solid 1px #A0A0A0;
 }
 
