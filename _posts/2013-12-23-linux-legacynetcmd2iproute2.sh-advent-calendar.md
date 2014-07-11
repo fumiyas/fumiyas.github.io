@@ -1,5 +1,5 @@
 ---
-title: "Linux: ifconfig, netstat を iproute2 コマンドラインに変換 - 拡張 POSIX シェルスクリプト Advent Calendar 2013"
+title: "Linux: ifconfig, netstat を iproute2 (ip, ss) コマンドラインに変換 - 拡張 POSIX シェルスクリプト Advent Calendar 2013"
 tags: [sh, shell, linux]
 layout: default
 ---
