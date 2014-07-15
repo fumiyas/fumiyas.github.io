@@ -53,16 +53,22 @@ default_vsz_limit = 256 M
 | stats               | $default_client_limit |                      1 |               0 |
 | tcpwrap             |                     1 | $default_process_limit |               0 |
 
+上の表の `$default_client_limit` と
+`$default_process_limit` の項目は `doveconf` の出力上は値が `0` と表示される。
+`dovecot.conf` ファイル中も `client_limit=$default_client_limit`
+のようには記述できず、`client_limit=0` のように記述する必要がある。
+
 `client_limit`
 ----------------------------------------------------------------------
 
-サービスの 1プロセスあたりの最大クライアント数。
+サービスの 1 プロセスあたりの最大クライアント数。
+サービスあたりの最大クライアント数**ではない**ので**注意**。
 0 に設定すると `default_client_limit` (デフォルト値 1000）の値になる。
 
 `pop3`, `imap`, `managesieve` サービスでは 1 が推奨値(デフォルト) であり、
 同時接続数を調整する場合は `process_limit` を設定すべき。FIXME
 
-`service_count` が 1 以上に設定している場合、そちらが優先される。
+`service_count` を 1 以上に設定している場合、そちらが優先される。
 たとえば `service_count = 1` に設定すると `client_limit = 1` 相当になる。
 
 参考:
@@ -74,7 +80,7 @@ default_vsz_limit = 256 M
 ----------------------------------------------------------------------
 
 サービスあたりの最大プロセス数。
-未設定あるいは 0 に設定すると `default_process_limit` (デフォルト値 100）の値になる。
+0 に設定すると `default_process_limit` (デフォルト値 100）の値になる。
 
 `service_count`
 ----------------------------------------------------------------------
