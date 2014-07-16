@@ -4,12 +4,6 @@ tags: [dovecot]
 layout: default
 ---
 
-警告 WARNING 警告 WARNING 警告 WARNING 警告 WARNING 警告 WARNING 警告 WARNING
-
-まだ書きかけ。間違いが含まれている可能性大。
-
-警告 WARNING 警告 WARNING 警告 WARNING 警告 WARNING 警告 WARNING 警告 WARNING
-
   * Service limits - Dovecot Wiki
     * http://wiki2.dovecot.org/Services#Service_limits
 
