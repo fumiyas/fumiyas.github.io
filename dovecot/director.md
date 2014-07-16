@@ -16,6 +16,8 @@ layout: default
   * Dovecot Wiki:
     * http://wiki2.dovecot.org/Director
     * http://wiki2.dovecot.org/NFS
+  * Dovecot Director 概要
+    * http://www.slideshare.net/fumiyas/dovecot-director
 
 バックエンドに接続するときのポート番号と SSL/TLS
 ----------------------------------------------------------------------
