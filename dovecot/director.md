@@ -103,6 +103,8 @@ TODO
     * Dovecot に
       [TCP Wrappers サポート](http://wiki2.dovecot.org/LoginProcess#TCP_wrappers_support)
       があるが、こいつはユーザー認証しない Director や LMTP サービスには効かない。
-  * Wiki に Doveadm server の設定も載っているが、何が嬉しいのかわからない。
-    必須ではない(と思う)ので使わない予定。
+  * バックエンドに Doveadm サーバーを立てればフロントエンドの Director から
+    `doveadm` によるメールボックス操作も振り分け可能。
+  * ~~Wiki に Doveadm server の設定も載っているが、何が嬉しいのかわからない。
+    必須ではない(と思う)ので使わない予定。~~
 
