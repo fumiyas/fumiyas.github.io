@@ -29,7 +29,8 @@ layout: default
     にはこのコアだけアクセス許可する。
   * Tomcat 実行ユーザーにはコア内の `data` ディレクトリだけ書き込みを許可する。
 
-* * *
+インストール
+----------------------------------------------------------------------
 
 RHEL の場合は RHEL Server Optional チャンネルを有効にする必要がある。
 
@@ -60,6 +61,9 @@ Solr 4.8.1 をダウンロードしてインストールする。
 # cp -p --no-clobber dist/solrj-lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
 ```
 
+Solr Cell と Apache Tika (オプション)
+----------------------------------------------------------------------
+
 付属の Solr Cell プラグインと Apache Tika を利用する場合は関連
 JAR をインストールする。
 
@@ -67,6 +71,32 @@ JAR をインストールする。
 # cp -p --no-clobber dist/solr-cell-* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
 # cp -p --no-clobber contrib/extraction/lib/* /var/lib/tomcat6/webapps/solr/WEB-INF/lib/
 ```
+
+Solr ログ (オプション)
+----------------------------------------------------------------------
+
+``` console
+# mkdir -p -m 0755 /var/lib/tomcat6/webapps/solr/WEB-INF/classes
+# vi /var/lib/tomcat6/webapps/solr/WEB-INF/classes/log4j.properties
+…省略…
+```
+
+`log4j.properties` 設定例:
+
+```
+log4j.rootLogger=WARN, file
+ 
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.File=${catalina.home}/logs/solr.log
+log4j.appender.file.MaxBackupIndex=180
+ 
+log4j.appender.file.DatePattern='.'yyyy-MM-dd
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d %p [%c{3}] - [%t] - %X{ip}: %m%n
+```
+
+`$SOLR_HOME` ディレクトリの作成
+----------------------------------------------------------------------
 
 `$SOLR_HOME` を作成し、その中に Solr コアの例として `dovecot-fts` を作成する。
 
@@ -79,6 +109,9 @@ JAR をインストールする。
 # mkdir -m 02750 /var/solr/dovecot-fts/data
 # chown tomcat: /var/solr/dovecot-fts/data
 ```
+
+Tomcat の設定
+----------------------------------------------------------------------
 
 `/etc/sysconfig/tomcat6` の最後のほうに
 Solr のホームディレクトリの場所を指定する記述を追加する。
@@ -159,7 +192,8 @@ JAVA_OPTS="$JAVA_OPTS -Dsolr.solr.home=${SOLR_HOME}"
 
 http://ホスト名:8080/solr/ にアクセス!
 
-TODO:
+TODO
+----------------------------------------------------------------------
 
   * Solr 設定
 
