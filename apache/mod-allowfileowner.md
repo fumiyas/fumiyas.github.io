@@ -119,3 +119,9 @@ LoadModule allowfileowner_module modules/mod_allowfileowner.so
       <del>`<!--#include file="..." -->` を無効化するなどして対処すること。</del>
   * そのほか?
 
+## 参照
+
+  * 人間とウェブの未来 - 共有WebホスティングでVitrualHost設定に手を入れずにシンボリックリンクのTOCTOU問題を解決するApacheモジュールを作った
+    * http://blog.matsumoto-r.jp/?p=4405
+    * https://github.com/matsumoto-r/mod_fileownercheck
+
