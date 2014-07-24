@@ -7,4 +7,9 @@
 <link rel="stylesheet" href="/common/css/syntax.css" type="text/css">
 <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js">  {lang: ‘ja’}</script>
+<script type="text/javascript">
+var host = "{{ site.host }}";
+if ((window.location.host == host) && (window.location.protocol == "http:"))
+  window.location = window.location.toString().replace(/^http:/, "https:");
+</script>
 </head>
