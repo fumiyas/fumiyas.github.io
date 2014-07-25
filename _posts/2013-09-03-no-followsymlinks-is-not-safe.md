@@ -4,6 +4,11 @@ tags: [apache, security]
 layout: default
 ---
 
+シンボリックリンク攻撃を防ぐための Apache HTTPD モジュールの解説はこちら:
+
+  * [Apache HTTPD: mod_allowfileowner]({{ site.url}}/apache/mod-allowfileowner.html)
+    * {{ site.url }}/apache/mod-allowfileowner.html
+
 ## 背景
 
 ロリポップの共有 Web サービス下のサイト改ざん事件で、
@@ -122,7 +127,7 @@ TOCTTOU について具体的に解説していて参考になるページを紹
 `default-handler` は Apache HTTPD のバージョンによって処理内容が微妙に
 異なるので、フィルター版のほうが互換性と汎用性が高いと思う。
 
-  * [Apache HTTPD: mod_allowfileowner]({{ site.url}}/apache/mod-allowfileowner.html)
+  * [Apache HTTPD: mod_allowfileowner]({{ site.url }}/apache/mod-allowfileowner.html)
     * {{ site.url}}/apache/mod-allowfileowner.html
 
 Linux 2.6.39 以降で実装されているという `open`(2) の
