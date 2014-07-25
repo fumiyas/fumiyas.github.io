@@ -83,7 +83,8 @@ default_vsz_limit = 256 M
 サービスプロセスは、指定の数のクライアント接続を完了したあとに終了する。
 0 に設定すると無制限を意味する。
 
-Apache HTTPD の `MaxRequestsPerChild` 相当。
+~~Apache HTTPD の `MaxRequestsPerChild` 相当。~~
+FIXME: 0 か 1 以外を設定することを想定していないっぽい。
 
 0 (無制限) もしくは 2
 以上に設定することでプロセスの終了・生成の分の負荷が減らすことができるが、
