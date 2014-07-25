@@ -1,5 +1,5 @@
 {% if github_quote_file -%}<a href="{{ site.github.root }}/{% if github_quote_repo %}{{ github_quote_repo }}{% else %}{{ site.github.repo }}{% endif %}/blob/{% if github_quote_hash %}{{ github_quote_hash }}{% else %}master{% endif %}/{{ github_quote_file }}">{{ github_quote_file |split: '/' |last }}</a>
-<script src="http://gist-it.appspot.com/github/{% if github_quote_repo %}{{ github_quote_repo }}{% else %}fumiyas/fumiyas.github.io{% endif %}/raw/{% if github_quote_hash %}{{ github_quote_hash }}{% else %}master{% endif %}/{{ github_quote_file }}"></script>
+<script src="https://gist-it.appspot.com/github/{% if github_quote_repo %}{{ github_quote_repo }}{% else %}fumiyas/fumiyas.github.io{% endif %}/raw/{% if github_quote_hash %}{{ github_quote_hash }}{% else %}master{% endif %}/{{ github_quote_file }}"></script>
 {% assign github_quote_repo = nil %}
 {% assign github_quote_hash = nil %}
 {% assign github_quote_file = nil %}
