@@ -19,6 +19,21 @@ default_process_limit = 100
 default_vsz_limit = 256 M
 ```
 
+<!--
+doveconf -ad \
+|sed -n \
+  -e '/vsz_limit/d' \
+  -e 's/^service \([^ ]*\).*/\1/p' \
+  -e 's/^ .*limit = //p' \
+  -e 's/^ .*count = //p' \
+|sed 'N;N;N;s/\n/ /g' 
+|awk '
+    $2==0 {$2="$default_client_limit"}
+    $3==0 {$3="$default_process_limit"}
+    {printf("| %-19s | %21s | %22s | %15s |\n",$1,$2,$3,$4) }
+  '
+-->
+
 | サービス名          | client_limit          | process_limit          | service_count   |
 |:------------------- | ---------------------:| ----------------------:| ---------------:|
 | aggregator          | $default_client_limit | $default_process_limit |               0 |
@@ -48,8 +63,8 @@ default_vsz_limit = 256 M
 | tcpwrap             |                     1 | $default_process_limit |               0 |
 
 上の表の `$default_client_limit` と
-`$default_process_limit` の項目は `doveconf` の出力上は値が `0` と表示される。
-`dovecot.conf` ファイル中も `client_limit=$default_client_limit`
+`$default_process_limit` の項目は、`doveconf` の出力上は値が `0` と表示される。
+`dovecot.conf` ファイル中では `client_limit=$default_client_limit`
 のようには記述できず、`client_limit=0` のように記述する必要がある。
 
 `client_limit`
