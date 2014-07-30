@@ -114,14 +114,25 @@ FIXME: 0 か 1 以外を設定することを想定していないっぽい。
 `vsz_limit`
 ----------------------------------------------------------------------
 
-サービスの 1プロセスあたりの最大メモリ量 (データセグメントサイズ)。
+サービスの 1 プロセスあたりの最大メモリ量 (データセグメントサイズ)。
+`ulimit -d` の値に相当。
 
-Proxy / Director の制限設定
+備考
 ----------------------------------------------------------------------
 
-POP3 / IMAP の Proxy / Director は `pop3-login`, `imap-login`
-プロセスで実行される。同機能を利用する場合は
-`pop3-login`, `imap-login` サービスの設定に注意。
+### `anvil` サービスのクライアント数
 
-LMTP は `lmtp` サービスで実行される。
+`pop3-login`, `imap-login`, `managesieve-login` プロセスは、
+`anvil` サービスを利用する。よって、`anvil` サービスの
+`client_limit` の値は全 `*-login` プロセスの最大数以上に設定する必要がある。
+
+### TLS(SSL) / Proxy / Director の制限設定
+
+POP3 / IMAP / ManageSieve プロトコルの TLS (SSL) / Proxy / Director は
+`pop3-login`, `imap-login`, `managesieve-login` プロセスで実行される。
+同機能を利用する場合は `pop3-login`, `imap-login`, `managesieve-login`
+サービスの設定に注意。
+
+LMTP プロトコルは TLS (SSL) に非対応、Proxy / Director は
+`lmtp` プロセスで実行される。
 
