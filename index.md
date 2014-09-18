@@ -18,6 +18,8 @@ Blog、再開しました。
     * [Dovecot サービスの制限設定](dovecot/limit.html)
   * Vagrant
     * [Vagrant ネットワーク](vagrant/network.html)
+  * GitLab
+    * [GitLab CE Omnibus のインストール](gitlab/install-omnibus.html)
 
 日記
 ----------------------------------------------------------------------
