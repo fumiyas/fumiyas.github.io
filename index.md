@@ -20,6 +20,8 @@ Blog、再開しました。
     * [Vagrant ネットワーク](vagrant/network.html)
   * GitLab
     * [GitLab CE Omnibus のインストール](gitlab/install-omnibus.html)
+  * 仮想端末 / テキストコンソール
+    * [Sixel 情報](vt/sixel.html)
   * ハードウェア
     * [俺得・現実的で理想のノートPC](hardware/fav-pc.html)
 
