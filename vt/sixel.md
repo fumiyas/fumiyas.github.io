@@ -55,6 +55,7 @@ layout: default
   * libsixel - A lightweight, fast implementation of DEC SIXEL graphics codec
     * <http://saitoha.github.io/libsixel/>
     * <https://github.com/saitoha/libsixel>
+    * README には関連/対応ソフトウェアの紹介も多数掲載
   * PySixel - View full-pixel color graphics on SIXEL-supported terminals
     * <https://github.com/saitoha/PySixel>
 
@@ -72,11 +73,13 @@ layout: default
     * <https://github.com/syuu1228/sixelslide>
   * Ghostscript
     * <http://www.ghostscript.com/>
+    * Sixel 対応プリンターである LN03 / LN50 / LA75 用のドライバー `ln03` を利用
   * gnuplot
     * <http://www.gnuplot.info/>
     * <http://sourceforge.net/p/gnuplot/patches/647/>
-  * Netpbm (`ppmtosixel`(1))
+  * Netpbm
     * <http://netpbm.sourceforge.net/>
+    * `ppmtosixel`(1) コマンド
   * kmiya's sixel
     * <http://nanno.dip.jp/softlib/man/rlogin/sixel.tar.gz>
     * <https://github.com/saitoha/sixel>
