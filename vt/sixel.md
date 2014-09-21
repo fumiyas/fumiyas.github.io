@@ -57,6 +57,8 @@ layout: default
     * <https://github.com/uobikiemukot/sdump>
   * Sixel版 Tw - Twitter client on Ruby
     * <https://bitbucket.org/arakiken/tw/commits/branch/sixel>
+  * Sixel版 mikutterm - 端末でmikutterを使えるプラグイン
+    * <https://bitbucket.org/arakiken/mikutterm/branch/sixel>
   * qrc - QR code generator for text terminals (ASCII art, Sixel)
     * <https://github.com/fumiyas/qrc>
   * sixelslide - freestanding slideviewer using sixel graphics
