@@ -15,6 +15,8 @@ layout: default
     * <https://github.com/fumiyas/translation-ja/blob/master/vt3xx-sixel.md>
   * All About SIXELs
     * <ftp://ftp.cs.utk.edu/pub/shuford/terminal/all_about_sixels.txt>
+  * Displaying Sixel Image Files
+    * <http://rullf2.xs4all.nl/sg/doc.html>
 
 ハウツーなど
 
@@ -48,11 +50,16 @@ layout: default
 対応ソフトウェア
 ----------------------------------------------------------------------
 
+### ライブラリ、モジュール
+
   * libsixel - A lightweight, fast implementation of DEC SIXEL graphics codec
     * <http://saitoha.github.io/libsixel/>
     * <https://github.com/saitoha/libsixel>
   * PySixel - View full-pixel color graphics on SIXEL-supported terminals
     * <https://github.com/saitoha/PySixel>
+
+### ユーティリティなど
+
   * sdump - sixel image dumper
     * <https://github.com/uobikiemukot/sdump>
   * Sixel版 Tw - Twitter client on Ruby
@@ -68,6 +75,11 @@ layout: default
   * gnuplot
     * <http://www.gnuplot.info/>
     * <http://sourceforge.net/p/gnuplot/patches/647/>
+  * Netpbm (`ppmtosixel`(1))
+    * <http://netpbm.sourceforge.net/>
+  * kmiya's sixel
+    * <http://nanno.dip.jp/softlib/man/rlogin/sixel.tar.gz>
+    * <https://github.com/saitoha/sixel>
 
 シェルで Sixel してみる
 ----------------------------------------------------------------------
