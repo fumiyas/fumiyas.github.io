@@ -84,6 +84,13 @@ layout: default
     * <http://nanno.dip.jp/softlib/man/rlogin/sixel.tar.gz>
     * <https://github.com/saitoha/sixel>
 
+### パッケージ
+
+  * Homebrew tap
+    * <https://github.com/aki017/homebrew-sixel>
+    * Sixel 関連のソフトウェアを多数収録
+    * Mac OS X 用
+
 シェルで Sixel してみる
 ----------------------------------------------------------------------
 
