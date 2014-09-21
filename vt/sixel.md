@@ -41,6 +41,8 @@ layout: default
   * yaft - yet another framebuffer terminal
     * <http://uobikiemukot.github.io/yaft/>
     * <https://github.com/uobikiemukot/yaft>
+  * android port of yaft (yet another framebuffer terminal)
+    * <https://github.com/uobikiemukot/yaft-android>
   * Tanasinn - 三 ┏( ^o^)┛ ＜ Terminal emulator extension for Firefox / Thunderbird / SeaMonkey
     * <http://saitoha.github.io/tanasinn/>
     * <https://github.com/saitoha/tanasinn>
