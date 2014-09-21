@@ -64,6 +64,10 @@ layout: default
   * sixelslide - freestanding slideviewer using sixel graphics
     * <https://github.com/syuu1228/sixelslide>
   * Ghostscript
+    * <http://www.ghostscript.com/>
+  * gnuplot
+    * <http://www.gnuplot.info/>
+    * <http://sourceforge.net/p/gnuplot/patches/647/>
 
 シェルで Sixel してみる
 ----------------------------------------------------------------------
