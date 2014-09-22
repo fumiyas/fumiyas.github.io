@@ -65,6 +65,12 @@ layout: default
 
   * sdump - sixel image dumper
     * <https://github.com/uobikiemukot/sdump>
+  * recterm - read key sequence and convert shell output into animation gif directly 
+    * <https://github.com/uobikiemukot/recterm>
+    * 端末上の操作、表示をアニメーション GIF 画像化
+  * Convert a ttyrec record into a gif animation directly
+    * <https://github.com/saitoha/seq2gif>
+    * 端末上の操作、表示をアニメーション GIF 画像化
   * Sixel版 Tw - Twitter client on Ruby
     * <https://bitbucket.org/arakiken/tw/commits/branch/sixel>
   * Sixel版 mikutterm - 端末でmikutterを使えるプラグイン
