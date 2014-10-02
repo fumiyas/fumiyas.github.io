@@ -10,6 +10,9 @@ VirtualBox: デフォルト NIC が接続する NAT ネットワークの調整
 FIXME: デフォルトの NIC は VirtualBox の NAT (NAT Network ではない)
 を利用するのが一般的? NAT Network や Bridged ネットワークも可能?
 
+  * 9.11. Fine-tuning the VirtualBox NAT engine - VirtualBox User Manual
+    * https://www.virtualbox.org/manual/ch09.html#changenat
+
 VirtualBox の NAT ネットワークとそこで稼動している DHCP サーバーは、
 デフォルトで次のようなパラメーターになっている:
 
