@@ -53,7 +53,7 @@ autoload -U is-at-least
 
 if is-at-least 4.3.0; then
   set -o PROMPT_CR
-else
+elif is-at-least 4.2.3; then
   set -o PROMPT_SP
 fi
 ```
