@@ -1,5 +1,6 @@
 ---
 title: rsync 技術情報
+tags: [rsync,ssh]
 layout: default
 ---
 
