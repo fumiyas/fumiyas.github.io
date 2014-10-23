@@ -78,6 +78,16 @@ UID/GID を任意のものを割り当てたい場合はインストール前に
 # adduser --system --group --home /var/opt/gitlab/nginx --no-create-home --shell /usr/sbin/nologin gitlab-www
 ```
 
+`/etc/passwd`、`/etc/group` ファイル以外の LDAP
+サーバーなどにシステムユーザーを登録している場合、
+GitLab システム構成変更時に実行される Chef でエラーとなるので、
+以下のようにローカルファイルに情報をコピーしておく必要がある。
+
+```console
+# getent passwd |egrep '^git(lab-[^:]*)?:' >>/etc/passwd
+# getent group |egrep '^git(lab-[^:]*)?:' >>/etc/group
+```
+
 GitLab CE Omnibus パッケージのインストール
 ----------------------------------------------------------------------
 
