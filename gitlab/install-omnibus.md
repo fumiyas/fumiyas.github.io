@@ -108,7 +108,35 @@ run: sidekiq: (pid 9111) 10s; run: log: (pid 14831) 1366213s
 run: unicorn: (pid 9116) 10s; run: log: (pid 14807) 1366215s
 ```
 
-フロントエンド Web サーバーの調整
+バックエンド Web サーバー (Unicorn) の調整
+----------------------------------------------------------------------
+
+### タイムアウト時間の変更
+
+GitLab Web UI への初回アクセス時に裏で何やら初期化作業を実行するらしいが、
+これに時間がかかり、バックエンド Web サーバー Unicorn がタイムアウトしまうことがある。
+結果、初期化作業は完了できず、アクセスの度にタイムアウトの 30秒待たされてしまう。
+`/var/log/gitlab/unicorn/unicorn_stderr.log` には次のようなエラーが記録される。
+
+```
+E, [2014-10-24T19:08:54.946515 #17264] ERROR -- : worker=1 PID:17302 timeout (31s > 30s), killing
+E, [2014-10-24T19:08:54.995434 #17264] ERROR -- : reaped #<Process::Status: pid 17302 SIGKILL (signal 9)> worker=1
+```
+
+`/etc/gitlab/girlab.rb` の `unicorn['worker_timeout']`
+パラメーターでタイムアウト時間 (秒) を調整して対処する。
+
+```
+unicorn['worker_timeout'] = 180
+```
+
+`/etc/gitlab/girlab.rb` の変更を反映する。
+
+```console
+# gitlab-ctl reconfigure
+```
+
+フロントエンド Web サーバー (nginx) の調整
 ----------------------------------------------------------------------
 
 ### URL、ポート番号の変更
@@ -127,7 +155,7 @@ external_url 'http://<サーバー名>:<ポート番号>'
 # gitlab-ctl reconfigure
 ```
 
-### 無効化
+### nginx の無効化
 
 Omnibus 付属の nginx ではなく別の Web サーバーをフロントエンドに利用したい場合は、
 nginx を無効にする。
