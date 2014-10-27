@@ -173,3 +173,17 @@ nginx['enable'] = false
 ```console
 # gitlab-ctl reconfigure
 ```
+
+Apache HTTPD をフロントエンド Web サーバーにする場合の設定例:
+
+```
+<VirtualHost *:ポート番号>
+  ServerName サーバー名
+  ProxyPass / http://127.0.0.1:8080/
+  ProxyPassReverse / http://127.0.0.1:8080/
+  ## HTTPS (SSL) を利用する場合
+  #SSLEngine On
+  #SSLCertificateFile サーバー証明書ファイルへのパス
+  #SSLCertificateKeyFile サーバー鍵ファイルへのパス
+</VirtualHost>
+```
