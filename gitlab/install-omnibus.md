@@ -33,7 +33,7 @@ Debian を対象とする。
     * フロントエンド Web サーバー (無効化可能)
     * デフォルトポート: `*:80`
   * Unicorn
-    * バックエンド Web サーバー
+    * バックエンド Web サーバー (Rails 実行環境)
     * デフォルトポート: `127.0.0.1:8080`
   * PostgreSQL
     * デフォルトポート: `/tmp/.s.PGSQL.5432`
@@ -115,7 +115,7 @@ run: unicorn: (pid 9116) 10s; run: log: (pid 14807) 1366215s
 
 必要であれば HTTP サーバーのサーバー名とポート番号を調整する。
 
-`/etc/gitlab/girlab.rb` の `external_url` パラメーターを変更する。
+`/etc/gitlab/girlab.rb` の `external_url` に指定するパラメーターを変更する。
 
 ```
 external_url 'http://<サーバー名>:<ポート番号>'
@@ -133,8 +133,10 @@ Omnibus 付属の nginx ではなく別の Web サーバーをフロントエン
 nginx を無効にする。
 
 `/etc/gitlab/girlab.rb` の `nginx['enable']` パラメーターを追記する。
+必要であれば `external_url` に指定するパラメーターも変更する。
 
 ```
+external_url 'http://<サーバー名>:<ポート番号>'
 nginx['enable'] = false
 ```
 
