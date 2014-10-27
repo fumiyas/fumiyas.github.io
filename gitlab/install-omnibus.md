@@ -165,12 +165,15 @@ external_url 'http://<サーバー名>:<ポート番号>'
 Omnibus 付属の nginx ではなく別の Web サーバーをフロントエンドに利用したい場合は、
 nginx を無効にする。
 
-`/etc/gitlab/girlab.rb` の `nginx['enable']` パラメーターを追記する。
+`/etc/gitlab/girlab.rb` の `nginx['enable']` パラメーターで nginx を無効化し、
+`web_server['external_users']` パラメーターでフロントエンド
+Web サーバーの実行ユーザーを指定する。
 必要であれば `external_url` に指定するパラメーターも変更する。
 
 ```
 external_url 'http://<サーバー名>:<ポート番号>'
 nginx['enable'] = false
+web_server['external_users'] = ['www-data']
 ```
 
 `/etc/gitlab/girlab.rb` の変更を反映する。
