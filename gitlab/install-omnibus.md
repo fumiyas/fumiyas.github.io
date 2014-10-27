@@ -193,6 +193,7 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
   #SSLEngine On
   #SSLCertificateFile サーバー証明書ファイルへのパス
   #SSLCertificateKeyFile サーバー鍵ファイルへのパス
+  #RequestHeader set X-Forwarded-Proto 'https'
 
   AllowEncodedSlashes NoDecode
 
