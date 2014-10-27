@@ -198,6 +198,7 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
 
   ProxyPreserveHost On
   ProxyPassReverse / http://127.0.0.1:8080/
+  ProxyPassReverse / http://サーバー名/
 
   RewriteEngine On
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
