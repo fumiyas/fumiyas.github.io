@@ -41,6 +41,11 @@ Debian を対象とする。
     * デフォルトポート: `127.0.0.1:6379`
   * そのほか
 
+### 初期ユーザー
+
+  * ユーザー名: `root`
+  * パスワード: `5iveL!fe`
+
 パッケージの入手
 ----------------------------------------------------------------------
 
@@ -179,11 +184,29 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
 ```
 <VirtualHost *:ポート番号>
   ServerName サーバー名
-  ProxyPass / http://127.0.0.1:8080/
-  ProxyPassReverse / http://127.0.0.1:8080/
+  DocumentRoot /opt/gitlab/embedded/service/gitlab-rails/public
+
   ## HTTPS (SSL) を利用する場合
   #SSLEngine On
   #SSLCertificateFile サーバー証明書ファイルへのパス
   #SSLCertificateKeyFile サーバー鍵ファイルへのパス
+
+  AllowEncodedSlashes NoDecode
+
+  ProxyPreserveHost On
+  ProxyPassReverse / http://127.0.0.1:8080/
+
+  RewriteEngine On
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+  RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [proxy,qsappend]
+
+  ErrorDocument 404 /404.html
+  ErrorDocument 422 /422.html
+  ErrorDocument 500 /500.html
+  ErrorDocument 503 /deploy.html
+
+  <Location />
+    Allow From All
+  </Location>
 </VirtualHost>
 ```
