@@ -44,6 +44,7 @@ Debian を対象とする。
     * デフォルトポート: `/tmp/.s.PGSQL.5432`
   * Redis
     * デフォルトポート: `127.0.0.1:6379`
+  * Chef
   * そのほか
 
 ### 初期ユーザー
@@ -105,7 +106,12 @@ GitLab CE Omnibus パッケージのインストール
 # dpkg -i gitlab_7.4.2-omnibus-1_amd64.deb
 ```
 
-`/usr/bin/gitlab-ctl` コマンドで様々な操作が可能になる。
+GitLab CE Omnibus の基本操作手順
+----------------------------------------------------------------------
+
+### `gitlab-ctl` コマンド
+
+`/usr/bin/gitlab-ctl` コマンドで様々な操作が可能。
 
 ```console
 # gitlab-ctl
@@ -116,6 +122,15 @@ run: postgresql: (pid 9099) 11s; run: log: (pid 14736) 1366226s
 run: redis: (pid 9107) 11s; run: log: (pid 14676) 1366232s
 run: sidekiq: (pid 9111) 10s; run: log: (pid 14831) 1366213s
 run: unicorn: (pid 9116) 10s; run: log: (pid 14807) 1366215s
+```
+
+### `/etc/gitlab/girlab.rb` 設定変更の反映手順
+
+`/etc/gitlab/girlab.rb` の変更したら以下を実行する。
+組込みの Chef が実行され構成に反映される。
+
+```console
+# gitlab-ctl reconfigure
 ```
 
 バックエンド Web サーバー (Unicorn) の調整
@@ -136,14 +151,8 @@ E, [2014-10-24T19:08:54.995434 #17264] ERROR -- : reaped #<Process::Status: pid 
 `/etc/gitlab/girlab.rb` の `unicorn['worker_timeout']`
 パラメーターでタイムアウト時間 (秒) を調整して対処する。
 
-```
+```ruby
 unicorn['worker_timeout'] = 180
-```
-
-`/etc/gitlab/girlab.rb` の変更を反映する。
-
-```console
-# gitlab-ctl reconfigure
 ```
 
 フロントエンド Web サーバー (nginx) の調整
@@ -155,14 +164,8 @@ unicorn['worker_timeout'] = 180
 
 `/etc/gitlab/girlab.rb` の `external_url` に指定するパラメーターを変更する。
 
-```
+```ruby
 external_url 'http://<サーバー名>:<ポート番号>'
-```
-
-`/etc/gitlab/girlab.rb` の変更を反映する。
-
-```console
-# gitlab-ctl reconfigure
 ```
 
 ### nginx の無効化
@@ -175,29 +178,23 @@ nginx を無効にする。
 Web サーバーの実行ユーザーを指定する。
 必要であれば `external_url` に指定するパラメーターも変更する。
 
-```
+```ruby
 external_url 'http://<サーバー名>:<ポート番号>'
 nginx['enable'] = false
 web_server['external_users'] = ['www-data']
 ```
 
-`/etc/gitlab/girlab.rb` の変更を反映する。
-
-```console
-# gitlab-ctl reconfigure
-```
-
 Apache HTTPD をフロントエンド Web サーバーにする場合の設定例:
 
-```
+```apache
 <VirtualHost *:ポート番号>
   ServerName サーバー名
   DocumentRoot /opt/gitlab/embedded/service/gitlab-rails/public
 
   ## HTTPS (SSL) を利用する場合
   #SSLEngine On
-  #SSLCertificateKeyFile サーバー鍵ファイルへのパス
-  #SSLCertificateFile サーバー証明書ファイルへのパス
+  #SSLCertificateKeyFile <サーバー鍵ファイルへのパス>
+  #SSLCertificateFile <サーバー証明書ファイルへのパス>
   #RequestHeader set X-Forwarded-Proto 'https'
 
   AllowEncodedSlashes NoDecode
@@ -219,4 +216,51 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
     Allow From All
   </Location>
 </VirtualHost>
+```
+
+LDAP サーバーを認証バックエンドに利用する
+----------------------------------------------------------------------
+
+`/etc/gitlab/girlab.rb` で Rails の LDAP 設定をする。
+
+```ruby
+gitlab_rails['ldap_enabled'] = true
+gitlab_rails['ldap_servers'] = YAML.load <<-EOS
+main:
+  label: 'LDAP'     ## ログインページに表示するラベル
+  host: '127.0.0.1' ## LDAP サーバーホスト名または IPアドレス
+  port: 389         ## LDAP サーバーポート番号
+  method: 'plain'   ## "tls", "ssl" or "plain"
+  bind_dn: 'cn=gitlab,dc=example,dc=co,dc=jp'
+  password: 'bind password for bind_dn'
+  uid: 'uid'        ## ユーザーIDを保持する属性名
+  active_directory: false
+  allow_username_or_email_login: false
+  base: 'ou=Users,dc=example,dc=co,dc=jp'
+  user_filter: '(&(objectclass=posixAccount)(!(gidNumber=10001)))'
+EOS
+```
+
+LDAP のユーザーが初めてログインすると、ユーザーの LDAP エントリーのうち
+`mail`、`email`、`userPrincipalName` 属性のいずれかの値が
+E-mail アドレスとして利用されるが、いずれの属性も持たない場合は
+`temp-email-for-oauth-<ユーザー名>@gitlab.localhost` になってしまう。
+また、この情報は管理者しか変更できない。
+
+E-mail に使用する属性がない場合に `<ユーザー名>@example.co.jp`
+にするモンキーパッチの例を示す。
+`/opt/gitlab/embedded/service/gitlab-rails/config/initializers/local.rb`
+ファイルを以下の内容で作成する。
+(既存ファイルと被らなければファイル名は `任意の名前.rb` でよい)
+
+```ruby
+module Gitlab
+  module OAuth
+    class AuthHash
+      def generate_temporarily_email
+        "#{username}@example.co.jp"
+      end
+    end
+  end
+end
 ```
