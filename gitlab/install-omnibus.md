@@ -12,6 +12,11 @@ Debian を対象とする。
 
   * https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md
 
+参考:
+
+  * 続・GitHubクローンのGitLabを５分でインストールした - アルパカDiary
+    * http://d.hatena.ne.jp/toritori0318/20140524/1400955383
+
 構成
 ----------------------------------------------------------------------
 
@@ -191,8 +196,8 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
 
   ## HTTPS (SSL) を利用する場合
   #SSLEngine On
-  #SSLCertificateFile サーバー証明書ファイルへのパス
   #SSLCertificateKeyFile サーバー鍵ファイルへのパス
+  #SSLCertificateFile サーバー証明書ファイルへのパス
   #RequestHeader set X-Forwarded-Proto 'https'
 
   AllowEncodedSlashes NoDecode
