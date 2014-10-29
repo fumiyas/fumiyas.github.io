@@ -134,7 +134,7 @@ run: unicorn: (pid 9016) 1972s; run: log: (pid 18924) 169579s
 # gitlab-ctl reconfigure
 ```
 
-バックエンド Web サーバー (Unicorn) の調整
+Unicorn (バックエンド Web サーバー) の調整
 ----------------------------------------------------------------------
 
 ### タイムアウト時間の変更
@@ -156,7 +156,7 @@ E, [2014-10-24T19:08:54.995434 #17264] ERROR -- : reaped #<Process::Status: pid 
 unicorn['worker_timeout'] = 180
 ```
 
-フロントエンド Web サーバー (nginx) の調整
+nginx (フロントエンド Web サーバー) の調整
 ----------------------------------------------------------------------
 
 ### URL、ポート番号の変更
@@ -166,7 +166,7 @@ unicorn['worker_timeout'] = 180
 `/etc/gitlab/gitlab.rb` の `external_url` に指定するパラメーターを変更する。
 
 ```ruby
-external_url 'http://<サーバー名>:<ポート番号>'
+external_url 'http://gitlab.example.co.jp'
 ```
 
 ### nginx の無効化
@@ -180,7 +180,7 @@ Web サーバーの実行ユーザーを指定する。
 必要であれば `external_url` に指定するパラメーターも変更する。
 
 ```ruby
-external_url 'http://<サーバー名>:<ポート番号>'
+external_url 'http://gitlab.example.co.jp'
 nginx['enable'] = false
 web_server['external_users'] = ['www-data']
 ```
@@ -188,14 +188,14 @@ web_server['external_users'] = ['www-data']
 Apache HTTPD をフロントエンド Web サーバーにする場合の設定例:
 
 ```apache
-<VirtualHost *:ポート番号>
-  ServerName サーバー名
+<VirtualHost *:80>
+  ServerName gitlab.example.co.jp
   DocumentRoot /opt/gitlab/embedded/service/gitlab-rails/public
 
   ## HTTPS (SSL) を利用する場合
   #SSLEngine On
-  #SSLCertificateKeyFile <サーバー鍵ファイルへのパス>
-  #SSLCertificateFile <サーバー証明書ファイルへのパス>
+  #SSLCertificateKeyFile /etc/apache2/private/gitlab.example.co.jp.key
+  #SSLCertificateFile /etc/apache2/certs/gitlab.example.co.jp.crt
   #RequestHeader set X-Forwarded-Proto 'https'
 
   AllowEncodedSlashes NoDecode
