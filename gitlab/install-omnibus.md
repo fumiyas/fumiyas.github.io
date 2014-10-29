@@ -60,7 +60,7 @@ GitLab CE のダウンロードページ https://about.gitlab.com/downloads/ を
 を選択するとパッケージの入手方法と導入手順が表示されるので参照する。
 
 任意の HTTP クライアントでパッケージをダウンロードする。
-パッケージファイルのサイズは 200 GB 弱あるので注意。
+パッケージファイルのサイズは 300 GB 弱あるので注意。
 
 ```console
 # wget https://downloads-packages.s3.amazonaws.com/debian-7.6/gitlab_7.4.2-omnibus-1_amd64.deb
@@ -89,7 +89,7 @@ UID/GID を任意のものを割り当てたい場合はインストール前に
 # adduser --system --group --home /var/opt/gitlab/nginx --no-create-home --shell /usr/sbin/nologin gitlab-www
 ```
 
-`/etc/passwd`、`/etc/group` ファイル以外の LDAP
+`/etc/passwd`、`/etc/group` ファイルではなく LDAP
 サーバーなどにシステムユーザーを登録している場合、
 GitLab システム構成変更時に実行される Chef でエラーとなるので、
 以下のようにローカルファイルに情報をコピーしておく必要がある。
@@ -192,7 +192,10 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
   ServerName gitlab.example.co.jp
   DocumentRoot /opt/gitlab/embedded/service/gitlab-rails/public
 
-  ## HTTPS (SSL) を利用する場合
+  ## HTTPS を利用する場合:
+  ##   * gitlab.rb の external_url を 'https://〜' に変更する。
+  ##   * 上記の <VirtualHost *:80> を <VirtualHost *:443> に変更する。
+  ##   * 以下のコメント文字を外して SSL を有効にする。
   #SSLEngine On
   #SSLCertificateKeyFile /etc/apache2/private/gitlab.example.co.jp.key
   #SSLCertificateFile /etc/apache2/certs/gitlab.example.co.jp.crt
