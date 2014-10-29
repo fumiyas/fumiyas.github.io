@@ -57,7 +57,7 @@ GitLab CE のダウンロードページ https://about.gitlab.com/downloads/ を
 パッケージファイルのサイズは 200 GB 弱あるので注意。
 
 ```console
-# wget https://downloads-packages.s3.amazonaws.com/debian-7.6/gitlab_7.3.2-omnibus-1_amd64.deb
+# wget https://downloads-packages.s3.amazonaws.com/debian-7.6/gitlab_7.4.2-omnibus-1_amd64.deb
 ```
 
 MTA と SSH サーバーのインストール
@@ -97,7 +97,7 @@ GitLab CE Omnibus パッケージのインストール
 ----------------------------------------------------------------------
 
 ```console
-# dpkg -i gitlab_7.3.2-omnibus-1_amd64.deb
+# dpkg -i gitlab_7.4.2-omnibus-1_amd64.deb
 ```
 
 `/usr/bin/gitlab-ctl` コマンドで様々な操作が可能になる。
