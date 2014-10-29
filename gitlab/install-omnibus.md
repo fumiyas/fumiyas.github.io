@@ -117,16 +117,17 @@ GitLab CE Omnibus の基本操作手順
 # gitlab-ctl
 …有効なサブコマンドと説明の一覧…
 # gitlab-ctl status
-run: nginx: (pid 9092) 11s; run: log: (pid 14861) 1366207s
-run: postgresql: (pid 9099) 11s; run: log: (pid 14736) 1366226s
-run: redis: (pid 9107) 11s; run: log: (pid 14676) 1366232s
-run: sidekiq: (pid 9111) 10s; run: log: (pid 14831) 1366213s
-run: unicorn: (pid 9116) 10s; run: log: (pid 14807) 1366215s
+run: logrotate: (pid 8984) 1974s; run: log: (pid 24524) 78533s
+nginx disabled
+run: postgresql: (pid 8987) 1973s; run: log: (pid 18827) 169590s
+run: redis: (pid 8995) 1973s; run: log: (pid 18770) 169596s
+run: sidekiq: (pid 9000) 1973s; run: log: (pid 18948) 169577s
+run: unicorn: (pid 9016) 1972s; run: log: (pid 18924) 169579s
 ```
 
-### `/etc/gitlab/girlab.rb` 設定変更の反映手順
+### `/etc/gitlab/gitlab.rb` 設定変更の反映手順
 
-`/etc/gitlab/girlab.rb` の変更したら以下を実行する。
+`/etc/gitlab/gitlab.rb` を変更したら以下を実行する。
 組込みの Chef が実行され構成に反映される。
 
 ```console
@@ -148,7 +149,7 @@ E, [2014-10-24T19:08:54.946515 #17264] ERROR -- : worker=1 PID:17302 timeout (31
 E, [2014-10-24T19:08:54.995434 #17264] ERROR -- : reaped #<Process::Status: pid 17302 SIGKILL (signal 9)> worker=1
 ```
 
-`/etc/gitlab/girlab.rb` の `unicorn['worker_timeout']`
+`/etc/gitlab/gitlab.rb` の `unicorn['worker_timeout']`
 パラメーターでタイムアウト時間 (秒) を調整して対処する。
 
 ```ruby
@@ -162,7 +163,7 @@ unicorn['worker_timeout'] = 180
 
 必要であれば HTTP サーバーのサーバー名とポート番号を調整する。
 
-`/etc/gitlab/girlab.rb` の `external_url` に指定するパラメーターを変更する。
+`/etc/gitlab/gitlab.rb` の `external_url` に指定するパラメーターを変更する。
 
 ```ruby
 external_url 'http://<サーバー名>:<ポート番号>'
@@ -173,7 +174,7 @@ external_url 'http://<サーバー名>:<ポート番号>'
 Omnibus 付属の nginx ではなく別の Web サーバーをフロントエンドに利用したい場合は、
 nginx を無効にする。
 
-`/etc/gitlab/girlab.rb` の `nginx['enable']` パラメーターで nginx を無効化し、
+`/etc/gitlab/gitlab.rb` の `nginx['enable']` パラメーターで nginx を無効化し、
 `web_server['external_users']` パラメーターでフロントエンド
 Web サーバーの実行ユーザーを指定する。
 必要であれば `external_url` に指定するパラメーターも変更する。
@@ -221,7 +222,7 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
 LDAP サーバーを認証バックエンドに利用する
 ----------------------------------------------------------------------
 
-`/etc/gitlab/girlab.rb` で Rails の LDAP 設定をする。
+`/etc/gitlab/gitlab.rb` で Rails の LDAP 設定をする。
 
 ```ruby
 gitlab_rails['ldap_enabled'] = true
