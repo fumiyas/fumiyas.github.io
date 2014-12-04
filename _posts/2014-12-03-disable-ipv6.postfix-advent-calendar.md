@@ -43,7 +43,15 @@ inet_protocols = ipv4
 `inet_protocols` パラメーターの変更を反映させるには、
 *Postfix を再起動する必要があります。リロードではいけません*。
 ご注意ください。
-リロードでは変更は無視されて次のような警告ログが出ます。
+
+```console
+# postfix stop
+postfix/postfix-script: stopping the Postfix mail system
+# postfix start
+postfix/postfix-script: starting the Postfix mail system
+```
+
+リロード (`postfix reload`) では変更は無視されて次のような警告ログが出ます。
 
 ```
 Dec  3 16:38:17 sugar postfix/postfix-script[30745]: refreshing the Postfix mail system
