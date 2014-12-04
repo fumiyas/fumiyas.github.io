@@ -59,7 +59,7 @@ Postfix 2.8 以降であれば、SMTP クライアント `smtp`(8) と
 LMTP クライアント `lmtp`(8) において、IPv4 を優先させることができます。
 IPv6 を利用するが何らかの理由により IPv4 を優先したいときにお薦めです。
 
-Postfix の `/etc/postfix/main.cf` に次のように記述します。
+`/etc/postfix/main.cf` に次のように記述します。
 
 ```cfg
 smtp_address_preference = ipv4
@@ -102,7 +102,7 @@ prefer-ipv4.example.jp	smtp-ipv4-prefer:
 # postmap /etc/postfix/transport
 ```
 
-`/etc/postfix/main` で `transport_maps` パラメーターを設定します。
+`/etc/postfix/main.cf` で `transport_maps` パラメーターを設定します。
 
 ```
 transport_maps = hash:$config_directory/transport
