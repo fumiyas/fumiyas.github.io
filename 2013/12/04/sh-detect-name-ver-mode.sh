@@ -28,7 +28,7 @@ elif [ -n "${RANDOM-}" ]; then
   else
     sh_ver="88"
   fi
-  sh_ver_marjo="$sh_ver"
+  sh_ver_major="$sh_ver"
   sh_ver_int="$sh_ver"
 else
   sh_name="sh"
