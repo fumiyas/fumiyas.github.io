@@ -145,7 +145,7 @@ TLS 有効の場合はパケットキャプチャーによる SMTP コマンド�
 `debug_peer_list` と `debug_peer_level=1` 以上なら簡単に追跡できます。
 
 詳細ログを有効にすると **SMTP 認証で送られるパスワードもそのままログに含まれる**ため、
-注意が必要です。 `AUTH PLAIN AGZvbwBiYXI=` からユーザー名
+注意が必要です。 上記ログ中の `AUTH PLAIN AGZvbwBiYXI=` からユーザー名
 (`foo`) と生パスワード (`bar`) を求めることができます。
 
 ```console
@@ -195,7 +195,7 @@ Dec  8 20:32:02 land postfix/submission/smtpd[6111]: warning: client.example.jp[
 Dec  8 20:32:02 land postfix/submission/smtpd[6111]: disconnect from client.example.jp[10.0.1.20]
 ```
 
-`smtp`(8) には `smtp_tls_loglevel`、`smtp`(8) には `lmtp_tls_loglevel`
+`smtp`(8) には `smtp_tls_loglevel`、`lmtp`(8) には `lmtp_tls_loglevel`
 パラメーター別途用意されています。
 
 * * *
