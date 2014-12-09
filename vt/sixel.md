@@ -52,6 +52,9 @@ layout: default
 対応ソフトウェア
 ----------------------------------------------------------------------
 
+  * 端末エミュレータ - Sixel Graphicsを活用したアプリケーションの御紹介 - Qiita
+    * <http://qiita.com/arakiken/items/3e4bc9a6e43af0198e46>
+
 ### ライブラリ、モジュール
 
   * libsixel - A lightweight, fast implementation of DEC SIXEL graphics codec
