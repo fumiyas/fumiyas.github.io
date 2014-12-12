@@ -90,8 +90,10 @@ postfix/postfix-script: refreshing the Postfix mail system
 
 ```text
 smtp-ipv4        unix  -       -       -       -       -       smtp
+  -o syslog_name=postfix/ipv4
   -o inet_protocols=ipv4
 smtp-ipv4-prefer unix  -       -       -       -       -       smtp
+  -o syslog_name=postfix/ipv4-prefer
   -o smtp_address_preference=ipv4
 ```
 
