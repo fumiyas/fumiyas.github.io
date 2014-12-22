@@ -60,8 +60,8 @@ SMTP サーバーとして利用しており、
 myhostname = mail.example.jp
 myorigin = $mydomain
 mynetworks =
-  127.0.0.1 [::1]
-  192.168.0.0/24
+        127.0.0.1 [::1]
+        192.168.0.0/24
 
 parent_domain_matches_subdomains =
 
@@ -72,8 +72,8 @@ relayhost = [relay1.example.jp]
 ## Postfix 2.10 向けの設定
 ## Postfix 2.9 以前は代わりに smtpd_recipient_restrictions を使用すること
 smtpd_relay_restrictions =
-  permit_mynetworks
-  reject_unauth_destination
+        permit_mynetworks
+        reject_unauth_destination
 ```
 
 ### relay1, relay2.example.jp の Postfix 設定
@@ -86,8 +86,8 @@ smtpd_relay_restrictions =
 myhostname = relay1.example.jp
 myorigin = $mydomain
 mynetworks =
-  127.0.0.1 [::1]
-  192.168.0.1
+        127.0.0.1 [::1]
+        192.168.0.1
 
 parent_domain_matches_subdomains =
 
@@ -97,9 +97,9 @@ relay_domains = example.jp
 ## Postfix 2.10 向けの設定
 ## Postfix 2.9 以前は代わりに smtpd_recipient_restrictions を使用すること
 smtpd_relay_restrictions =
-  permit_mynetworks
-  reject_unauth_destination
-  reject_unverified_recipient
+        permit_mynetworks
+        reject_unauth_destination
+        reject_unverified_recipient
 ```
 
 `myhostname` 以外は `relay1.example.jp` と `relay2.example.jp` で共通です。

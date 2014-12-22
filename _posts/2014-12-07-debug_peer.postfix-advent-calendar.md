@@ -21,17 +21,17 @@ Postfix の問題を解決するには、大抵は syslog の `mail`
 
 ```cfg
 debug_peer_list =
-  ## IPアドレスで対象を指定
-  10.0.1.20	  
-  ## ネットワークアドレス/マスクで対象を指定
-  192.168.0.0/16
-  ## ホスト名で対象を指定
-  client.example.jp
-  ## 外部ファイルで対象リストを指定
-  $config_directory/debug_peer_list
-  ## 外部テーブルで対象リストを指定
-  ## テーブル中の各エントリーのキー(左辺)のみ評価され、値(右辺)は無視される
-  ldap:$config_directory/debug_peer_list.ldap.cf
+        ## IPアドレスで対象を指定
+        10.0.1.20	  
+        ## ネットワークアドレス/マスクで対象を指定
+        192.168.0.0/16
+        ## ホスト名で対象を指定
+        client.example.jp
+        ## 外部ファイルで対象リストを指定
+        $config_directory/debug_peer_list
+        ## 外部テーブルで対象リストを指定
+        ## テーブル中の各エントリーのキー(左辺)のみ評価され、値(右辺)は無視される
+        ldap:$config_directory/debug_peer_list.ldap.cf
 ```
 
 どの程度の詳細ログとするかは `debug_peer_level` パラメーターで数値を指定します。
