@@ -104,7 +104,7 @@ Postfix のコードを読んでみる
 
 Postfix がローカルユーザーの存在を確認する際に参照するテーブルは何でしょうか。
 それは `local_recipient_maps` パラメーターの値が示しています。
-デフォルトなら次のような設定なっています。
+デフォルトなら次のような設定になっています。
 
 ```console
 # postconf local_recipient_maps
@@ -186,7 +186,7 @@ static const char *dict_unix_getpwnam(DICT *dict, const char *key)
 ```
 
 ただし、ネームサービス障害時の `getpwnam`(3) による `errno` 値に標準はなく、
-C ライブラリーやネームサービスモジュールに依存している模様です。
+C ライブラリーやネームサービスモジュールの実装に依存している模様です。
 この変更では対応できないケースがあるかもしれません。
 
 * * *
