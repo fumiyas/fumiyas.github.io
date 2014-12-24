@@ -158,6 +158,17 @@ UNIX ユーザー情報をユーザー名で索く関数 `getpwnam`(3) が失敗
 local_recipient_maps = $config_directory/local_recipient.ldap.cf $alias_maps
 ```
 
+参考までに `local_recipient.ldap.cf` の例も載せておきましょう。
+
+```cfg
+server_host = ldaps://ldap.example.jp/
+version = 3
+search_base = ou=users,dc=example,dc=jp
+scope = sub
+query_filter = (&(objectClass=posixAccount)(uid=%s))
+result_attribute = uid
+```
+
 ### Postfix を改修する
 
 確認はしていませんが、
