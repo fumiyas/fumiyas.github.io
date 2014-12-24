@@ -27,10 +27,12 @@ debug_peer_list =
         192.168.0.0/16
         ## ホスト名で対象を指定
         client.example.jp
+        ## ドメイン名で対象を指定
+        .test.example.jp
         ## 外部ファイルで対象リストを指定
         $config_directory/debug_peer_list
         ## 外部テーブルで対象リストを指定
-        ## テーブル中の各エントリーのキー(左辺)のみ評価され、値(右辺)は無視される
+        ## (テーブル中の各エントリーのキーのみ評価され値は無視される)
         ldap:$config_directory/debug_peer_list.ldap.cf
 ```
 
