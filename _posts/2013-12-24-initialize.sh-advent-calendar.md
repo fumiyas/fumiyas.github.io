@@ -169,7 +169,7 @@ chmod 0700 secret.txt
 最初に環境変数でロケールを設定しておきましょう。
 
 ロケールを設定する環境変数は `$LANG` 以外にも `$LC_種別` がいくつかあります。
-オンラインマニュアル `setlocale`(3), `locale`(7) あたりの参照。
+オンラインマニュアル `setlocale`(3), `locale`(7) あたりを参照のこと。
 
 おまけ: `IFS="スペース+タブ+改行"` (dash の場合)
 ----------------------------------------------------------------------
@@ -199,7 +199,4 @@ BSD 系 OS の `/bin/sh` である ash (dash の派生元) も同じ仕様かも
 
 * * *
 
-ところで12月25日はクリスマスな上に、
-OSS 界隈で地味に活躍されているふみやすさんの誕生日ですね。
-
-っ http://www.amazon.co.jp/registry/wishlist/27M7TV8CEEF6G?sort=priority
+{% include wishlist-dec.html %}
