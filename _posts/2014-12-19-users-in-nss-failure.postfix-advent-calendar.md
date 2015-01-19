@@ -99,6 +99,11 @@ Connection closed by foreign host.
 Dec 24 00:48:19 mail postfix/smtpd[27862]: NOQUEUE: reject: RCPT from mua.example.jp[10.0.0.4]: 550 5.1.1 <ldapuser@example.jple.jp>: Recipient address rejected: User unknown in local recipient table; from=<> to=<ldapuser@example.jple.jp> proto=SMTP
 ```
 
+ネームサービスに
+SSS (`nss_sss`) や PADL nss-pam-ldapd (`nss_ldap`)
+を利用している場合は、その直接のバックエンドである `sssd` や `nslcd`
+の障害時にも同様の結果になります。
+
 Postfix のコードを読んでみる
 ----------------------------------------------------------------------
 
