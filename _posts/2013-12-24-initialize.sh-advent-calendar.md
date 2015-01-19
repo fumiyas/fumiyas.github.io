@@ -45,7 +45,7 @@ tmpdir="/var/lib/foo"
 
 # …
 
-rm -rf "$tempdir/*"
+rm -rf "$tempdir"/*
 ```
 
 未定義の可能性がある変数を参照したいときは、条件付きの変数展開を利用します。
