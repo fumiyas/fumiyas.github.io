@@ -155,7 +155,9 @@ UNIX ユーザー情報をユーザー名で索く関数 `getpwnam`(3) が失敗
 `ldap_table`(5) なら LDAP サーバーが利用できない場合は一時エラーになります。
 
 ```cfg
-local_recipient_maps = $config_directory/local_recipient.ldap.cf $alias_maps
+local_recipient_maps =
+  ldap:$config_directory/local_recipient.ldap.cf
+  $alias_maps
 ```
 
 参考までに `local_recipient.ldap.cf` の例も載せておきましょう。
