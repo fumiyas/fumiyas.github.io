@@ -61,8 +61,13 @@ layout: default
     * <http://saitoha.github.io/libsixel/>
     * <https://github.com/saitoha/libsixel>
     * README には関連/対応ソフトウェアの紹介も多数掲載
+    * C
   * PySixel - View full-pixel color graphics on SIXEL-supported terminals
     * <https://github.com/saitoha/PySixel>
+    * Python
+  * go-sixel
+    * <https://github.com/mattn/go-sixel>
+    * Go (golang)
 
 ### ユーティリティなど
 
