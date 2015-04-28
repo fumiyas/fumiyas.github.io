@@ -1,6 +1,6 @@
 ---
 title: コマンド実行でシェルが怖いなら使わなければいいじゃない - 拡張 POSIX シェルスクリプト Advent Calendar 2013
-tags: [sh, shell, security]
+tags: [sh, shell, security, escape]
 layout: default
 ---
 
