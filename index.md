@@ -6,8 +6,10 @@ Blog、再開しました。
 技術情報
 ----------------------------------------------------------------------
 
-  * [rsync](linux/rsync.html)
-  * [Linux オートマウント](linux/autofs.html)
+  * Linux
+    * [Raspberry Pi 2 + Debian](linux/debian/rpi2.html)
+    * [Linux オートマウント](linux/autofs.html)
+    * [rsync](linux/rsync.html)
   * Apache HTTPD
     * [mod_allowfileowner](apache/mod-allowfileowner.html)
   * Apache Solr
