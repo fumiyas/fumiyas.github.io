@@ -74,6 +74,7 @@ mmcblk0                  179:0    0  29.7G  0 disk
 ```
 
 圧縮されているイメージを展開し、bmaptool で microSD カードに書き込む。
+(***デバイス名を間違えると関係ないファイルシステムを壊すので注意***)
 
 ```console
 $ gzip -d https://images.collabora.co.uk/rpi2/jessie-rpi2-20150202.img.gz
