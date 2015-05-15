@@ -49,7 +49,7 @@ tags: [linux, debian, rpi, arm]
     * 192.168.0.1
   * DNSキャッシュサーバー
     * 192.168.0.1
-    * 8.8.8.8
+    * 8.8.8.8 (Google Public DNS)
 
 ### microSD カードへの Debian イメージのインストール
 
@@ -172,6 +172,9 @@ The filesystem on /dev/mmcblk0p2 is now 7755264 (4k) blocks long.
 `parted`(8) か `gparted`(8) を利用してもよい。
 
 ### microSD カード上の Debian 環境の調整
+
+以下の作業を bash スクリプト化したもの:
+[rpi2-jessie-setup.bash](rpi2-jessie-setup.bash)
 
 microSD カードの Debian のルートファイルシステムを適当なディレクトリにマウントする。
 
