@@ -201,13 +201,21 @@ DNS=8.8.8.8
 EOF
 ```
 
+この Debian イメージは jessie が stable になる前のものであるため、
+`/etc/apt/sources.list` に security.debian.org が設定されていない。
+これを追加しておく。
+
+```console
+$ echo deb http://security.debian.org/ jessie/updates main |tee -a /mnt/etc/apt/sources.list
+```
+
 SSH サーバーのパスワード認証の無効化、既存ホスト鍵の破棄、
 ホスト鍵の生成を行う。
 
 ```console
 $ sudo sed -i 's/^#*\(PasswordAuthentication\).*/\1 no/' /mnt/etc/ssh/sshd_config
 $ sudo rm /mnt/etc/ssh/ssh_host_*_key*
-$ for t in rsa ecdsa ed25519; do
+$ for t in dsa rsa ecdsa ed25519; do
   sudo ssh-keygen -q -t $t -C rpi.example.jp -N '' -f /mnt/etc/ssh/ssh_host_${t}_key
 done
 ```
