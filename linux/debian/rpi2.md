@@ -78,6 +78,14 @@ mmcblk0                  179:0    0  29.7G  0 disk
 ```console
 $ gzip -d https://images.collabora.co.uk/rpi2/jessie-rpi2-20150202.img.gz
 $ sudo bmaptool copy --bmap jessie-rpi2-20150202.img.bmap jessie-rpi2-20150202.img /dev/mmcblk0
+bmaptool: info: block map format version 2.0
+bmaptool: info: 768256 blocks of size 4096 (2.9 GiB), mapped 123252 blocks
+(481.5 MiB or 16.0%)
+bmaptool: info: copying image 'jessie-rpi2-20150202.img' to block device
+'/dev/mmcblk0' using bmap file 'jessie-rpi2-20150202.img.bmap'
+bmaptool: info: 100% copied
+bmaptool: info: synchronizing '/dev/mmcblk0'
+bmaptool: info: copying time: 24.7s, copying speed 19.5 MiB/sec
 ``` 
 
 書き込みが完了すると、microSD カードには 2つのパーティションが作成される。
@@ -174,7 +182,7 @@ $ sudo mount /dev/mmcblk0p2 /mnt
 ホスト名の設定を上書きする。
 
 ```console
-$ echo rpi.exmaple.jp |sudo tee /mnt/etc/hostname
+$ echo rpi.exmaple.jp |sudo tee /mnt/etc/hostname >/dev/null
 ```
 
 ネットワークの設定を上書きする。
@@ -211,7 +219,7 @@ done
 
 ```console
 $ getent passwd `id -un` |sudo tee -a /mnt/etc/passwd >/dev/null
-$ getent passwd `id -gn` |sudo tee -a /mnt/etc/group >/dev/null
+$ getent group `id -gn` |sudo tee -a /mnt/etc/group >/dev/null
 $ sudo getent shadow `id -un` |sudo tee -a /mnt/etc/shadow >/dev/null
 $ sudo sed -i '$s/[^:]*$/\/bin\/bash/' /mnt/etc/passwd
 ```
