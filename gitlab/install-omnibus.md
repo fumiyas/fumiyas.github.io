@@ -56,15 +56,15 @@ Debian を対象とする。
 ----------------------------------------------------------------------
 
 GitLab CE のダウンロードページ https://about.gitlab.com/downloads/ を開き、
-「I want to install GitLab on」から「Debian 7」
+「I want to install GitLab on」から「Debian 8」
 を選択するとパッケージの入手方法と導入手順が表示されるので参照する。
 
-任意の HTTP クライアントでパッケージをダウンロードする。
-パッケージファイルのサイズは 300 GB 弱あるので注意。
+…が、2015年5月現在、手順通りに作業すると最新版の GitLab はインストールされない。
 
-```console
-# wget https://downloads-packages.s3.amazonaws.com/debian-7.6/gitlab_7.4.2-omnibus-1_amd64.deb
-```
+そこで、同ページの下部「Omnibus Packages」の「Download the package」を開き、
+さらに「`gitlab-ce_<バージョン>~omnibus-1_amd64.deb` debian/jessie」を開き、
+画面右上の「Download」ボタンを押して deb パッケージをダウンロードする。
+パッケージファイルのサイズは 300 GB 超あるので注意。
 
 MTA と SSH サーバーのインストール
 ----------------------------------------------------------------------
@@ -103,7 +103,7 @@ GitLab CE Omnibus パッケージのインストール
 ----------------------------------------------------------------------
 
 ```console
-# dpkg -i gitlab_7.4.2-omnibus-1_amd64.deb
+# dpkg -i gitlab_<バージョン>-omnibus-1_amd64.deb
 ```
 
 GitLab CE Omnibus の基本操作手順
@@ -204,9 +204,6 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
   AllowEncodedSlashes NoDecode
 
   ProxyPreserveHost On
-  ProxyPassReverse / http://127.0.0.1:8080/
-  ProxyPassReverse / http://サーバー名/
-
   RewriteEngine On
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
   RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [proxy,qsappend]
@@ -217,7 +214,7 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
   ErrorDocument 503 /deploy.html
 
   <Location />
-    Allow From All
+    Require all granted
   </Location>
 </VirtualHost>
 ```
@@ -245,9 +242,9 @@ main:
 EOS
 ```
 
-LDAP のユーザーが初めてログインすると、ユーザーの LDAP エントリーのうち
+LDAP のユーザーが初めてログインすると、ユーザーの LDAP エントリのうち
 `mail`、`email`、`userPrincipalName` 属性のいずれかの値が
-E-mail アドレスとして利用されるが、いずれの属性も持たない場合は
+E-mail アドレスとして利用される。しかし、いずれの属性も持たない場合は
 `temp-email-for-oauth-<ユーザー名>@gitlab.localhost` になってしまう。
 また、この情報は管理者しか変更できない。
 
@@ -258,11 +255,16 @@ E-mail に使用する属性がない場合に `<ユーザー名>@example.co.jp`
 (既存ファイルと被らなければファイル名は `任意の名前.rb` でよい)
 
 ```ruby
-module Gitlab
-  module OAuth
-    class AuthHash
-      def generate_temporarily_email
-        "#{username}@example.co.jp"
+module OmniAuth
+  module Strategies
+    class LDAP
+      class << self
+        alias_method :map_user_orig, :map_user
+      end
+
+      def self.map_user(mapper, object)
+        object['mail'] += ["#{object['uid'].first}@example.co.jp"]
+        self.map_user_orig(mapper, object)
       end
     end
   end
