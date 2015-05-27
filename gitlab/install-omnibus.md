@@ -166,7 +166,7 @@ nginx (フロントエンド Web サーバー) の調整
 `/etc/gitlab/gitlab.rb` の `external_url` に指定するパラメーターを変更する。
 
 ```ruby
-external_url 'http://gitlab.example.co.jp'
+external_url 'http://gitlab.example.jp'
 ```
 
 ### nginx の無効化
@@ -180,7 +180,7 @@ Web サーバーの実行ユーザーを指定する。
 必要であれば `external_url` に指定するパラメーターも変更する。
 
 ```ruby
-external_url 'http://gitlab.example.co.jp'
+external_url 'http://gitlab.example.jp'
 nginx['enable'] = false
 web_server['external_users'] = ['www-data']
 ```
@@ -189,7 +189,7 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
 
 ```apache
 <VirtualHost *:80>
-  ServerName gitlab.example.co.jp
+  ServerName gitlab.example.jp
   DocumentRoot /opt/gitlab/embedded/service/gitlab-rails/public
 
   ## HTTPS を利用する場合:
@@ -197,8 +197,8 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
   ##   * 上記の <VirtualHost *:80> を <VirtualHost *:443> に変更する。
   ##   * 以下のコメント文字を外して SSL を有効にする。
   #SSLEngine On
-  #SSLCertificateKeyFile /etc/apache2/private/gitlab.example.co.jp.key
-  #SSLCertificateFile /etc/apache2/certs/gitlab.example.co.jp.crt
+  #SSLCertificateKeyFile /etc/apache2/private/gitlab.example.jp.key
+  #SSLCertificateFile /etc/apache2/certs/gitlab.example.jp.crt
   #RequestHeader set X-Forwarded-Proto 'https'
 
   AllowEncodedSlashes NoDecode
@@ -208,6 +208,11 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
   RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [proxy,qsappend]
 
+  ## GitLab のアイコンとロゴを独自のものに入れ換える場合:
+  #Alias /favicon.ico /srv/www/gitlab.example.jp/public/example-favicon.ico
+  #AliasMatch ^/assets/favicon-[0-9a-f]+\.ico$ /srv/www/gitlab.example.jp/public/example-favicon.ico
+  #AliasMatch ^/assets/logo-white-[0-9a-f]+\.png$ /srv/www/gitlab.example.jp/public/example-logo.png
+       
   ErrorDocument 404 /404.html
   ErrorDocument 422 /422.html
   ErrorDocument 500 /500.html
@@ -248,11 +253,11 @@ E-mail アドレスとして利用される。しかし、いずれの属性も�
 `temp-email-for-oauth-<ユーザー名>@gitlab.localhost` になってしまう。
 また、この情報は管理者しか変更できない。
 
-E-mail に使用する属性がない場合に `<ユーザー名>@example.co.jp`
+E-mail に使用する属性がない場合に `<ユーザー名>@example.jp`
 にするモンキーパッチの例を示す。
 `/opt/gitlab/embedded/service/gitlab-rails/config/initializers/local.rb`
 ファイルを以下の内容で作成する。
-(既存ファイルと被らなければファイル名は `任意の名前.rb` でよい)
+(既存ファイルと被らなければファイル名は `<任意の名前>.rb` でよい)
 
 ```ruby
 module OmniAuth
@@ -263,7 +268,7 @@ module OmniAuth
       end
 
       def self.map_user(mapper, object)
-        object['mail'] += ["#{object['uid'].first}@example.co.jp"]
+        object['mail'] += ["#{object['uid'].first}@example.jp"]
         self.map_user_orig(mapper, object)
       end
     end
