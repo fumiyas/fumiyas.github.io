@@ -64,7 +64,7 @@ GitLab CE のダウンロードページ https://about.gitlab.com/downloads/ を
 そこで、同ページの下部「Omnibus Packages」の「Download the package」を開き、
 さらに「`gitlab-ce_<バージョン>~omnibus-1_amd64.deb` debian/jessie」を開き、
 画面右上の「Download」ボタンを押して deb パッケージをダウンロードする。
-パッケージファイルのサイズは 300 GB 超あるので注意。
+パッケージファイルのサイズは 300 MB 超あるので注意。
 
 MTA と SSH サーバーのインストール
 ----------------------------------------------------------------------
