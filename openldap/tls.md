@@ -9,6 +9,11 @@ CRL の参照
 
 OpenLDAP がリンクしている TLS 実装に依って異なる。
 
+### 参考
+
+  * Checking client certificates against CRLs 
+    * http://www.openldap.org/lists/openldap-technical/201404/threads.html#00061
+
 ### OpenSSL の場合
 
 CA 証明書と CRL を格納するディレクトリを用意する。
