@@ -25,6 +25,8 @@ Blog、再開しました。
     * [Vagrant ネットワーク](vagrant/network.html)
   * GitLab
     * [GitLab CE Omnibus のインストール](gitlab/install-omnibus.html)
+  * ZFS
+    * [ZFS の落とし穴](zfs/pitfall.html)
   * 仮想端末 / テキストコンソール
     * [Sixel 情報](vt/sixel.html)
   * ハードウェア
