@@ -156,6 +156,33 @@ E, [2014-10-24T19:08:54.995434 #17264] ERROR -- : reaped #<Process::Status: pid 
 unicorn['worker_timeout'] = 180
 ```
 
+メール発信に SMTP サーバーを利用する
+----------------------------------------------------------------------
+
+デフォルトは sendmail コマンドを利用してメールを発信する。
+
+SMTP サーバーを利用するには `/etc/gitlab/gitlab.rb` を次のように設定する。
+
+```ruby
+gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = "smtp.example.jp"
+```
+
+デフォルトでは、SMTP サーバーがクライアントからの `EHLO` コマンドに対して
+`STARTTLS` を応答すると、自動的に TLS を利用する点に注意。
+
+SMTP サーバーに localhost を指定した場合、
+サーバー証明書に記載のサーバー名と[localhost」が一致しないため、
+証明書の検証処理で不正と判断され、メール発信が失敗してしまう。
+このようなときは、 `gitlab_rails['smtp_enable_starttls_auto'] = false`
+を設定するとよい。
+
+```ruby
+gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = "localhost"
+gitlab_rails['smtp_enable_starttls_auto'] = false
+```
+
 nginx (フロントエンド Web サーバー) の調整
 ----------------------------------------------------------------------
 
