@@ -247,9 +247,9 @@ main:
 EOS
 ```
 
-LDAP のユーザーが初めてログインすると、ユーザーの LDAP エントリのうち
+LDAP のユーザーが初めてログインすると、ユーザーの LDAP エントリの
 `mail`、`email`、`userPrincipalName` 属性のいずれかの値が
-E-mail アドレスとして利用される。しかし、いずれの属性も持たない場合は
+E-mail アドレスとして登録される。しかし、いずれの属性も持たない場合は
 `temp-email-for-oauth-<ユーザー名>@gitlab.localhost` になってしまう。
 また、この情報は管理者しか変更できない。
 
