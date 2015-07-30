@@ -130,6 +130,42 @@ service decode2text {
 保守
 ----------------------------------------------------------------------
 
+### 検索
+
+INBOX(受信箱)のメールのうち Subject ヘッダーに「test」が含むものを検索:
+
+```console
+# doveadm search -u user@example.jp MAILBOX INBOX subject test
+```
+
+INBOX(受信箱)のメールのうち本文に「test」が含むものを検索:
+
+```
+# doveadm search -u user@example.jp MAILBOX INBOX BODY test
+```
+
+### インデックスの再作成
+
+特定ユーザーの全インデックスをなかったことにする。
+(Solr 内のインデックスデータが消えるわけではない)
+
+```console
+# doveadm fts rescan -u user@example.jp
+```
+
+これで次回検索時にインデックスが再作成されるが、
+すぐに再作成したいときは次のコマンドを実行する。
+
+```console
+# doveadm index -u user@example.jp INBOX
+```
+
+全メールボックスのインデックス作成を実行する例。
+
+```console
+# doveadm mailbox list -u user@example.jp INBOX |xargs -r -d '\n' doveadm index -u user@example.jp
+```
+
 ### ユーザー削除時の対応
 
 ユーザーのメールボックスを削除するだけでなく、
@@ -143,7 +179,7 @@ Apache Solr の該当データも削除する必要があることに注意。
 新着メールの抑制は、メールボックスがホームディレクトリ内の maildir
 の場合は次のようにするとよいだろう。
 
-```
+```console
 # chmod -w ~user
 # mv ~user/Maildir{,~}
 # ls -ld ~user ~user/Maildir*
@@ -160,7 +196,7 @@ drwx------  5 user group  512 Jun 17 15:05 /home/user/Maildir~
 この際は maildir 用のインデックスの更新は不要なので、
 `INDEX=MEMORY` も指定することで負荷を減らしている。
 
-```
+```console
 # doveadm -o 'mail_location=maildir:~/Maildir~:INDEX=MEMORY' expunge -u user ALL MAILBOX \*
 # rm -rf ~user
 ```
