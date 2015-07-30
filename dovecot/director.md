@@ -95,6 +95,101 @@ service managesieve-login {
 }
 ```
 
+バックエンド Dovecot ホストの切り離しと切り戻し
+----------------------------------------------------------------------
+
+FIXME: WIP
+
+### 構成
+
+  * Dovecot LMTP/POP3/IMAP (バックエンド)
+    * dovecot1 (10.0.0.1)
+    * dovecot2 (10.0.0.2)
+  * Dovecot Director (フロントエンド)
+    * director1
+    * director2
+  * poolmon
+    * サービス名を `dovecot-poolmon` とする。
+
+### 手順
+
+dovecot2 を切り離す例を示す。
+
+(0) ロードバランサーで director2 への振り分けを停止する。
+
+(1) director1, director2 の両ホストで poolmon を停止
+
+```console
+director1# service dovecot-poolmon stop
+```
+
+```console
+director2# service dovecot-poolmon stop
+```
+
+(2) director1 で、停止する Dovecot バックエンドホスト (dovecot2)
+    への新規振り分けを無効化 (director2 での操作は不要※)
+
+```console
+director1# /opt/osstech/bin/doveadm director add 10.0.0.2 0
+```
+
+※ director2 側で dovecot2 との組合せで動作テストする必要がある場合、
+director2 で dovecot1 への新規振り分けを無効化する必要がある。
+
+```console
+director2# /opt/osstech/bin/doveadm director add 10.0.0.2 0
+```
+
+(3) director1 で、停止する Dovecot バックエンドホストへの既存振り分け
+    情報を削除 (director2 での操作は不要※)
+
+```console
+director1# /opt/osstech/bin/doveadm director flush 10.0.0.2
+```
+
+※ director2 側で dovecot2 との組合せで動作テストする必要がある場合、
+director2 で dovecot1 への振り分け情報を削除する必要がある。
+
+```console
+director2# /opt/osstech/bin/doveadm director flush 10.0.0.1
+```
+
+(4) dovecot2 で既存のセッションを切断
+
+```console
+dovecot2# /opt/osstech/bin/doveadm kick 0.0.0.0/0
+```
+
+(5) director2, dovecot2 で各種保守、テスト作業を実施
+
+(6) director1 で、停止した Dovecot バックエンドホスト(dovecot2)への
+    新規振り分けを有効化 (director2 での操作は不要※)
+
+```console
+director1# /opt/osstech/bin/doveadm director add 10.0.0.2 100
+```
+
+※ 手順(2)で director2 で dovecot1 への振り分けを停止した場合は、
+これも戻す必要がある。
+
+```console
+director2# /opt/osstech/bin/doveadm director add 10.0.0.1 100
+```
+
+(7) director1, director2 の両ホストで poolmon を起動
+
+```console
+director1# service dovecot-poolmon start
+```
+
+```console
+director2# service dovecot-poolmon start
+```
+
+参考:
+  http://wiki2.dovecot.org/Director#Forcefully_moving_users_to_a_different_backend
+
 TODO
 ----------------------------------------------------------------------
 
