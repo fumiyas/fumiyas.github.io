@@ -31,25 +31,21 @@ CRL ファイルの情報から CRL のハッシュ値を求める。
 
 ```console
 # cd /path/to/cacerts
-# /opt/osstech/bin/openssl crl -hash -noout -in ca.example.com.pem
+# openssl crl -hash -noout -in ca.example.com.pem
 <CRLのハッシュ値>
 ```
 
-CRL ファイルへのシンボリックリンク `<CRLのハッシュ値>.r0` を作成する。
+CRL ファイルへのシンボリックリンク `<CRLのハッシュ値>.r<番号>` を作成する。
+`<番号>` は `0` から振る。すでに別の証明書へのシンボリックリンクが
+存在する場合は別の `<番号>` を振る。
 
 ```
 # cd /path/to/cacerts
 # ln -s ca.example.com.pem <CRLのハッシュ値>.r0
 ```
 
-CRL ファイルのシンボリックリンク `<CRLのハッシュ値>.r<番号>`
-が既に存在する場合は不要。
-
-すでに同名のシンボリックリンクが存在する場合は末尾の数字を
-増加した名前にする。 (例: `<CRLのハッシュ値>.r1` など)
-
 OpenLDAP ライブラリー/ツールの設定ファイル
-`/opt/osstech/etc/openldap/ldap.conf` に次の設定を記述する。
+`/etc/openldap/ldap.conf` に次の設定を記述する。
 
 ```
 TLS_CRLCHECK all
@@ -59,11 +55,11 @@ TLS_CACERTDIR /path/to/cacerts
 確認。
 
 ```
-$ /opt/osstech/bin/ldapsearch \
+$ ldapsearch \
     -xZZ \
     -H ldap://<CRL にない証明書を持つ LDAP サーバー名> \
     <必要であればそのほか適切なオプション>
-$ /opt/osstech/bin/ldapsearch \
+$ ldapsearch \
     -xZZ \
     -H ldap://<CRL にある証明書を持つ LDAP サーバー名> \
     <必要であればそのほか適切なオプション>
@@ -71,7 +67,7 @@ $ /opt/osstech/bin/ldapsearch \
 
 ### Mozilla NSS の場合
 
-未対応?
+あとで。たぶん可能。
 
 ### GnuTLS の場合
 
