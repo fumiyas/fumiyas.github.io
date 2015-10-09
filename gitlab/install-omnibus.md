@@ -306,6 +306,22 @@ end
 そのほか
 ----------------------------------------------------------------------
 
+### ユーザー情報の直接編集
+
+`/usr/bin/gitlab-rails console production` で GitLab 環境の
+Rails コンソールを開くとパスワードなどのユーザー情報を直接編集できて便利。
+
+```console
+# /usr/bin/gitlab-rails console production
+…省略…
+irb(main):001:0> user = User.where(email: "admin@example.com").first
+=> #<User id: 1, email: "admin@example.com", encrypted_password: 
+irb(main):002:0> user.password=user.password_confirmation='HogeHoge'
+=> "HogeHoge"
+irb(main):003:0> user.save!
+=> true
+```
+
 ### `~git/.ssh/authorized_keys` の再構築
 
 実験で `~git/.ssh/authorized_keys` ファイルを手動で変更したりしたせいか、
