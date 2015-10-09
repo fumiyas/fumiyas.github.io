@@ -302,3 +302,24 @@ module OmniAuth
   end
 end
 ```
+
+そのほか
+----------------------------------------------------------------------
+
+### `~git/.ssh/authorized_keys` の再構築
+
+実験で `~git/.ssh/authorized_keys` ファイルを手動で変更したりしたせいか、
+GitLab の Web UI で SSH 公開鍵を編集しても反映されなくなってしまった。
+
+再構築するためのコマンライン:
+
+```console
+# /usr/bin/gitlab-rake gitlab:shell:setup
+…省略…
+This will rebuild an authorized_keys file.
+You will lose any data stored in authorized_keys file.
+Do you want to continue (yes/no)? yes
+
+.........
+```
+
