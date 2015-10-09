@@ -238,7 +238,7 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
   ## GitLab のアイコンとロゴを独自のものに入れ換える場合:
   #Alias /favicon.ico /srv/www/gitlab.example.jp/public/example-favicon.ico
   #AliasMatch ^/assets/favicon-[0-9a-f]+\.ico$ /srv/www/gitlab.example.jp/public/example-favicon.ico
-  #AliasMatch ^/assets/logo-white-[0-9a-f]+\.png$ /srv/www/gitlab.example.jp/public/example-logo.png
+  #AliasMatch ^/assets/logo-[0-9a-f]+\.svg$ /srv/www/gitlab.example.jp/public/example-logo.png
        
   ErrorDocument 404 /404.html
   ErrorDocument 422 /422.html
