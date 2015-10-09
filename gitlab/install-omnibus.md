@@ -315,7 +315,8 @@ Rails コンソールを開くとパスワードなどのユーザー情報を�
 # /usr/bin/gitlab-rails console production
 …省略…
 irb(main):001:0> user = User.where(email: "admin@example.com").first
-=> #<User id: 1, email: "admin@example.com", encrypted_password: 
+=> #<User id: 1, email: "admin@example.com", encrypted_password: …省略…
+…省略…
 irb(main):002:0> user.password=user.password_confirmation='HogeHoge'
 => "HogeHoge"
 irb(main):003:0> user.save!
