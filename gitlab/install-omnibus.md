@@ -212,7 +212,7 @@ nginx['enable'] = false
 web_server['external_users'] = ['www-data']
 ```
 
-Apache HTTPD をフロントエンド Web サーバーにする場合の設定例:
+Apache HTTPD 2.4.7+ をフロントエンド Web サーバーにする場合の設定例:
 
 ```apache
 <VirtualHost *:80>
@@ -232,8 +232,15 @@ Apache HTTPD をフロントエンド Web サーバーにする場合の設定�
 
   ProxyPreserveHost On
   RewriteEngine On
-  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
-  RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [proxy,qsappend]
+
+  RewriteCond %{REQUEST_URI} ^/[\w\.-]+/[\w\.-]+/repository/archive.* [ornext]
+  RewriteCond %{REQUEST_URI} ^/api/v3/projects/.*/repository/archive.* [ornext]
+  RewriteCond %{REQUEST_URI} ^/[\w\.-]+/[\w\.-]+/(info/refs|git-upload-pack|git-receive-pack)$
+  RewriteRule .* unix:/var/opt/gitlab/gitlab-git-http-server/socket|http://localhost%{REQUEST_URI} [proxy,qsappend,noescape]
+
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f [ornext]
+  RewriteCond %{REQUEST_URI} ^/uploads
+  RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [proxy,qsappend,noescape]
 
   ## GitLab のアイコンとロゴを独自のものに入れ換える場合:
   #Alias /favicon.ico /srv/www/gitlab.example.jp/public/example-favicon.ico
