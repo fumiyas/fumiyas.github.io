@@ -242,8 +242,10 @@ Apache HTTPD 2.4.7+ をフロントエンド Web サーバーにする場合の�
   RewriteCond %{REQUEST_URI} ^/uploads
   RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [proxy,qsappend,noescape]
 
-  ## GitLab のアイコンとロゴを独自のものに入れ換える場合:
+  ## GitLab の Fav アイコンを独自のものに入れ換える場合:
   #Alias /favicon.ico /srv/www/gitlab.example.jp/public/example-favicon.ico
+  ## GitLab のロゴは HTML 埋め込みの SVG になったため、
+  ## URL 書き換えでは変更できなくなった。以下は旧 GitLab 用の設定:
   #AliasMatch ^/assets/favicon-[0-9a-f]+\.ico$ /srv/www/gitlab.example.jp/public/example-favicon.ico
   #AliasMatch ^/assets/logo-[0-9a-f]+\.svg$ /srv/www/gitlab.example.jp/public/example-logo.png
        
