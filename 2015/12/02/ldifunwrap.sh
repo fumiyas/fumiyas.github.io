@@ -23,3 +23,5 @@ done
 
 [[ -n $chunk ]] && printf '%s\n' "$chunk"
  
+exit 0
+

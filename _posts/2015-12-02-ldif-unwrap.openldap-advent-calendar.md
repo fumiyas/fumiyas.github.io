@@ -93,9 +93,23 @@ RFC 2849 の「Formal Syntax Definition of LDIF」章の「Notes on LDIF Syntax�
 {% include github-quote-file.html %}
 
 ああ、手元の Debian GNU/Linux の ksh 93u+20120801-2 だと
-バグってて動かねぇ。またかよ。`unset` したシェル変数を
-`while` ループ中で設定しても、ループ開始ごとに値がリセットされるみたいです。
-バグってないのなら動くはず。
+バグってて動かねぇ。またかよ。未定義のシェル変数を
+`while` ループ中で条件付き変数展開すると誤判定される模様。
+
+```console
+$ for s in '' ba da k mk z; do
+  sh=${s}sh
+  echo -n "$sh:"
+  (echo 1; echo 2; echo 3) \
+  |${s}sh -c 'unset v; while read n; do [ -n "${v+set}" ] && echo -n "$v "; v="$n"; done; echo "$v"'
+  done
+sh:1 2 3
+bash:1 2 3
+dash:1 2 3
+ksh:3
+mksh:1 2 3
+zsh:1 2 3
+```
 
 閑話休題。
 
