@@ -16,8 +16,8 @@ LDIF って何?
 
 詳しくは
 [RFC 2849 The LDAP Data Interchange Format (LDIF) - Technical Specification]
-(https://datatracker.ietf.org/doc/rfc2849/) を読んでいただくとして、要は、
-LDAP でデータをやりとりするときに利用するテキストデータであり、次のような
+(https://datatracker.ietf.org/doc/rfc2849/) を読んでいただくとして、
+要は LDAP でデータをやりとりするときに利用するテキストデータであり、
 次のような形式をしています。
 
 ```
