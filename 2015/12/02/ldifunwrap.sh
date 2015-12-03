@@ -21,7 +21,7 @@ while IFS= read -r line; do
   esac
 done
 
-[[ -n $chunk ]] && printf '%s\n' "$chunk"
+[ -n "$chunk" ] && printf '%s\n' "$chunk"
  
 exit 0
 
