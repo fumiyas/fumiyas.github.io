@@ -55,7 +55,7 @@ RFC 2849 の「Formal Syntax Definition of LDIF」章の「Notes on LDIF Syntax�
 >         discarded. Implementations SHOULD NOT fold lines in the middle
 >         of a multi-byte UTF-8 character.
 
-実装によりますが、デフォルトでは 76文字か 78文字で折り畳む実装が
+実装によりますが、デフォルトでは 76文字か 78文字で折り畳むものが
 多いようです。行折り畳みされた LDIF データの属性値の例を示します。
 
 ```
@@ -87,22 +87,27 @@ RFC 2849 の「Formal Syntax Definition of LDIF」章の「Notes on LDIF Syntax�
 ### 既存 LDIF データの折り畳みを解除する
 
 私はピュアシェル芸人なので、試しにシェルだけで実装してみました。
-たぶん遅いでしょうが、`sh` でも実体が新し目の `ash` や `dash` なら動きます。
+たぶん遅いでしょうが、素の `sh` でもその実体が新し目の `ash` や
+`dash` なら動きます。
 
 {% assign github_quote_file = "2015/12/02/ldifunwrap.sh" %}
 {% include github-quote-file.html %}
 
 ああ、手元の Debian GNU/Linux の ksh 93u+20120801-2 だと
 バグってて動かねぇ。またかよ。未定義のシェル変数を
-`while` ループ中で条件付き変数展開すると誤判定される模様。
+`while` ループ中で条件付き変数展開すると誤判定する模様。
 
 ```console
+$ dpkg -l ksh |tail -n1
+ii  ksh            93u+20120801-2 amd64        Real, AT&T version of the Korn shell
+$ ksh --version
+  version         sh (AT&T Research) 93u+ 2012-08-01
 $ for s in '' ba da k mk z; do
   sh=${s}sh
   echo -n "$sh:"
   (echo 1; echo 2; echo 3) \
   |${s}sh -c 'unset v; while read n; do [ -n "${v+set}" ] && echo -n "$v "; v="$n"; done; echo "$v"'
-  done
+done
 sh:1 2 3
 bash:1 2 3
 dash:1 2 3
