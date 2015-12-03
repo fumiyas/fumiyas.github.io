@@ -93,7 +93,9 @@ RFC 2849 の「Formal Syntax Definition of LDIF」章の「Notes on LDIF Syntax�
 {% include github-quote-file.html %}
 
 ああ、手元の Debian GNU/Linux の ksh 93u+20120801-2 だと
-バグってて動かねぇ。またかよ。バグってないのなら動くはず。
+バグってて動かねぇ。またかよ。`unset` したシェル変数を
+`while` ループ中で設定しても、ループ開始ごとに値がリセットされるみたいです。
+バグってないのなら動くはず。
 
 閑話休題。
 
