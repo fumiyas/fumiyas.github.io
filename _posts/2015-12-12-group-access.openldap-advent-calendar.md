@@ -23,7 +23,7 @@ DN を保持します。`groupOfUniqueNames` の場合は `uniqueMember` 属性�
 ```
 dn: cn=managers,ou=Groups,dc=example,dc=jp
 objectClass: groupOfNames
-cn: admins
+cn: managers
 member: uid=alice,ou=Users,dc=example,dc=jp
 member: uid=bob,ou=Users,dc=example,dc=jp
 member: uid=carol,ou=Users,dc=example,dc=jp
@@ -35,9 +35,9 @@ member: uid=carol,ou=Users,dc=example,dc=jp
 RDN の値となるのが特徴です。
 
 ```
-dn: cn=tech,ou=Groups,dc=example,dc=jp
+dn: cn=managers,ou=Groups,dc=example,dc=jp
 objectClass: groupOfNames
-cn: tech
+cn: managers
 gidNumber: 1000
 memberUid: alice
 memberUid: bob
@@ -149,7 +149,12 @@ RDN の値だけではユーザーエントリを識別することができま�
     * http://www.openldap.org/faq/data/cache/1133.html
 
 「sets」とは「集合」のことです。「集合」とは高校の数学で習うあの
-「集合」のことです。`slapd.access`(5) の `set=<集合>` 構文は、
+「集合」のことです。
+
+  * 集合 - Wikipedia
+    * https://ja.wikipedia.org/wiki/%E9%9B%86%E5%90%88
+
+`slapd.access`(5) の `set=<集合>` 構文は、
 各種の集合とその組合せ(集合の和や積)を指定し、その結果、
 該当する要素が存在した場合にアクセス権を付与します。
 
