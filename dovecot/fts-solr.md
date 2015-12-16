@@ -160,10 +160,11 @@ INBOX(受信箱)のメールのうち本文に「test」が含むものを検索
 # doveadm index -u user@example.jp INBOX
 ```
 
+メールボックス名にはワイルドカードが指定できる。
 全メールボックスのインデックス作成を実行する例。
 
 ```console
-# doveadm mailbox list -u user@example.jp INBOX |xargs -r -d '\n' doveadm index -u user@example.jp
+# doveadm index -u user@example.jp \*
 ```
 
 ### ユーザー削除時の対応
