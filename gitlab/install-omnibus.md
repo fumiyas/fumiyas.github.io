@@ -332,6 +332,12 @@ irb(main):003:0> user.save!
 => true
 ```
 
+### `psql` の起動
+
+```console
+su -s /bin/sh gitlab-psql -c '/opt/gitlab/embedded/bin/psql -h /var/opt/gitlab/postgresql gitlabhq_production'
+```
+
 ### `~git/.ssh/authorized_keys` の再構築
 
 実験で `~git/.ssh/authorized_keys` ファイルを手動で変更したりしたせいか、
