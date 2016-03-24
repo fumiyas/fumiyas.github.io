@@ -338,6 +338,39 @@ irb(main):003:0> user.save!
 su -s /bin/sh gitlab-psql -c '/opt/gitlab/embedded/bin/psql -h /var/opt/gitlab/postgresql gitlabhq_production'
 ```
 
+### LDAP のユーザーエントリの DN を変更したい
+
+LDAP で認証・登録されたユーザーは、
+GitLab のデータベースで GitLab ユーザーと LDAP ユーザーエントリの
+DN と関連付けされる。このため、LDAP ユーザーエントリの DN を
+変更すると、登録されている GitLab ユーザー情報と切り離されてしまう。
+
+LDAP の DN と GitLab ユーザーはデータベースで次のように関連付けされている。
+
+```console
+gitlabhq_production=# SELECT id,username FROM users WHERE username='fumiyas';
+ id | username
+----+----------
+ 15 | fumiyas
+(1 row)
+
+gitlabhq_production=# SELECT user_id,extern_uid FROM identities WHERE user_id=15;
+ user_id |                 extern_uid
+---------+---------------------------------------------
+      15 | uid=fumiyas,ou=Users,dc=osstech,dc=co,dc=jp
+(1 row)
+```
+
+例として、一括して DN を変更するための SQL を載せておく。
+
+```sql
+UPDATE identities
+  SET extern_uid = concat('uid=', u.username, ',ou=Users,dc=example,dc=co,dc=jp')
+  FROM (SELECT id,username FROM users) u
+  WHERE identities.user_id = u.id
+;
+```
+
 ### `~git/.ssh/authorized_keys` の再構築
 
 実験で `~git/.ssh/authorized_keys` ファイルを手動で変更したりしたせいか、
