@@ -8,10 +8,5 @@ twitter:
   tweet: https://twitter.com/?status=
 title: "ダメ出し Blog"
 author: "SATOH Fumiyasu (佐藤 文優, fumiyas)"
-markdown: redcarpet
-redcarpet:
-  extensions: [no_intra_emphasis,tables,autolink,strikethrough,space_after_headers]
-#fenced_code_blocks
-#lax_spacing
-#superscript
+markdown: kramdown
 
