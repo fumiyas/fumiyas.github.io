@@ -317,8 +317,7 @@ end
 
 ### ユーザー情報の直接編集
 
-`/usr/bin/gitlab-rails console production` で GitLab 環境の
-Rails コンソールを開くとパスワードなどのユーザー情報を直接編集できて便利。
+GitLab 環境の Rails コンソールを開くとパスワードなどのユーザー情報を直接編集できて便利。
 
 ```console
 # /usr/bin/gitlab-rails console production
@@ -332,10 +331,10 @@ irb(main):003:0> user.save!
 => true
 ```
 
-### `psql` の起動
+### PostgreSQL `psql` でデータベースへの接続
 
 ```console
-su -s /bin/sh gitlab-psql -c '/opt/gitlab/embedded/bin/psql -h /var/opt/gitlab/postgresql gitlabhq_production'
+# su -s /bin/sh gitlab-psql -c '/opt/gitlab/embedded/bin/psql -h /var/opt/gitlab/postgresql gitlabhq_production'
 ```
 
 ### LDAP のユーザーエントリの DN を変更したい
