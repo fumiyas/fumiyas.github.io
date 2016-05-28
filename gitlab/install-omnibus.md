@@ -36,10 +36,11 @@ Debian を対象とする。
     * スーパーデーモン
   * nginx
     * フロントエンド Web サーバー (無効化可能)
-    * デフォルトポート: `*:80`
+    * デフォルト TCP ポート: `*:80`
   * Unicorn
     * バックエンド Web サーバー (Rails 実行環境)
-    * デフォルトポート: `127.0.0.1:8080`
+    * デフォルト TCP ポート: `127.0.0.1:8080`
+    * デフォルト UNIX ドメインポート: `/var/opt/gitlab/gitlab-workhorse/socket`
   * PostgreSQL
     * デフォルトポート: `/tmp/.s.PGSQL.5432`
   * Redis
@@ -232,11 +233,6 @@ Apache HTTPD 2.4.7+ をフロントエンド Web サーバーにする場合の�
 
   ProxyPreserveHost On
   RewriteEngine On
-
-  RewriteCond %{REQUEST_URI} ^/[\w\.-]+/[\w\.-]+/repository/archive.* [ornext]
-  RewriteCond %{REQUEST_URI} ^/api/v3/projects/.*/repository/archive.* [ornext]
-  RewriteCond %{REQUEST_URI} ^/[\w\.-]+/[\w\.-]+/(info/refs|git-upload-pack|git-receive-pack)$
-  RewriteRule .* unix:/var/opt/gitlab/gitlab-git-http-server/socket|http://localhost%{REQUEST_URI} [proxy,qsappend,noescape]
 
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f [ornext]
   RewriteCond %{REQUEST_URI} ^/uploads
