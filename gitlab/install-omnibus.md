@@ -6,7 +6,7 @@ layout: default
 
 GitLab CE (Community Edition) Omnibus (全部入り)
 パッケージのインストールと初期設定の手順。
-Debian を対象とする。
+随時更新しているが、現在は GitLab CE 8.8.2, Debian unstable を対象とする。
 
 公式ドキュメントにほぼ網羅されているので、読む。
 
@@ -60,12 +60,14 @@ GitLab CE のダウンロードページ https://about.gitlab.com/downloads/ を
 「I want to install GitLab on」から「Debian 8」
 を選択するとパッケージの入手方法と導入手順が表示されるので参照する。
 
+<!--
 …が、2015年5月現在、手順通りに作業すると最新版の GitLab はインストールされない。
 
 そこで、同ページの下部「Omnibus Packages」の「Download the package」を開き、
 さらに「`gitlab-ce_<バージョン>~omnibus-1_amd64.deb` debian/jessie」を開き、
 画面右上の「Download」ボタンを押して deb パッケージをダウンロードする。
 パッケージファイルのサイズは 300 MB 超あるので注意。
+-->
 
 MTA と SSH サーバーのインストール
 ----------------------------------------------------------------------
@@ -78,6 +80,8 @@ MTA と SSH サーバーのインストール
 
 システムユーザーの作成
 ----------------------------------------------------------------------
+
+***通常はこの節の作業は必要ない。***
 
 `gitlab_<バージョン>-omnibus-<リリース>_amd64.deb`
 をインストールすると自動的にシステムユーザーを作成してくれるが、
@@ -241,15 +245,15 @@ FIXME: GitHub Pages fails to build a page from this page with "apache" highlight
   RewriteEngine On
 
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f [ornext]
-  RewriteCond %{REQUEST_URI} ^/uploads
-  RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [proxy,qsappend,noescape]
+  RewriteCond %{REQUEST_URI} ^/uploads/
+  RewriteRule ^ unix:/var/opt/gitlab/gitlab-workhorse/socket|http://127.0.0.1%{REQUEST_URI} [proxy,qsappend,noescape]
 
   ## GitLab の Fav アイコンを独自のものに入れ換える場合:
   #Alias /favicon.ico /srv/www/gitlab.example.jp/public/example-favicon.ico
+  #AliasMatch ^/assets/favicon-[0-9a-f]{64}\.ico$ /srv/www/gitlab.example.jp/public/example-favicon.ico
   ## GitLab のロゴは HTML 埋め込みの SVG になったため、
   ## URL 書き換えでは変更できなくなった。以下は旧 GitLab 用の設定:
-  #AliasMatch ^/assets/favicon-[0-9a-f]+\.ico$ /srv/www/gitlab.example.jp/public/example-favicon.ico
-  #AliasMatch ^/assets/logo-[0-9a-f]+\.svg$ /srv/www/gitlab.example.jp/public/example-logo.png
+  #AliasMatch ^/assets/logo-[0-9a-f]{64}\.png$ /srv/www/gitlab.example.jp/public/example-logo.png
        
   ErrorDocument 404 /404.html
   ErrorDocument 422 /422.html
