@@ -215,7 +215,13 @@ web_server['external_users'] = ['www-data']
 
 Apache HTTPD 2.4.7+ をフロントエンド Web サーバーにする場合の設定例:
 
-```apache
+<!--
+FIXME: GitHub Pages fails to build a page from this page with "apache" highlighter.
+
+  * Apache Lexer raises NoMethodError error · Issue #385 · jneen/rouge
+    * https://github.com/jneen/rouge/issues/385
+-->
+```conf
 <VirtualHost *:80>
   ServerName gitlab.example.jp
   DocumentRoot /opt/gitlab/embedded/service/gitlab-rails/public
