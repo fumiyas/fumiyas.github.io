@@ -176,8 +176,8 @@ gitlab_rails['smtp_address'] = "smtp.example.jp"
 デフォルトでは、SMTP サーバーがクライアントからの `EHLO` コマンドに対して
 `STARTTLS` を応答すると、自動的に TLS を利用する点に注意。
 
-SMTP サーバーに localhost を指定した場合、
-サーバー証明書に記載のサーバー名と[localhost」が一致しないため、
+SMTP サーバーに `localhost` を指定した場合、
+サーバー証明書に記載のサーバー名と `localhost` が一致しないため、
 証明書の検証処理で不正と判断され、メール発信が失敗してしまう。
 このようなときは、 `gitlab_rails['smtp_enable_starttls_auto'] = false`
 を設定するとよい。
