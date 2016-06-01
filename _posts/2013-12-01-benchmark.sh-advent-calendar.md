@@ -4,8 +4,8 @@ tags: [sh, shell, benchmark]
 layout: default
 ---
 
-[拡張 POSIX シェルスクリプト Advent Calendar 2013]
-(http://www.adventar.org/calendars/212)、1日目の記事です。
+[拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、
+1日目の記事です。
 
 「このくらいの要件ならシェルで書ける!」と意気込んで実装を開始して、
 たとえやりきっても「あー、やっぱり (あなたの好きな LL) で書けばよかった」
