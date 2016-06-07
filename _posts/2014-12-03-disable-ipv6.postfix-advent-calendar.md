@@ -4,8 +4,7 @@ tags: [postfix, ipv6]
 layout: default
 ---
 
-[Postfix Advent Calendar 2014]
-(http://qiita.com/advent-calendar/2014/postfix) の 3日目の記事です。
+[Postfix Advent Calendar 2014](http://qiita.com/advent-calendar/2014/postfix) の 3日目の記事です。
 
 IPv6 は来年で 20歳らしいですね ([RFC 1752](http://tools.ietf.org/html/rfc1752))。
 今回は IPv6 20周年を記念して、Postfix で IPv6 を無効化する方法について紹介しましょう。

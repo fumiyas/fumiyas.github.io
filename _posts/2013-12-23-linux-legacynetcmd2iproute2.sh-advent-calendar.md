@@ -4,8 +4,7 @@ tags: [sh, shell, linux]
 layout: default
 ---
 
-[拡張 POSIX シェルスクリプト Advent Calendar 2013]
-(http://www.adventar.org/calendars/212)、23日目の記事です。
+[拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、23日目の記事です。
 ネタの在庫はともかく、書く気力がありません。
 いくつかの記事がそれなりにうけたこともあり、頭が満足してしまったようです。
 
@@ -40,8 +39,7 @@ iproute (RHEL 系、旧 Debian 系) あるいは iproute2 (Debian 系)
 一部マニアがマニアックなネットワーク設定をするために利用する程度で、
 一般的な Linux ユーザーには認知されていませんでした。
 特に `ip` が利用されていたのは「ポリシールーティング」が必要な場面でした。
-[「linux ip route ポリシー」で Web 検索]
-(https://www.google.com/search?q=linux+ip+route+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC)
+[「linux ip route ポリシー」で Web 検索](https://www.google.com/search?q=linux+ip+route+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC)
 すると、多くの例が紹介されています。
 
 iproute2 にはほかにもネットワーク統計情報を表示する `ss`(8)、

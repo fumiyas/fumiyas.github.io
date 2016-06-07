@@ -4,10 +4,8 @@ tags: [sh, shell]
 layout: default
 ---
 
-[zsh Advent Calendar 2013]
-(http://qiita.com/advent-calendar/2013/zsh) 兼
-[拡張 POSIX シェルスクリプト Advent Calendar 2013]
-(http://www.adventar.org/calendars/212)、9日目の記事です。
+[zsh Advent Calendar 2013](http://qiita.com/advent-calendar/2013/zsh) 兼
+[拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、9日目の記事です。
 
 今日は既存のシェルスクリプトを書き換えることなく動作を変える方法を紹介します。
 当初は zsh 向けの記事にしようと思っていたのですが、

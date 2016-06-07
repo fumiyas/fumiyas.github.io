@@ -4,8 +4,7 @@ tags: [postfix]
 layout: default
 ---
 
-[Postfix Advent Calendar 2014]
-(http://qiita.com/advent-calendar/2014/postfix) の 7日目の記事です。
+[Postfix Advent Calendar 2014](http://qiita.com/advent-calendar/2014/postfix) の 7日目の記事です。
 
 Postfix の詳細ログの取得方法について紹介します。
 

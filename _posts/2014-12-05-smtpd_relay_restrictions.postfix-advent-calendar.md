@@ -4,8 +4,7 @@ tags: [postfix]
 layout: default
 ---
 
-[Postfix Advent Calendar 2014]
-(http://qiita.com/advent-calendar/2014/postfix) の 5日目の記事です。
+[Postfix Advent Calendar 2014](http://qiita.com/advent-calendar/2014/postfix) の 5日目の記事です。
 
 本日は予定を変更して、Postfix 2.10 で新設された
 `smtpd_relay_restrictions` パラメーターの意図を紹介したいと思います。

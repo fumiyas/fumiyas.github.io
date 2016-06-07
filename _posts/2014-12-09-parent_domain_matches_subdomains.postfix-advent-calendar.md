@@ -4,8 +4,7 @@ tags: [postfix]
 layout: default
 ---
 
-[Postfix Advent Calendar 2014]
-(http://qiita.com/advent-calendar/2014/postfix) の 9日目の記事です。
+[Postfix Advent Calendar 2014](http://qiita.com/advent-calendar/2014/postfix) の 9日目の記事です。
 書いている時点の日付は 11日目になろうとしています。遅れてごめんなさい。
 
 今日は `parent_domain_matches_subdomains` パラメーターを紹介します。

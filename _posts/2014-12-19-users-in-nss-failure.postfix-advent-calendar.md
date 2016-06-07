@@ -4,8 +4,7 @@ tags: [postfix]
 layout: default
 ---
 
-[Postfix Advent Calendar 2014]
-(http://qiita.com/advent-calendar/2014/postfix) の 19日目の記事です。
+[Postfix Advent Calendar 2014](http://qiita.com/advent-calendar/2014/postfix) の 19日目の記事です。
 今回も安定の 5日遅れです。毎度毎度すみません。
 
 今回は、`/etc/passwd` に加え、LDAP サーバーやデータベースシステムを UNIX

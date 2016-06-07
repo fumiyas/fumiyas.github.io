@@ -4,8 +4,7 @@ tags: [openldap, ldap, shell, sh]
 layout: default
 ---
 
-[OpenLDAP と仲間たち Advent Calendar 2015]
-(http://qiita.com/advent-calendar/2015/openldap) の 2日目の記事です。
+[OpenLDAP と仲間たち Advent Calendar 2015](http://qiita.com/advent-calendar/2015/openldap) の 2日目の記事です。
 
 今日は LDAP におけるデータのテキスト表現である LDIF
 (LDAP Data Interchange Format) データの行折り畳みと、
@@ -15,8 +14,7 @@ LDIF って何?
 ----------------------------------------------------------------------
 
 詳しくは
-[RFC 2849 The LDAP Data Interchange Format (LDIF) - Technical Specification]
-(https://datatracker.ietf.org/doc/rfc2849/) を読んでいただくとして、
+[RFC 2849 The LDAP Data Interchange Format (LDIF) - Technical Specification](https://datatracker.ietf.org/doc/rfc2849/) を読んでいただくとして、
 要は LDAP でデータをやりとりするときに利用するテキストデータであり、
 次のような形式をしています。
 

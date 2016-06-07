@@ -4,8 +4,7 @@ tags: [sh, shell, security, escape]
 layout: default
 ---
 
-[拡張 POSIX シェルスクリプト Advent Calendar 2013]
-(http://www.adventar.org/calendars/212)、21日目の記事です。
+[拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、21日目の記事です。
 今日は、一部界隈に「シェル怖い」と感じてながら仕方なく使用している人や、
 怖さを認識せず(できず?)に平気で使用している人が世に溢れているようなので、
 シェルを避ける方法について紹介したいと思います。

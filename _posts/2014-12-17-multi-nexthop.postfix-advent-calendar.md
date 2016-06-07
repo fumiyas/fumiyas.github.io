@@ -4,8 +4,7 @@ tags: [postfix,ha]
 layout: default
 ---
 
-[Postfix Advent Calendar 2014]
-(http://qiita.com/advent-calendar/2014/postfix) の 17日目の記事です。
+[Postfix Advent Calendar 2014](http://qiita.com/advent-calendar/2014/postfix) の 17日目の記事です。
 安定の 4日遅れです。毎度すみません。
 
 今回は、メールの中継処理の高可用性・負荷分散を実現するため、

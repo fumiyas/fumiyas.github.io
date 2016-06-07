@@ -4,11 +4,9 @@ tags: [sh, shell, zsh]
 layout: default
 ---
 
-[拡張 POSIX シェルスクリプト Advent Calendar 2013]
-(http://www.adventar.org/calendars/212)、3日目の記事です。
+[拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、3日目の記事です。
 
-[初日に「bash を避けて ksh や zsh で書くとスクリプトが速くなるよ!」]
-(/2013/12/01/benchmark.sh-advent-calendar.html)
+[初日に「bash を避けて ksh や zsh で書くとスクリプトが速くなるよ!」](/2013/12/01/benchmark.sh-advent-calendar.html)
 と紹介しましたが、実は zsh でふつうの sh なシェルスクリプトを書くと、色々ハマれます。
 何が問題でどうすればいいのでしょうか。
 いきなりですが、最初にどうすればいいかを紹介します。

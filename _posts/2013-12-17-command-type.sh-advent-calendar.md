@@ -4,8 +4,7 @@ tags: [sh, shell]
 layout: default
 ---
 
-[拡張 POSIX シェルスクリプト Advent Calendar 2013]
-(http://www.adventar.org/calendars/212)、17日目の記事です。
+[拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、17日目の記事です。
 時間がないのでやっつけです。間違いがあったらすみません…。
 
 今日はシェルから起動するコマンドが何者かを知る方法と使い分ける方法を紹介します。

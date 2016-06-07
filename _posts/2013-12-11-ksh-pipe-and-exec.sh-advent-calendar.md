@@ -4,8 +4,7 @@ tags: [sh, shell]
 layout: default
 ---
 
-[拡張 POSIX シェルスクリプト Advent Calendar 2013]
-(http://www.adventar.org/calendars/212)、11日目の記事です。
+[拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、11日目の記事です。
 Twitter で読者が少ないようだと零したところ、
 「ネタがマニアックすぎでは」と言われました。そうですか、そうですね。
 

@@ -4,8 +4,7 @@ tags: [openldap, ldap]
 layout: default
 ---
 
-[OpenLDAP と仲間たち Advent Calendar 2015]
-(http://qiita.com/advent-calendar/2015/openldap) の 12日目の記事です。
+[OpenLDAP と仲間たち Advent Calendar 2015](http://qiita.com/advent-calendar/2015/openldap) の 12日目の記事です。
 
 OpenLDAP `slapd.conf`(5) の `access` パラメーターは、
 `slapd`(8) が持つ LDAP DIT へのアクセス権を設定できます。
