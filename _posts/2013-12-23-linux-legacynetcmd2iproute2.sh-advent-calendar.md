@@ -120,7 +120,9 @@ $ ./netstat2.bash --xx <netstat(8) のオプション>
 ```
 
 旧来のコマンド名でインストールするとラッパーとして動作し、
-旧来のコマンドと同等に実行することもできます:
+旧来のコマンドと同等に実行することもできます。
+ただし、`/sbin/ifconfig`、`/bin/netstat` が存在する場合は、
+内部でそちらを実行します:
 
 ``` console
 $ sudo install -m 0755 ifconfig2.bash /usr/local/sbin/ifconfig
