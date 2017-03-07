@@ -133,9 +133,9 @@ Perl では `perl -p00e 's/\n //g'` といった例がよく紹介されます�
 参考:
 
   * Sed/Awk - remove blankspaces / join lines in ldif dump - Stack Overflow
-    * http://stackoverflow.com/questions/13139294/sed-awk-remove-blankspaces-join-lines-in-ldif-dump
+    * <http://stackoverflow.com/questions/13139294/sed-awk-remove-blankspaces-join-lines-in-ldif-dump>
   * Using sed to unwrap ldif lines - Nunc Fluens
-    * http://richmegginson.livejournal.com/18726.html
+    * <http://richmegginson.livejournal.com/18726.html>
 
 Perl / Python などの各種 LL や C / Go などのコンパイル言語で実装された
 LDIF ライブラリを用いれば、より簡単・確実に折り畳み解除処理できると思います。

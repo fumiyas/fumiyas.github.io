@@ -8,7 +8,7 @@ layout: default
 ネタの在庫はともかく、書く気力がありません。
 いくつかの記事がそれなりにうけたこともあり、頭が満足してしまったようです。
 
-https://twitter.com/satoh_fumiyasu/status/415045480477765633
+<https://twitter.com/satoh_fumiyasu/status/415045480477765633>
 
 > 燃え尽きたぜ．．．真っ白に、 真っ白な灰に．．．
 > (Advent Calendar 書けない
@@ -61,7 +61,7 @@ net-tools パッケージは非推奨となり、iproute2 で置き換えられ�
 
   * Deprecated Linux networking commands and their replacements | Doug Vitale Tech
 Blog
-    * https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/
+    * <https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/>
 
 旧来のネットワークコマンドラインを iproute2 コマンドラインに変換する
 ----------------------------------------------------------------------
@@ -70,7 +70,7 @@ Blog
 のコマンドラインに変換する bash スクリプトを作ってみました。
 
   * Convert to Linux iproute2 command-line from legacy networking command-line
-    * https://github.com/fumiyas/linux-legacynetcmd2iproute2
+    * <https://github.com/fumiyas/linux-legacynetcmd2iproute2>
 
 ダウンロード:
 

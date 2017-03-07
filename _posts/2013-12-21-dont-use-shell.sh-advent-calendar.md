@@ -28,7 +28,7 @@ layout: default
 「PHPだってシェル経由でないコマンド呼び出し機能が欲しい | 徳丸浩の日記」
 ----------------------------------------------------------------------
 
-https://twitter.com/ockeghem/status/414254447280148480
+<https://twitter.com/ockeghem/status/414254447280148480>
 
 > 日記書いた>『このエントリはPHP Advent Calendar 2013 in Adventar の21日目です…』
 > PHPだってシェル経由でないコマンド呼び出し機能が欲しい |
@@ -79,9 +79,9 @@ PHP…おそろしい子！
 そんな中で目にした Blog 記事:
 
   * OSコマンドのエスケープ | yohgaki's blog
-    * http://blog.ohgaki.net/os-command-escape
+    * <http://blog.ohgaki.net/os-command-escape>
   * OSコマンドのエスケープ – シェルの仕様とコマンドの実装 | yohgaki's blog
-    * http://blog.ohgaki.net/os-command-escape-shell-spec-command-implementation
+    * <http://blog.ohgaki.net/os-command-escape-shell-spec-command-implementation>
 
 「えすけーぷじゅうよう!!」を強調して言いたいからなのかシェルの理解が足りないからなのか、
 意図がよくわからない文言やら説明が散見されますが、きりがないのでそれらはスルーします。
@@ -341,7 +341,7 @@ PHP は CGI 版か CLI 版でないとできないそうです、残念! 省略!
 
 要は SQL のプリペアードステートメントみたいなものです。
 
-https://twitter.com/satoh_fumiyasu/status/410630655966343168
+<https://twitter.com/satoh_fumiyasu/status/410630655966343168>
 
 > .@riywo どうしても system(3) 等でシェルを利用したい場合はパラメーターはコマンドラインに直接記述せずに環境変数を経由するといいです。エスケープ不要で楽だし安全。 `$ENV{param}='；rm -rf /';system('cmd "$param"');`
 

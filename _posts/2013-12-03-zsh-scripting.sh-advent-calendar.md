@@ -131,7 +131,7 @@ typesetsilent       off on
     * 配列変数の添字を 0 ベース (配列の最初の要素の添字が 0) にする。ksh, bash と互換。
     * zsh のデフォルトは 1 ベース (配列の最初の要素の添字が 1)。なんでだよ…。
     * 余談だが「0オリジンと1オリジンは和製英語」らしい。
-      * https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%B3
+      * <https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%B3>
   * `globsubst` (`GLOB_SUBST`)
     * クォートなしの変数展開時に展開後の値でパス名展開する。
     * zsh のデフォルトはパス名展開しない。

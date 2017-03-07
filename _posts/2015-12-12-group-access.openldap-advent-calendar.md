@@ -144,14 +144,14 @@ RDN の値だけではユーザーエントリを識別することができま�
 オンラインマニュアルには「The statement set=<pattern> is undocumented yet」
 としか記載されていませんが、OpenLDAP の FAQ に詳しい解説があります。
 
-  * OpenLDAP Faq-O-Matic: Sets in Access Controls
-    * http://www.openldap.org/faq/data/cache/1133.html
+* OpenLDAP Faq-O-Matic: Sets in Access Controls
+  * <http://www.openldap.org/faq/data/cache/1133.html>
 
 「sets」とは「集合」のことです。「集合」とは高校の数学で習うあの
 「集合」のことです。
 
-  * 集合 - Wikipedia
-    * https://ja.wikipedia.org/wiki/%E9%9B%86%E5%90%88
+* 集合 - Wikipedia
+  * <https://ja.wikipedia.org/wiki/%E9%9B%86%E5%90%88>
 
 `slapd.access`(5) の `set=<集合>` 構文は、
 各種の集合とその組合せ(集合の和や積)を指定し、その結果、
