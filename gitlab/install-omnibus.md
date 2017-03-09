@@ -337,10 +337,21 @@ irb(main):003:0> user.save!
 => true
 ```
 
-### PostgreSQL `psql` でデータベースへの接続
+### PostgreSQL `psql` でデータベースへ接続
 
 ```console
 # su -s /bin/sh gitlab-psql -c '/opt/gitlab/embedded/bin/psql -h /var/opt/gitlab/postgresql gitlabhq_production'
+```
+
+`psql` コマンド、SQL の実行例:
+
+```
+gitlabhq_production=# \d
+…テーブル一覧…
+gitlabhq_production=# \d users
+… users テーブルスキーマ表示…
+gitlabhq_production=# SELECT row_to_json(users,TRUE) FROM users;
+… users テーブルの全レコードを pretty-print な JSON 形式で表示…
 ```
 
 ### LDAP のユーザーエントリの DN を変更したい
