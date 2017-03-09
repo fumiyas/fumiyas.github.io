@@ -10,12 +10,12 @@ GitLab CE (Community Edition) Omnibus (全部入り)
 
 公式ドキュメントにほぼ網羅されているので、読む。
 
-  * https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md
+  * <https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md>
 
 参考:
 
   * 続・GitHubクローンのGitLabを５分でインストールした - アルパカDiary
-    * http://d.hatena.ne.jp/toritori0318/20140524/1400955383
+    * <http://d.hatena.ne.jp/toritori0318/20140524/1400955383>
 
 構成
 ----------------------------------------------------------------------
@@ -56,7 +56,7 @@ GitLab CE (Community Edition) Omnibus (全部入り)
 パッケージの入手
 ----------------------------------------------------------------------
 
-GitLab CE のダウンロードページ https://about.gitlab.com/downloads/ を開き、
+GitLab CE のダウンロードページ <https://about.gitlab.com/downloads/> を開き、
 「I want to install GitLab on」から「Debian 8」
 を選択するとパッケージの入手方法と導入手順が表示されるので参照する。
 
