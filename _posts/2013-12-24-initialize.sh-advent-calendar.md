@@ -6,8 +6,7 @@ layout: default
 
 [拡張 POSIX シェルスクリプト Advent Calendar 2013](http://www.adventar.org/calendars/212)、24日目の記事です。
 [アドベントカレンダーって 24までらしい](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%89%E3%83%99%E3%83%B3%E3%83%88%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC)ですよ? 今日で最終日ですよね?! ねっ???
-あれ、[25日まであるのもチラホラ?]
-(https://www.google.com/search?q=%E3%82%A2%E3%83%89%E3%83%99%E3%83%B3%E3%83%88%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC&tbm=isch)
+あれ、[25日まであるのもチラホラ?](https://www.google.com/search?q=%E3%82%A2%E3%83%89%E3%83%99%E3%83%B3%E3%83%88%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC&tbm=isch)
 後半、奇跡的にネタが発生したりしてなんとか間に合いましたが、もう[進捗駄目です](https://www.google.com/search?q=%E9%80%B2%E6%8D%97%E3%83%80%E3%83%A1%E3%81%A7%E3%81%99&tbm=isch)。
 明日は期待しないでください。今日も適当な内容でごめんなさい。
 
