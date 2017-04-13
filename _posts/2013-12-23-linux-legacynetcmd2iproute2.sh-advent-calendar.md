@@ -59,7 +59,7 @@ net-tools パッケージは非推奨となり、iproute2 で置き換えられ�
 
 旧来のコマンドと iproute2 のコマンドの対応表を紹介してくれているページを紹介します。
 
-  * Deprecated Linux networking commands and their replacements | Doug Vitale Tech
+* Deprecated Linux networking commands and their replacements | Doug Vitale Tech
 Blog
     * <https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/>
 
@@ -69,7 +69,7 @@ Blog
 `ifconfig`, `netstat` のコマンドラインを `ip`, `ss`
 のコマンドラインに変換する bash スクリプトを作ってみました。
 
-  * Convert to Linux iproute2 command-line from legacy networking command-line
+* Convert to Linux iproute2 command-line from legacy networking command-line
     * <https://github.com/fumiyas/linux-legacynetcmd2iproute2>
 
 ダウンロード:
@@ -144,4 +144,3 @@ Enjoy!
 * * *
 
 {% include wishlist-dec.html %}
-

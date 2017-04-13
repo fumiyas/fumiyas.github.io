@@ -122,24 +122,24 @@ typesetsilent       off on
 すべてを解説するのは面倒なので、sh なシェルスクリプトを書く上で特徴的なものだけ解説します。
 (詳細は `zshoptions`(1) を参照。括弧内のオプション名は `zshoptions`(1) 記載の名前)
 
-  * `bsdecho` (`BSD_ECHO`)
+* `bsdecho` (`BSD_ECHO`)
     * echo 組込みコマンドを BSD echo 互換にする。bash 互換。
     * ksh は Linux や *BSD など、SystemV でない OS 上なら互換(だと思う。後述)。
     * zsh のデフォルトは bash の `echo -e <引数>` 相当、
       つまり引数中のエスケープシーケンスを解釈する。余計なことをしやがる…。
-  * `ksharrays` (`KSH_ARRAYS`)
+* `ksharrays` (`KSH_ARRAYS`)
     * 配列変数の添字を 0 ベース (配列の最初の要素の添字が 0) にする。ksh, bash と互換。
     * zsh のデフォルトは 1 ベース (配列の最初の要素の添字が 1)。なんでだよ…。
     * 余談だが「0オリジンと1オリジンは和製英語」らしい。
-      * <https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%B3>
-  * `globsubst` (`GLOB_SUBST`)
+	* <https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%B3>
+* `globsubst` (`GLOB_SUBST`)
     * クォートなしの変数展開時に展開後の値でパス名展開する。
     * zsh のデフォルトはパス名展開しない。
-  * `nomatch` (`NOMATCH`)
+* `nomatch` (`NOMATCH`)
     * パス名のパターン展開でマッチするファイルが存在しない場合に展開後の値をパターンそのままとする。
     * zsh のデフォルトはエラーになる。`zsh: no matches found: <パターン>`
     * 無効にするには `set -o NONOMATCH` のように二重否定にする。気持ち悪い。
-  * `shwordsplit` (`SH_WORD_SPLIT`)
+* `shwordsplit` (`SH_WORD_SPLIT`)
     * クォートなしの変数展開時に展開された値を空白文字で分割(ワード分割)する。
     * zsh のデフォルトは空白文字分割しない。
 
@@ -201,4 +201,3 @@ Advent Calendar ネタが尽きたら `echo` コマンドの闇に迫りたい�
 * * *
 
 {% include wishlist-dec.html %}
-

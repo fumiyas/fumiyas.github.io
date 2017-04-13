@@ -6,13 +6,13 @@ layout: default
 
 Twitter の俺の TL にこんなネタが流れてきた。現実逃避にはもってこいのネタ。
 
-  * 連続する数列をハイフンでまとめるシェルスクリプト - ザリガニが見ていた...。
+* 連続する数列をハイフンでまとめるシェルスクリプト - ザリガニが見ていた...。
     * <http://d.hatena.ne.jp/zariganitosh/20131127/succession_hyphen_number>
-  * Rubyでどう書く？：連続した数列を範囲形式にまとめたい．いや，Rubyで書かない． | 上田さんのブログ
+* Rubyでどう書く？：連続した数列を範囲形式にまとめたい．いや，Rubyで書かない． | 上田さんのブログ
     * <http://blog.ueda.asia/?p=1663>
-  * awkで連続した数列を範囲形式に - jarp,
+* awkで連続した数列を範囲形式に - jarp,
     * <http://jarp.does.notwork.org/diary/201311c.html#201311271>
-  * TL で見かけた回答ツイート
+* TL で見かけた回答ツイート
     * <https://twitter.com/RobustHunter/status/405552789876523008>
     * <https://twitter.com/uspmag/status/405730524733247488>
     * <https://twitter.com/masaru0714/status/405740108948598784>

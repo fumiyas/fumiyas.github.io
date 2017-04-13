@@ -16,18 +16,18 @@ CSS の関連を把握せずに class 指定しない HTML
 
 ということで、捨てます。
 
-   1. 以下のファイルを削除する。
-      * public/css/bootstrap.css
-      * public/img/glyphicons-halflings.png
-      * public/img/glyphicons-halflings-white.png
-   2. app/views/header.html から
-      `<link rel="stylesheet" type="text/css" href="/public/css/normalize.css">`
-      を削除。
-   3. app/views/debug.html の
-      `<a id="toggleSidebar" href="#" class="toggles"><i class="icon-chevron-left"></i></a>`
-      を
-      `<a id="toggleSidebar" href="#" class="toggles">X</a>`
-      などのように書き換え。
+1. 以下のファイルを削除する。
+    * public/css/bootstrap.css
+    * public/img/glyphicons-halflings.png
+    * public/img/glyphicons-halflings-white.png
+2. app/views/header.html から
+   `<link rel="stylesheet" type="text/css" href="/public/css/normalize.css">`
+   を削除。
+3. app/views/debug.html の
+   `<a id="toggleSidebar" href="#" class="toggles"><i class="icon-chevron-left"></i></a>`
+   を
+   `<a id="toggleSidebar" href="#" class="toggles">X</a>`
+   などのように書き換え。
 
 最後の debug.html の書き換えをしないと、
 デバッグ環境で有効になるサイドバーの表示切り替えボタンが表示されなくなります。

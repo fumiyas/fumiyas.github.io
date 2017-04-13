@@ -132,9 +132,9 @@ Perl では `perl -p00e 's/\n //g'` といった例がよく紹介されます�
 
 参考:
 
-  * Sed/Awk - remove blankspaces / join lines in ldif dump - Stack Overflow
+* Sed/Awk - remove blankspaces / join lines in ldif dump - Stack Overflow
     * <http://stackoverflow.com/questions/13139294/sed-awk-remove-blankspaces-join-lines-in-ldif-dump>
-  * Using sed to unwrap ldif lines - Nunc Fluens
+* Using sed to unwrap ldif lines - Nunc Fluens
     * <http://richmegginson.livejournal.com/18726.html>
 
 Perl / Python などの各種 LL や C / Go などのコンパイル言語で実装された
@@ -146,4 +146,3 @@ Perl の `Net::LDAP::LDIF` を比較したことがありますが、数倍遅�
 * * *
 
 {% include wishlist-dec.html %}
-

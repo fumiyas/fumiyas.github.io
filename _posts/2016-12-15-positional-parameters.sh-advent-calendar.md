@@ -347,9 +347,8 @@ zsh のデフォルト状態では `$*`, `$@`, は `"$@"` と等価です。
 の解説をご覧ください。
 
 * zsh でシェルスクリプトを書くときの留意点 - 拡張 POSIX シェルスクリプト Advent Calendar 2013 - ダメ出し Blog
-  * <https://fumiyas.github.io/2013/12/03/zsh-scripting.sh-advent-calendar.html>
+    * <https://fumiyas.github.io/2013/12/03/zsh-scripting.sh-advent-calendar.html>
 
 * * *
 
 {% include wishlist-dec.html %}
-

@@ -139,13 +139,13 @@ relayhost = [relay1.example.jp] [relay2.example.jp]
 `relayhost` の値に指定できる形式は次の 3形式があります。
 いずれも一つしか指定できません。
 
-  * `relayhost = ドメイン名`
+* `relayhost = ドメイン名`
     * `ドメイン名` が指す DNS MX RR 宛に配送します。
     * MX RR が存在しない場合は A RR も索きます。
     * ドメイン名ということになっていますが、ホスト名でも構いません。
-  * `relayhost = [ホスト名]`
+* `relayhost = [ホスト名]`
     * `ホスト名` が指す DNS A RR 宛に配送します。
-  * `relayhost = [IPアドレス]`
+* `relayhost = [IPアドレス]`
     * `IPアドレス` 宛に配送します。
 
 FIXME: CNAME も見るんだっけ?
@@ -219,4 +219,3 @@ DNS キャッシュサーバーが返答節をラウンドロビンする機能�
 * * *
 
 {% include wishlist-dec.html %}
-

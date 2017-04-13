@@ -90,23 +90,22 @@ bash が環境変数 `$BASH_ENV`
 
 `xzuugrep.bash` スクリプトの動作を簡単に解説します。
 
-  1. bash が `xzuugrep.bash` スクリプトを開始する。
-  2. `$XZUUGREP` が未定義であるため、次の処理を行なう:
+1. bash が `xzuugrep.bash` スクリプトを開始する。
+2. `$XZUUGREP` が未定義であるため、次の処理を行なう:
     1. 環境変数 `$XZUUGREP` を設定する。(値は何でもよい)
     2. 環境変数 `$BASH_ENV` に自スクリプト名 (`xzuugrep.bash`) を設定する。
     3. `xzgrep` を起動する。(`exec` なので戻ってこない)
-  3. `xzgrep` の shebang が `#!/bin/bash` であるため、
-     bash が起動する。
-  4. 環境変数 `$BASH_ENV` が設定されているため、
-     bash はその値が示す `xzuubash.bash` スクリプトを実行する。
-     (`source xzuubash.bash` 相当)
-     結果、シェル関数 `xz()` が定義される。
-  5. bash は続いて `xzgrep` スクリプトを実行する。
-  6. `xzgrep` の実行中、通常時 `xz` コマンドを実行される代わりに
-     `xz()` が実行される。
-  7. `xz()` は指定されたファイルから最初の一行を抽出し、
-     それが uuencode 形式と認識したら `uudecode` コマンドでデコード、
-     そうでなければ `xz` コマンドで展開する。
+3. `xzgrep` の shebang が `#!/bin/bash` であるため、bash が起動する。
+4. 環境変数 `$BASH_ENV` が設定されているため、
+   bash はその値が示す `xzuubash.bash` スクリプトを実行する。
+   (`source xzuubash.bash` 相当)
+   結果、シェル関数 `xz()` が定義される。
+5. bash は続いて `xzgrep` スクリプトを実行する。
+6. `xzgrep` の実行中、通常時 `xz` コマンドを実行される代わりに
+   `xz()` が実行される。
+7. `xz()` は指定されたファイルから最初の一行を抽出し、
+   それが uuencode 形式と認識したら `uudecode` コマンドでデコード、
+   そうでなければ `xz` コマンドで展開する。
 
 `xzuugrep.bash` からの `xzgrep` 実行は `exec xzgrep` でなく
 `source xzgrep` でもよいのですが、その場合、`xzgrep` 内で `$0` の値が
@@ -152,4 +151,3 @@ Linux 互換のコマンドとこのハックを組み合わせて利用して�
 * * *
 
 {% include wishlist-dec.html %}
-
