@@ -194,3 +194,6 @@ td {
   border-bottom:	solid 1px #A0A0A0;
 }
 
+del {
+  color:		gray;
+}
