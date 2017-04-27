@@ -29,6 +29,9 @@ FIXME
 * `%triggerun`
 * `%triggerpostun`
 
+`%triggerin` は別名 `%trigger` でもよいらしい(要確認)。
+`%triggerpostin` は存在しない。
+
 ### 引数
 
 FIXME
@@ -50,14 +53,14 @@ scriptlet の実行順序
  1. Run `%pre` in the new package with `$1 == 2`
  2. Install new files in the new package
  3. Run `%post` in the new package with `$1 == 2`
- 4. Run `%trigger` in other packages (if any) for the new package
+ 4. Run `%triggerin` in other packages (if any) for the new package
     (FIXME: What values in `$1` and `$2`?)
- 5. Run `%trigger` in the new package (if any)
+ 5. Run `%triggerin` in the new package (if any)
     (FIXME: Correct?)
     (FIXME: What values in `$1` and `$2`?)
  6. Run `%triggerun` in the new package (if any) for the old package
     (FIXME: What values in `$1` and `$2`?)
- 7. Run `%triggerun` in other packages (if any) for old package
+ 7. Run `%triggerun` in other packages (if any) for the old package
     (FIXME: What values in `$1` and `$2`?)
  8. Run `%preun` in the old package with `$1 == 1` (FIXME: `$1` value is correct?)
  9. Remove old files in the old package if they are NOT included in new package
