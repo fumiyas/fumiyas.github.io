@@ -83,7 +83,8 @@ scriptlet の例
 %triggerpostun -- %{name} < 1.0-2.new
 ## このトリガーは旧版からのアップデート時にだけ実行される。
 ## 新版のバージョン-リリース未満をトリガー条件にしているため、
-## トリガー前後のパッケージ数 ($1, $2) を評価する必要はない。
+## インスール/アンインストール前後のパッケージ数 ($1, $2) を
+## 評価する必要はない。
 
 ## 旧版のとき既に同名設定ファイルが存在する場合、新版での同名設定ファイルが
 ## %config なら上書きはせず、*.rpmsave に保存される。その場合は旧版の
@@ -93,13 +94,15 @@ scriptlet の例
 ## されるので、無効化する必要がある。
 if [[ ! -f %{_sysconfdir}/foo.conf.rpmnew ]]; then
   ## 新版の設定ファイルをデフォルトのまま *.rpmsave に保存
-  cp -p %{_sysconfdir}/foo.conf{,.rpmnew} || exit $?
+  cp -p \
+    %{_sysconfdir}/foo.conf \
+    %{_sysconfdir}/foo.conf.rpmnew \
+  || exit $?
   ## 新版の設定ファイルを無効化 (この例ではすべてコメントアウトしている)
   sed \
     -e 's/^/#/' \
     <%{_sysconfdir}/foo.conf.rpmnew \
     >%{_sysconfdir}/foo.conf \
-  || exit $? \
-  ;
+  || exit $?
 fi
 ```
