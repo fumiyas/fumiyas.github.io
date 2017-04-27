@@ -7,32 +7,32 @@ Blog、再開しました。
 ----------------------------------------------------------------------
 
   * Linux
-    * [Raspberry Pi 2 + Debian](linux/debian/rpi2.html)
-    * [Linux オートマウント](linux/autofs.html)
-    * [rsync](linux/rsync.html)
+    * [Raspberry Pi 2 + Debian](linux/debian/rpi2.md)
+    * [Linux オートマウント](linux/autofs.md)
+    * [rsync](linux/rsync.md)
   * Apache HTTPD
-    * [mod_allowfileowner](apache/mod-allowfileowner.html)
+    * [mod_allowfileowner](apache/mod-allowfileowner.md)
   * Apache Solr
-    * [Apache Solr + Tomcat を CentOS にインストール](solr/solr-centos.html)
+    * [Apache Solr + Tomcat を CentOS にインストール](solr/solr-centos.md)
   * Dovecot
-    * [Dovecot FTS + Apache Solr](dovecot/fts-solr.html)
-    * [Dovecot Director](dovecot/director.html)
-    * [Dovecot サービスの制限設定](dovecot/limit.html)
+    * [Dovecot FTS + Apache Solr](dovecot/fts-solr.md)
+    * [Dovecot Director](dovecot/director.md)
+    * [Dovecot サービスの制限設定](dovecot/limit.md)
     * [Dovecot 設定ファイルの仕様](dovecot/configfile)
   * OpenLDAP
-    * [OpenLDAP TLS](openldap/tls.html)
+    * [OpenLDAP TLS](openldap/tls.md)
   * Vagrant
-    * [Vagrant ネットワーク](vagrant/network.html)
+    * [Vagrant ネットワーク](vagrant/network.md)
   * GitLab
-    * [GitLab CE Omnibus のインストール](gitlab/install-omnibus.html)
+    * [GitLab CE Omnibus のインストール](gitlab/install-omnibus.md)
   * RPM
     * [RPM SPEC scriptlet](rpm/scriptlet.md)
   * ZFS
-    * [ZFS の落とし穴](zfs/pitfall.html)
+    * [ZFS の落とし穴](zfs/pitfall.md)
   * 仮想端末 / テキストコンソール
-    * [Sixel 情報](vt/sixel.html)
+    * [Sixel 情報](vt/sixel.md)
   * ハードウェア
-    * [俺得・現実的で理想のノートPC](hardware/fav-pc.html)
+    * [俺得・現実的で理想のノートPC](hardware/fav-pc.md)
 
 日記
 ----------------------------------------------------------------------
