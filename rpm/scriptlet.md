@@ -50,22 +50,22 @@ scriptlet の実行順序
 アップグレード
 ----------------------------------------------------------------------
 
- 1. Run `%pre` in the new package with `$1 == 2`
- 2. Install new files in the new package
- 3. Run `%post` in the new package with `$1 == 2`
- 4. Run `%triggerin` in other packages (if any) for the new package
+ 1. Run `%pre` in the NEW package with `$1 == 2`
+ 2. Install new files in the NEW package
+ 3. Run `%post` in the NEW package with `$1 == 2`
+ 4. Run `%triggerin` in ANY packages (if any) for the NEW package install
     (FIXME: What values in `$1` and `$2`?)
- 5. Run `%triggerin` in the new package (if any)
+ 5. Run `%triggerin` in the NEW package (if any) for the NEW package install
     (FIXME: Correct?)
     (FIXME: What values in `$1` and `$2`?)
- 6. Run `%triggerun` in the new package (if any) for the old package
+ 6. Run `%triggerun` in the NEW package (if any) for the OLD package uninstall
     (FIXME: What values in `$1` and `$2`?)
- 7. Run `%triggerun` in other packages (if any) for the old package
+ 7. Run `%triggerun` in OTHER packages (if any) for the OLD package uninstall
     (FIXME: What values in `$1` and `$2`?)
- 8. Run `%preun` in the old package with `$1 == 1` (FIXME: `$1` value is correct?)
- 9. Remove old files in the old package if they are NOT included in new package
-10. Run `%postun` in the old package with `$1 == 1`
-11. Run `%triggerpostun` in old packages (if any) for the old package
+ 8. Run `%preun` in the OLD package with `$1 == 1` (FIXME: `$1` value is correct?)
+ 9. Remove old files in the OLD package if they are NOT included in the NEW package
+10. Run `%postun` in the OLD package with `$1 == 1`
+11. Run `%triggerpostun` in OLD packages (if any) for the old package
     (FIXME: Correct?)
     (FIXME: What values in `$1` and `$2`?)
 
