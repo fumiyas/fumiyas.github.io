@@ -25,6 +25,10 @@ FIXME
 トリガー対象のパッケージにバージョン-リリースも指定できるが、
 エポックは指定しても無視される。なんでだよ、クソが。
 
+```
+%trigger{un|in|postun} [[-n] <subpackage>] [-p <program>] -- <trigger>
+```
+
 * `%triggerin`
 * `%triggerun`
 * `%triggerpostun`
@@ -50,24 +54,33 @@ scriptlet の実行順序
 アップグレード
 ----------------------------------------------------------------------
 
- 1. Run `%pre` in the NEW package with `$1 == 2`
- 2. Install new files in the NEW package
- 3. Run `%post` in the NEW package with `$1 == 2`
- 4. Run `%triggerin` in ANY packages (if any) for the NEW package install
+ 1. 新パッケージの `%pre` を実行。`$1 == 2`
+ 2. 新パッケージのファイルをインストール。
+ 3. 新パッケージの `%post` を実行。`$1 == 2`
+ 4. 他パッケージの `%triggerin -- 新パッケージ名 [バージョン条件]` を実行。
+    (旧パッケージの `%triggerin` も含む)
     (FIXME: What values in `$1` and `$2`?)
- 5. Run `%triggerin` in the NEW package (if any) for the NEW package install
-    (FIXME: Correct?)
+ 5. 新パッケージの `%triggerin -- 新パッケージ名 [バージョン条件]` を実行。
     (FIXME: What values in `$1` and `$2`?)
- 6. Run `%triggerun` in the NEW package (if any) for the OLD package uninstall
+ 6. 旧パッケージの `%triggerun -- 旧パッケージ名 [バージョン条件]` を実行。
     (FIXME: What values in `$1` and `$2`?)
- 7. Run `%triggerun` in OTHER packages (if any) for the OLD package uninstall
+ 7. 他パッケージの `%triggerun -- 旧パッケージ名 [バージョン条件]` を実行。
+    (新パッケージの `%triggerun` も含む)
     (FIXME: What values in `$1` and `$2`?)
- 8. Run `%preun` in the OLD package with `$1 == 1` (FIXME: `$1` value is correct?)
- 9. Remove old files in the OLD package if they are NOT included in the NEW package
-10. Run `%postun` in the OLD package with `$1 == 1`
-11. Run `%triggerpostun` in OLD packages (if any) for the old package
-    (FIXME: Correct?)
+ 8. 旧パッケージの `%preun` を実行。`$1 == 1`
+ 9. 旧パッケージのファイル (新パッケージに含まれていないファイル) をアンインストール。
+10. 旧パッケージの `%postun` を実行。`$1 == 1`
+11. 旧パッケージの `%triggerpostun -- 旧パッケージ名 [バージョン条件]` を実行。
     (FIXME: What values in `$1` and `$2`?)
+12. 他パッケージの `%triggerpostun -- 旧パッケージ名 [バージョン条件]` を実行。
+    (新パッケージの `%triggerpostun` も含む)
+    (FIXME: What values in `$1` and `$2`?)
+
+`%triggerin%` と `%triggerun`
+は、自パッケージ名をトリガー条件にしたときにバグがある。
+
+* `%triggerin -- %{name} < %{version}-%{release}` is always triggered on upgrade · Issue #209 · rpm-software-management/rpm  
+  <https://github.com/rpm-software-management/rpm/issues/209>
 
 scriptlet の例
 ======================================================================
