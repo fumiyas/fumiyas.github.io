@@ -39,7 +39,7 @@ CRL ファイルへのシンボリックリンク `<CRLのハッシュ値>.r<番
 `<番号>` は `0` から振る。すでに別の証明書へのシンボリックリンクが
 存在する場合は別の `<番号>` を振る。
 
-```
+```console
 # cd /path/to/cacerts
 # ln -s ca.example.com.pem <CRLのハッシュ値>.r0
 ```
@@ -54,7 +54,7 @@ TLS_CACERTDIR /path/to/cacerts
 
 確認。
 
-```
+```console
 $ ldapsearch \
     -xZZ \
     -H ldap://<CRL にない証明書を持つ LDAP サーバー名> \
