@@ -218,7 +218,6 @@ web_server['external_users'] = ['www-data']
 ```
 
 Apache HTTPD 2.4.7+ をフロントエンド Web サーバーにする場合の設定例:
-
 <!--
 FIXME: GitHub Pages fails to build a page from this page with "apache" highlighter.
 
@@ -404,3 +403,59 @@ Do you want to continue (yes/no)? yes
 .........
 ```
 
+### プロジェクトを公開せずに Git リポジトリだけ特定ネットワークに公開
+
+GitLab 上のプロジェクトの Git リポジトリにアクセスするには、
+プロジェクトを公開設定 (public) にしてユーザー認証なしで Git over HTTP でアクセス、
+もしくは GitLab ユーザー認証ありで Git over HTTP または Git over SSH でアクセスする必要がある。
+
+プロジェクトを公開設定にすると、リポジトリ以外も公開されて誰でもアクセスできるようになってしまうので、
+それでは嬉しくないこともある。
+そこで、プロジェクトは非公開 (Internal または Private) に設定し、
+特定ネットワークに対してのみユーザー認証なしでリポジトリアクセス可能にする設定例を示す。
+(フロントエンドに Apache を利用する場合)
+
+最初に Apache の実行ユーザー `www-data` が GitLab 配下の Git
+リポジトリのファイル群にアクセスできるようにする。しかし、
+`/var/opt/gitlab/git-data` のモードが `drwx------` になっており、
+手動で変更しても `gitlab-ctl reconfigure` で戻ってしまう。
+グループのアクセス権がないため、もしここに ACL を設定しても、効果がない。
+そこで、代わりに
+`/var/opt/gitlab/git-data/repositories` (`drwxrwx---`) を
+`/var/opt/gitlab/git-data-repositories` にバインドマウントして利用する。
+
+```console
+# mkdir -m 0755 /var/opt/gitlab/git-data-repositories
+# echo '/var/opt/gitlab/git-data/repositories /var/opt/gitlab/git-data-repositories none bind 0 2' >>/etc/fstab
+# mount /var/opt/gitlab/git-data-repositories
+# setfacl -m user:www-data:r-x /var/opt/gitlab/git-data-repositories
+```
+
+グループ名 `groupname` のプロジェクト `projectname` を公開するための
+ACL を設定する。
+
+```console
+# setfacl -m user:www-data:r-x /var/opt/gitlab/git-data-repositories/groupname
+# find /var/opt/gitlab/git-data-repositories/groupname/projectname.git \
+  -type d -exec setfacl -m user:www-data:r-x,default:user:www-data:r-x {} + \
+  -o \
+  -type f -exec setfacl -m user:www-data:r-- {} + \
+;
+```
+
+Apache の GitLab 向け `<VirtualHost>` ブロックに以下のように設定を追加する。
+
+```conf
+  ## ほかの RewriteRule より前に追加
+  RewriteRule ^/projectname/projectname\.git(/.*)?$ - [last]
+
+  ## 適当な場所に追加
+  ScriptAlias /projectname/projectname.git /usr/lib/git-core/git-http-backend/projectname/projectname.git
+  SetEnv GIT_PROJECT_ROOT /var/opt/gitlab/git-data-repositories
+  SetEnv GIT_HTTP_EXPORT_ALL
+
+  ## <Location /> ブロックの後に追加
+  <Location /projectname/projectname.git>
+    Require ip 192.168.0.0/24
+  </Location>
+```
