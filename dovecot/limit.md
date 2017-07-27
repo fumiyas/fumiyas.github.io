@@ -4,8 +4,8 @@ tags: [dovecot]
 layout: default
 ---
 
-  * Service limits - Dovecot Wiki
-    * http://wiki2.dovecot.org/Services#Service_limits
+* Service limits - Dovecot Wiki
+    * <http://wiki2.dovecot.org/Services#Service_limits>
 
 サービス毎のデフォルト値
 ----------------------------------------------------------------------
@@ -82,8 +82,8 @@ doveconf -ad \
 
 参考:
 
-  * [Dovecot] difference between client_limit and process_limit
-    * http://dovecot.org/pipermail/dovecot/2012-June/083844.html
+* [Dovecot] difference between client_limit and process_limit
+    * <http://dovecot.org/pipermail/dovecot/2012-June/083844.html>
 
 `process_limit`
 ----------------------------------------------------------------------
@@ -108,8 +108,8 @@ FIXME: 0 か 1 以外を設定することを想定していないっぽい。
 
 参考:
 
-  * LoginProcess High-performance mode - Dovecot Wiki
-    * http://wiki2.dovecot.org/LoginProcess#High-performance_mode
+* LoginProcess High-performance mode - Dovecot Wiki
+    * <http://wiki2.dovecot.org/LoginProcess#High-performance_mode>
 
 `vsz_limit`
 ----------------------------------------------------------------------

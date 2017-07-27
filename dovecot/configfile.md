@@ -13,8 +13,8 @@ layout: default
 
 ソースコードを斜め読みした程度で動作検証はしていない。
 
-  * バイト数制限は 128バイト以内。
-  * 文字種制限は以下の通り。
+* バイト数制限は 128バイト以内。
+* 文字種制限は以下の通り。
     * 改行、コンマ `,` を含めることはできない。
     * パーセント記号 `%` は `%%` とすることで含めることが可能。
       `%` と解釈される。
@@ -33,7 +33,6 @@ layout: default
 
 該当ソースコード:
 
-  * `src/auth/db-ldap.c`:`db_ldap_init()`
-  * `src/lib-settings/settings.c`:`settings_read()`
-  * `src/auth/db-ldap.c`:`db_ldap_set_attrs()`
-
+* `src/auth/db-ldap.c`:`db_ldap_init()`
+* `src/lib-settings/settings.c`:`settings_read()`
+* `src/auth/db-ldap.c`:`db_ldap_set_attrs()`

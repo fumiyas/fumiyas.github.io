@@ -13,21 +13,21 @@ layout: default
 メールボックスを共有ファイルシステムに置いたとき、
 共有ファイルシステムのキャッシュを有効に活用することが可能。
 
-  * Dovecot Wiki:
-    * http://wiki2.dovecot.org/Director
-    * http://wiki2.dovecot.org/NFS
-  * Dovecot Director 概要
-    * http://www.slideshare.net/fumiyas/dovecot-director
+* Dovecot Wiki:
+    * <http://wiki2.dovecot.org/Director>
+    * <http://wiki2.dovecot.org/NFS>
+* Dovecot Director 概要
+    * <http://www.slideshare.net/fumiyas/dovecot-director>
 
 バックエンドに接続するときのポート番号と SSL/TLS
 ----------------------------------------------------------------------
 
-  * LMTP は 24、POP3 は 110、IMAP は 143、ManageSieve は 4190 になる。
+* LMTP は 24、POP3 は 110、IMAP は 143、ManageSieve は 4190 になる。
     * `passdb` で `port=番号` を返せばそれに従うと思われるが未検証。
     * Director 側が UNIX ドメインソケット (`unix_listener`)
       だとバックエンドのポート番号 0 に接続しようとしてしまう。
       LMTP でローカルの MTA から受ける場合でも `inet_listen` で受ける必要がある。
-  * SSL/TLS は利用されない。
+* SSL/TLS は利用されない。
     * `passdb` で `ssl=yes` あるいは `starttls=yes` を返せばそれに従うと思われるが未検証。
 
 Director でユーザー認証
@@ -102,13 +102,13 @@ FIXME: WIP
 
 ### 構成
 
-  * Dovecot LMTP/POP3/IMAP (バックエンド)
+* Dovecot LMTP/POP3/IMAP (バックエンド)
     * dovecot1 (10.0.0.1)
     * dovecot2 (10.0.0.2)
-  * Dovecot Director (フロントエンド)
+* Dovecot Director (フロントエンド)
     * director1
     * director2
-  * poolmon
+* poolmon
     * サービス名を `dovecot-poolmon` とする。
 
 ### 手順
@@ -188,18 +188,17 @@ director2# service dovecot-poolmon start
 ```
 
 参考:
-  http://wiki2.dovecot.org/Director#Forcefully_moving_users_to_a_different_backend
+  <http://wiki2.dovecot.org/Director#Forcefully_moving_users_to_a_different_backend>
 
 TODO
 ----------------------------------------------------------------------
 
-  * Director サービスのポート (9090/TCP が標準らしい) のアクセス制限どうすんだよ。
-  * LMTP サービスのアクセス制限もどうすんだよ。
+* Director サービスのポート (9090/TCP が標準らしい) のアクセス制限どうすんだよ。
+* LMTP サービスのアクセス制限もどうすんだよ。
     * Dovecot に
       [TCP Wrappers サポート](http://wiki2.dovecot.org/LoginProcess#TCP_wrappers_support)
       があるが、こいつはユーザー認証しない Director や LMTP サービスには効かない。
-  * バックエンドに Doveadm サーバーを立てればフロントエンドの Director から
-    `doveadm` によるメールボックス操作も振り分け可能。
-  * ~~Wiki に Doveadm server の設定も載っているが、何が嬉しいのかわからない。
-    必須ではない(と思う)ので使わない予定。~~
-
+* バックエンドに Doveadm サーバーを立てればフロントエンドの Director から
+  `doveadm` によるメールボックス操作も振り分け可能。
+* ~~Wiki に Doveadm server の設定も載っているが、何が嬉しいのかわからない。
+  必須ではない(と思う)ので使わない予定。~~
