@@ -10,6 +10,8 @@ Blog、再開しました。
     * [Raspberry Pi 2 + Debian](linux/debian/rpi2.md)
     * [Linux オートマウント](linux/autofs.md)
     * [rsync](linux/rsync.md)
+  * Windows
+    * [Windows スクリプティング](windows/script.md)
   * Apache HTTPD
     * [mod_allowfileowner](apache/mod-allowfileowner.md)
   * Apache Solr
