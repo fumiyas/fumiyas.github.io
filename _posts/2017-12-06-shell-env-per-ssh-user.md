@@ -7,7 +7,7 @@ layout: default
 [Shell Script Advent Calendar 2017](https://qiita.com/advent-calendar/2017/shellscript)
 の 6日目の記事です。
 
-本日のお題は、共用ユーザーアカウントのシェル環境を接続元ユーザーごとに
+本日のお題は、共用ユーザーアカウントのシェル環境を SSH の接続元ユーザーごとに
 カスタマイズできるようにする方法を紹介します。
 
 きっかけはこちらのツイート <https://twitter.com/ttdoda/status/937929507528368129>:
@@ -39,7 +39,7 @@ command="[ -n \"${SSH_ORIGINAL_COMMAND+set}\" ] && set -- -c \"$SSH_ORIGINAL_COM
 if [ -n "${SSH_ORIGINAL_COMMAND+set}" ]; then
   exec /bin/zsh -c "$SSH_ORIGINAL_COMMAND"
 else
-  exec /bin/zsh -l "$@"
+  exec /bin/zsh -l
 fi
 ```
 
