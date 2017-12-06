@@ -59,7 +59,7 @@ SSH でログインした環境には接続元のユーザー情報として以�
 
 ```console
 $ env |grep '^SSH_'
-SSH_CLIENT=<接続元IPアドレス> <接続元ポート番号> <サーバー番号>
+SSH_CLIENT=<接続元IPアドレス> <接続元ポート番号> <サーバーポート番号>
 SSH_CONNECTION=<接続元IPアドレス> <接続元クライアントポート番号> <サーバーIPアドレス> <サーバーポート番号>
 SSH_TTY=<TTYデバイスファイル名>
 ```
@@ -87,7 +87,7 @@ SSH クライアントの `ssh_config`(5) の `SendEnv`
 command="export SSH_USER=alice; [ -n \"${SSH_ORIGINAL_COMMAND+set}\" ] && set -- -c \"$SSH_ORIGINAL_COMMAND\" || set -- -l; exec /bin/zsh \"$@\"" <SSH公開鍵...>
 ```
 
-あとはシェルの環境設定ファイル `.profile`、`~/.bash_profile` (bash の場合) や
+あとはシェルの環境設定ファイル `~/.profile`、`~/.bash_profile` (bash の場合) や
 `~/.zprofile` (zsh の場合) などで `SSH_USER` の値を元にユーザーごとの設定を記述しましょう。
 
 ```sh
