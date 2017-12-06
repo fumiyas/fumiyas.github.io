@@ -1,6 +1,6 @@
 ---
 title: '共用ユーザーのシェル環境を SSH ユーザーごとに切り替え - Shell Script Advent Calendar 2017'
-tags: [sh, shell]
+tags: [sh, shell, ssh]
 layout: default
 ---
 
