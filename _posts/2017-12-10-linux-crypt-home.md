@@ -77,6 +77,7 @@ Enter passphrase for /dev/VolGroup/crypthome.alice: <ユーザー alice のロ�
 # cp -a /etc/skel/. ~alice/
 # chown -hR alice: ~alice
 # chmod 0750 ~alice
+# umount ~alice
 # cryptsetup close decrypthome.alice
 ```
 
