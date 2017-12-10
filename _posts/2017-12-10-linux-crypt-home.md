@@ -112,7 +112,7 @@ PAM の設定
 auth	optional			pam_exec.so expose_authtok /usr/local/sbin/crypthome-pam
 ```
 
-#### RHEL / CentOS の場合
+### RHEL / CentOS の場合
 
 `/etc/pam.d/postlogi` ファイルに `pam_exec.so` の行を追加します。
 追加する場所はどこでも構いません。
