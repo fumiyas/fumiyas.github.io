@@ -8,6 +8,10 @@ layout: default
 [Debian/Ubuntu Advent Calendar 2017](https://qiita.com/advent-calendar/2017/debian-ubuntu)
 兼用の 10日目の記事です。
 
+FIXME: Debian sid の systemd では動かないようです。
+core: link user session keyring to session keyring #6286
+<https://github.com/systemd/systemd/pull/6286> 参照。
+
 [某弊社](https://www.osstech.co.jp/company/recruit)
 では「社外に持ち出すノート PC のファイルシステムは暗号化してね」って言われているのですが、
 システムまるごと暗号化するのは面倒そう(やったことがないので想像)だったので、
