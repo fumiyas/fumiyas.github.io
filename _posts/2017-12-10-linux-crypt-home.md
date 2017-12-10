@@ -32,7 +32,7 @@ Linux-CryptHome 用の暗号化ホームディレクトリの作成
 ----------------------------------------------------------------------
  
 下記の手順で LVM 上に LUKS 暗号化ボリュームを作成し、
-さらにその上にユーザーのホームディレクトリとして利用するファイルシステムします。
+さらにその上にユーザーのホームディレクトリとして利用するファイルシステムを作成します。
 
   1. LVM で `crypthome.<ユーザー名>` という名前の論理ボリュームを作成する。
   2. 作成した論理ボリュームを LUKS ボリュームとして初期化する。
@@ -41,6 +41,8 @@ Linux-CryptHome 用の暗号化ホームディレクトリの作成
      先に設定したパスフレーズ(パスワード)の入力が必要です。
   4. LUKS ボリュームにファイルシステムを作成する。
   5. LUKS ボリュームをクローズする。
+
+TODO: 管理者が保守するためのパスフレーズを `cryptsetup luksAddKey 〜` で追加する手順を追加。
 
 ユーザー名 `alice`、論理ボリュームを作成する LVM
 ボリュームグループ名 `VolGroup`、ボリュームサイズ 10 GB、
@@ -67,7 +69,7 @@ Cipher mode:    xts-plain64
 Hash spec:      sha256
 ...省略...
 # cryptsetup open /dev/VolGroup/crypthome.alice decrypthome.alice
-Enter passphrase for /dev/VolGroup/crypthome.alice: ********
+Enter passphrase for /dev/VolGroup/crypthome.alice: <ユーザー alice のログインパスワード>
 # mkfs -t xfs /dev/mapper/decrypthome.alice
 ...省略...
 # mkdir -p -m 0755 ~alice
