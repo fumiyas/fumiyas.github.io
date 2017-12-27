@@ -198,7 +198,7 @@ nginx (フロントエンド Web サーバー) の調整
 `/etc/gitlab/gitlab.rb` の `external_url` に指定するパラメーターを変更する。
 
 ```ruby
-external_url 'http://gitlab.example.jp'
+external_url 'https://gitlab.example.jp'
 ```
 
 ### nginx の無効化
@@ -212,7 +212,7 @@ Web サーバーの実行ユーザーを指定する。
 必要であれば `external_url` に指定するパラメーターも変更する。
 
 ```ruby
-external_url 'http://gitlab.example.jp'
+external_url 'https://gitlab.example.jp'
 nginx['enable'] = false
 web_server['external_users'] = ['www-data']
 ```
@@ -227,18 +227,14 @@ FIXME: GitHub Pages fails to build a page from this page with "apache" highlight
 -->
 
 ```conf
-<VirtualHost *:80>
+<VirtualHost *:443>
   ServerName gitlab.example.jp
   DocumentRoot /opt/gitlab/embedded/service/gitlab-rails/public
 
-  ## HTTPS を利用する場合:
-  ##   * gitlab.rb の external_url を 'https://〜' に変更する。
-  ##   * 上記の <VirtualHost *:80> を <VirtualHost *:443> に変更する。
-  ##   * 以下のコメント文字を外して SSL を有効にする。
-  #SSLEngine On
-  #SSLCertificateKeyFile /etc/apache2/private/gitlab.example.jp.key
-  #SSLCertificateFile /etc/apache2/certs/gitlab.example.jp.crt
-  #RequestHeader set X-Forwarded-Proto 'https'
+  SSLEngine On
+  SSLCertificateKeyFile /etc/apache2/private/gitlab.example.jp.key
+  SSLCertificateFile /etc/apache2/certs/gitlab.example.jp.crt
+  RequestHeader set X-Forwarded-Proto 'https'
 
   AllowEncodedSlashes NoDecode
 
