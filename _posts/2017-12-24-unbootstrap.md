@@ -194,10 +194,11 @@ Enter a number to do:
 ----------------------------------------------------------------------
 
 現在の Samba-JP の各種サービスは、数名の有志と、
-KDDI [Cloud Core VPS](http://www.cloudcore.jp/)、
 [さくらインターネット(株)](https://www.sakura.ad.jp/) の
 [さくらのVPS](http://vps.sakura.ad.jp/)、
-[オープンソース・ソリューション・テクノロジ](https://www.osstech.co.jp)
+[オープンソース・ソリューション・テクノロジ](https://www.osstech.co.jp)、
+~~KDDI [Cloud Core VPS](http://www.cloudcore.jp/)~~、
+~~[(株)ファム](http://www.famm.co.jp/)~~
 の提供でをお送りしております。
 
 この度、マシンの老朽化のため、ファムに設置して頂いているホストマシン
