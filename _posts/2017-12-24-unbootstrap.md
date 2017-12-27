@@ -60,7 +60,7 @@ Unbootstrap を使えば、リモートの Linux 環境に SSH 経由でログ�
 ```console
 $ lsblk --noheadings --list --scsi --output name \
   |sed 's|!|/|g' \
-  |while read dev; do echo sudo dd if=/dev/urandom of=/dev/$dev; done
+  |while read dev; do echo sudo dd status=progress if=/dev/urandom of=/dev/$dev; done
 ```
 
 これを実行すると
@@ -189,6 +189,31 @@ Enter a number to do:
 `1` で Unbootstrap 環境以外のプロセスを停止した後、
 `2` でシェルを起動してファイルシステムなどを破壊して終了 (`exit`) して
 メニューに戻り、最後に `3` で強制電源オフする、という流れになります。
+
+```console
+Enter a number to do: 2
+
+Unbootstrap@debian-9 # lsblk
+NAME                     MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                        8:0    0   40G  0 disk
+|-sda1                     8:1    0  243M  0 part
+|-sda2                     8:2    0    1K  0 part
+`-sda5                     8:5    0 39.8G  0 part
+  |-debian--9--vg-root   254:0    0 38.8G  0 lvm
+  `-debian--9--vg-swap_1 254:1    0    1G  0 lvm
+Unbootstrap@debian-9 # dd status=progress if=/dev/urandom of=/dev/...省略...
+...省略...
+Unbootstrap@debian-9 # exit
+...省略...
+Enter a number to do: 3
+
+Trying to force to poweroff... Running in chroot, ignoring request.
+Retrying to force to poweroff outside of Unbootstrap environment... Powering off.
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+Makefile:19: recipe for target 'vagrant.ssh' failed
+make: *** [vagrant.ssh] Error 255
+```
 
 謝辞
 ----------------------------------------------------------------------
