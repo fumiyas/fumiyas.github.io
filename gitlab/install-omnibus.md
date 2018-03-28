@@ -15,7 +15,7 @@ GitLab CE (Community Edition) Omnibus (全部入り)
 参考:
 
   * 続・GitHubクローンのGitLabを５分でインストールした - アルパカDiary
-    * <http://d.hatena.ne.jp/toritori0318/20140524/1400955383>
+      * <http://d.hatena.ne.jp/toritori0318/20140524/1400955383>
 
 構成
 ----------------------------------------------------------------------
@@ -33,18 +33,18 @@ GitLab CE (Community Edition) Omnibus (全部入り)
   * Ruby
   * Ruby on Rails
   * runit
-    * スーパーデーモン
+      * スーパーデーモン
   * nginx
-    * フロントエンド Web サーバー (無効化可能)
-    * デフォルト TCP ポート: `*:80`
+      * フロントエンド Web サーバー (無効化可能)
+      * デフォルト TCP ポート: `*:80`
   * Unicorn
-    * バックエンド Web サーバー (Rails 実行環境)
-    * デフォルト TCP ポート: `127.0.0.1:8080`
-    * デフォルト UNIX ドメインポート: `/var/opt/gitlab/gitlab-workhorse/socket`
+      * バックエンド Web サーバー (Rails 実行環境)
+      * デフォルト TCP ポート: `127.0.0.1:8080`
+      * デフォルト UNIX ドメインポート: `/var/opt/gitlab/gitlab-workhorse/socket`
   * PostgreSQL
-    * デフォルトポート: `/tmp/.s.PGSQL.5432`
+      * デフォルトポート: `/tmp/.s.PGSQL.5432`
   * Redis
-    * デフォルトポート: `127.0.0.1:6379`
+      * デフォルトポート: `127.0.0.1:6379`
   * Chef
   * そのほか
 
@@ -214,7 +214,7 @@ Apache HTTPD 2.4.7+ をフロントエンド Web サーバーにする場合の�
 FIXME: GitHub Pages fails to build a page from this page with "apache" highlighter.
 
   * Apache Lexer raises NoMethodError error · Issue #385 · jneen/rouge
-    * https://github.com/jneen/rouge/issues/385
+      * https://github.com/jneen/rouge/issues/385
 -->
 
 ```conf

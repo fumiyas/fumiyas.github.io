@@ -12,7 +12,7 @@ OpenLDAP がリンクしている TLS 実装に依って異なる。
 ### 参考
 
   * Checking client certificates against CRLs 
-    * http://www.openldap.org/lists/openldap-technical/201404/threads.html#00061
+      * <http://www.openldap.org/lists/openldap-technical/201404/threads.html#00061>
 
 ### OpenSSL の場合
 

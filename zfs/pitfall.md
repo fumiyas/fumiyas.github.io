@@ -67,7 +67,6 @@ CoW のせいらしい。スナップショットがある場合はともかく�
 ```
 
   * 領域が不足した場合の動作 - Oracle Solaris ZFS 管理ガイド
-    * http://docs.oracle.com/cd/E19253-01/819-6260/gayra/index.html
+      * <http://docs.oracle.com/cd/E19253-01/819-6260/gayra/index.html>
   * Bug #412: Cannot delete file(s) on root zfs filesystem if disk is full - illumos gate - illumos.org
-    * https://www.illumos.org/issues/412
-
+      * <https://www.illumos.org/issues/412>

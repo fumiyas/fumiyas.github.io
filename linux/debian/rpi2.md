@@ -7,11 +7,11 @@ tags: [linux, debian, rpi, arm]
 ----------------------------------------------------------------------
 
   * RaspberryPi2 - Debian Wiki
-    * https://wiki.debian.org/RaspberryPi2
+      * <https://wiki.debian.org/RaspberryPi2>
   * Debian Jessie on Raspberry Pi 2
-    * http://sjoerd.luon.net/posts/2015/02/debian-jessie-on-rpi2/
+      * <http://sjoerd.luon.net/posts/2015/02/debian-jessie-on-rpi2/>
   * 第362回　Raspberry Pi 2でXubuntu 14.04を動かす：Ubuntu Weekly Recipe｜gihyo.jp … 技術評論社
-    * http://gihyo.jp/admin/serial/01/ubuntu-recipe/0362
+      * <http://gihyo.jp/admin/serial/01/ubuntu-recipe/0362>
 
 インストール
 ----------------------------------------------------------------------
@@ -19,22 +19,22 @@ tags: [linux, debian, rpi, arm]
 ### 用意するもの
 
   * Raspberry Pi 2 一式
-    * 本体
-    * USB 電源 (1A 以上) とケーブル
-    * ネットワークケーブル
-    * microSD カード (4GB 以上)
+      * 本体
+      * USB 電源 (1A 以上) とケーブル
+      * ネットワークケーブル
+      * microSD カード (4GB 以上)
   * Raspberry Pi 2 用の Debian (jessie / armhf) のイメージ
-    * https://images.collabora.co.uk/rpi2/
+      * <https://images.collabora.co.uk/rpi2/>
   * インストール/初期設定用 Linux 環境
-    * OS
-      * Debian GNU/Linux
-    * microSD カードのデバイス名
-      * `/dev/mmcblk0`
-    * microSD カードのファイルシステムをマウントするディレクトリ
-      * `/mnt`
-    * `bmaptool`(1)
-      * bmap-tools パッケージ
-      * `dd`(1) でも構わないが `bmaptool` のほうが効率的
+      * OS
+          * Debian GNU/Linux
+      * microSD カードのデバイス名
+          * `/dev/mmcblk0`
+      * microSD カードのファイルシステムをマウントするディレクトリ
+          * `/mnt`
+      * `bmaptool`(1)
+          * bmap-tools パッケージ
+          * `dd`(1) でも構わないが `bmaptool` のほうが効率的
 
 ### Raspberry Pi 2 の Debian 環境の設定パラメーター
 
@@ -42,14 +42,14 @@ tags: [linux, debian, rpi, arm]
 クライアントになっているが、この手順では次のように設定することにする。
 
   * ホスト名
-    * rpi.example.jp
+      * rpi.example.jp
   * IPアドレス/マスク長
-    * 192.168.0.8/24
+      * 192.168.0.8/24
   * デフォルトルーター
-    * 192.168.0.1
+      * 192.168.0.1
   * DNSキャッシュサーバー
-    * 192.168.0.1
-    * 8.8.8.8 (Google Public DNS)
+      * 192.168.0.1
+      * 8.8.8.8 (Google Public DNS)
 
 ### microSD カードへの Debian イメージのインストール
 

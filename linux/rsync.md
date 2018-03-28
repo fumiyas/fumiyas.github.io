@@ -93,19 +93,19 @@ rsyncd over SSH (rsync server over SSH) 環境を構築し、
     (**rsync 以外のシェルログイン等の操作は抑制する**)
   * バックアップデータの世代管理は必要であれば別途実施すること。
   * バックアップ対象
-    * ホスト名: `target-host`
-    * 実行ユーザー: `root`
-    * バックアップスクリプト: `/srv/sbin/backup-target-host`
-    * SSH 鍵ペア: `/srv/etc/backup/id_rsa*`
-    * バックアップ対象パス:
-      * `/etc`
-      * `/var/lib`
-      * `/home`
+      * ホスト名: `target-host`
+      * 実行ユーザー: `root`
+      * バックアップスクリプト: `/srv/sbin/backup-target-host`
+      * SSH 鍵ペア: `/srv/etc/backup/id_rsa*`
+      * バックアップ対象パス:
+          * `/etc`
+          * `/var/lib`
+          * `/home`
   * バックアップ先
-    * ホスト名: `backup-host`
-    * 実行ユーザー: `backupuser`
-    * バックアップディレクトリ: `/srv/var/backup/target-host`
-    * rsync デーモン設定ファイル: `/srv/etc/backup/rsyncd.conf`
+      * ホスト名: `backup-host`
+      * 実行ユーザー: `backupuser`
+      * バックアップディレクトリ: `/srv/var/backup/target-host`
+      * rsync デーモン設定ファイル: `/srv/etc/backup/rsyncd.conf`
 
 ### バックアップ対象ホスト target-host での環境構築
 
