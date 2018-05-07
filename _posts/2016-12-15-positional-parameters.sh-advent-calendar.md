@@ -38,12 +38,12 @@ layout: default
 $ cat test-dump.sh
 #!/bin/sh
 echo "$#"
-echo "[$1 / $2 / $3]"
+echo "[$1] [$2] [$3]"
 echo "[$*]"
 echo "[$@]"
 $ sh test-dump.sh foo bar qux
 3
-[foo / bar / qux]
+[foo] [bar] [qux]
 [foo bar qux]
 [foo bar qux]
 ```
@@ -66,8 +66,8 @@ $ sh test-dump.sh foo bar qux
 $ set -- 1st 2nd 3rd 4th
 $ echo $#
 4
-$ echo "[$1 / $2 / $3]"
-[1st / 2nd / 3rd]
+$ echo "[$1] [$2] [$3]"
+[1st] [2nd] [3rd]
 $ echo "[$*]"
 [1st 2nd 3rd 4th]
 $ echo "[$@]"
@@ -269,6 +269,8 @@ $ echo $#
 $ set -- "$@"
 $ echo $#
 3
+$ echo "[$1] [$2] [$3]"
+[ foo  bar ] [hoge] [/bin/*csh]
 ```
 
 `"$*"` で同様のことを実行すると次のようになります。
@@ -280,6 +282,8 @@ $ echo $#
 $ set -- "$*"
 $ echo $#
 1
+$ echo "[$1] [$2] [$3]"
+[ foo  bar  hoge /bin/*csh] [] []
 ```
 
 `$*`, `$@`, `"$*"`, `"$@"` の使い分け
