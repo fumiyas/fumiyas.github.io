@@ -1,6 +1,6 @@
 #!/bin/bash
 
-shopt -s lastpipe || exit 1
+shopt -s lastpipe || exit $?
 
 typeset -a groups_wo_member
 
