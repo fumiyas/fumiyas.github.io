@@ -32,6 +32,7 @@ layout: default
 
   * xterm - Terminal emulator for the X Window System
       * <http://invisible-island.net/xterm/>
+      * 要 `-ti 340` オプション
   * mlterm - multilingual terminal emulator on X11
       * <http://mlterm.sourceforge.net/>
       * X、Windows、フレームバッファー用
