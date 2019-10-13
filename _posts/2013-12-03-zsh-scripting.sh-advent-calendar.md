@@ -17,6 +17,8 @@ layout: default
 
 ## sh エミュレーションモード
 emulate -R sh
+## sh よりも bash に慣れているなら ksh エミュレーションモードがお薦め
+#emulate -R ksh
 
 ## 以下、ふつうに sh なシェルスクリプトを実装…
 ```
