@@ -121,6 +121,45 @@ run: sidekiq: (pid 9000) 1973s; run: log: (pid 18948) 169577s
 run: unicorn: (pid 9016) 1972s; run: log: (pid 18924) 169579s
 ```
 
+### `gitlab-rake` コマンド
+
+```console
+# gitlab-rake gitlab:env:info
+
+System information
+System:         Debian 10
+Current User:   git
+Using RVM:      no
+Ruby Version:   2.6.5p114
+Gem Version:    2.7.10
+Bundler Version:1.17.3
+Rake Version:   12.3.3
+Redis Version:  5.0.7
+Git Version:    2.24.1
+Sidekiq Version:5.2.7
+Go Version:     go1.11.6 linux/amd64
+
+GitLab information
+Version:        12.7.6
+Revision:       61654d25b20
+Directory:      /opt/gitlab/embedded/service/gitlab-rails
+DB Adapter:     PostgreSQL
+DB Version:     10.9
+URL:            https://gitlab.example.jp
+HTTP Clone URL: https://gitlab.example.jp/some-group/some-project.git
+SSH Clone URL:  git@gitlab.example.jp:some-group/some-project.git
+Using LDAP:     yes
+Using Omniauth: yes
+Omniauth Providers:
+
+GitLab Shell
+Version:        11.0.0
+Repository storage paths:
+- default:      /var/opt/gitlab/git-data/repositories
+GitLab Shell path:              /opt/gitlab/embedded/service/gitlab-shell
+Git:            /opt/gitlab/embedded/bin/git
+```
+
 ### `/etc/gitlab/gitlab.rb` 設定変更の反映手順
 
 `/etc/gitlab/gitlab.rb` を変更したら以下を実行する。
@@ -267,14 +306,29 @@ main:
   host: '127.0.0.1' ## LDAP サーバーホスト名または IPアドレス
   port: 389         ## LDAP サーバーポート番号
   method: 'plain'   ## "tls", "ssl" or "plain"
-  bind_dn: 'cn=gitlab,dc=example,dc=co,dc=jp'
+  bind_dn: 'cn=gitlab,dc=example,dc=jp'
   password: 'bind password for bind_dn'
   uid: 'uid'        ## ユーザーIDを保持する属性名
   active_directory: false
   allow_username_or_email_login: false
-  base: 'ou=Users,dc=example,dc=co,dc=jp'
+  base: 'ou=Users,dc=example,dc=jp'
   user_filter: '(&(objectclass=posixAccount)(!(gidNumber=10001)))'
 EOS
+```
+
+設定の確認:
+
+```console
+# gitlab-rake gitlab:ldap:check
+Checking LDAP ...
+
+Server: ldapmain
+LDAP authentication... Success
+LDAP users with access to your GitLab server (only showing the first 100 results)
+        DN: uid=alice,ou=Users,dc=example,dc=jp  uid: alice
+        ...
+
+Checking LDAP ... Finished
 ```
 
 LDAP のユーザーが初めてログインすると、ユーザーの LDAP エントリの
@@ -361,7 +415,7 @@ gitlabhq_production=# SELECT id,username FROM users WHERE username='fumiyas';
 gitlabhq_production=# SELECT user_id,extern_uid FROM identities WHERE user_id=15;
  user_id |                 extern_uid
 ---------+---------------------------------------------
-      15 | uid=fumiyas,ou=Users,dc=osstech,dc=co,dc=jp
+      15 | uid=fumiyas,ou=Users,dc=example,dc=jp
 (1 row)
 ```
 
@@ -369,7 +423,7 @@ gitlabhq_production=# SELECT user_id,extern_uid FROM identities WHERE user_id=15
 
 ```sql
 UPDATE identities
-  SET extern_uid = concat('uid=', u.username, ',ou=Users,dc=example,dc=co,dc=jp')
+  SET extern_uid = concat('uid=', u.username, ',ou=Users,dc=example,dc=jp')
   FROM (SELECT id,username FROM users) u
   WHERE identities.user_id = u.id
 ;
