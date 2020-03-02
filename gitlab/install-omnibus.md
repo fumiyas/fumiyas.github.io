@@ -382,7 +382,7 @@ irb(main):003:0> user.save!
 ### PostgreSQL `psql` でデータベースへ接続
 
 ```console
-# su -s /bin/sh gitlab-psql -c '/opt/gitlab/embedded/bin/psql -h /var/opt/gitlab/postgresql gitlabhq_production'
+# gitlab-psql -d gitlabhq_production
 ```
 
 `psql` コマンド、SQL の実行例:
