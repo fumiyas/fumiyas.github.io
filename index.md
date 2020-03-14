@@ -34,6 +34,8 @@ Blog、再開しました。
   * 仮想端末 / テキストコンソール
       * [Sixel 情報](vt/sixel.md)
       * [mlterm 情報](vt/mlterm.md)
+  * 開発
+      * [デバッグ](development/debug.md)
   * ハードウェア
       * [俺得・現実的で理想のノートPC](hardware/fav-pc.md)
 
