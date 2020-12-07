@@ -34,7 +34,7 @@ layout: default
 その後、「`group_vars` や `host_vars` で一部の変数を上書きしたい」
 という要件が出てきました。さて、上記のタスクで読み込まれる変数定義と同名の変数を
 `group_vars` (あるいは `host_vars`) でも定義するとどうなるでしょうか?
-はい、[Ansible では残念(?)ながら `include_vars` の変数が優先度がとても高く](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence)、要件は叶いません。
+はい、[Ansible では残念(?)ながら `include_vars` による変数定義の優先度がとても高く](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence)、要件は叶いません。
 
 `include_vars` を `group_vars`, `host_vars` より低優先度にする (ように見せる)
 ======================================================================
