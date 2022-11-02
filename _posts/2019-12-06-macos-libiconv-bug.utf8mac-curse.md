@@ -8,7 +8,7 @@ Apple 社 UTF-8-MAC の呪い Advent Calendar 2019 …ではなく、
 [OSSTech Advent Calendar 2019](https://qiita.com/advent-calendar/2019/osstech)
 の 6 日目の記事です。
 
-macOS iconv(3) は UTF-8-MAC
+macOS `iconv`(3) は UTF-8-MAC
 という名前の特殊なエンコーディングに対応していますが、
 これに問題を見つけたので紹介します。
 macOS 10.14.2 (Mojave) にて確認。
@@ -20,7 +20,7 @@ UTF-8-MAC は NFD じゃねぇえええーーーーーーーっ!!!!
 
 NFD いうな! 福神づけ喰らわすぞ。
 
-NFD 正規化されるのは一部の文字だけです。
+UTF-8 → UTF-8-MAC 変換で NFD 正規化されるのは一部の文字だけです。
 
 例:
 
@@ -31,10 +31,11 @@ NFD 正規化されるのは一部の文字だけです。
 | づ (U+3065)   | づ (U+3064 U+3099)    | ← に同じ     |
 | け (U+3051)   | ← に同じ             | ← に同じ     |
 
+同様に UTF-8-MAC → UTF-8 変換した結果は NFC ではないぞ。
+NFC いうな! NFC で正規化するな!!
+
 UTF-8-MAC 関連の問題で NFC / NFD 正規化を使うなよ! 騙るなよ?!
 お兄^Hじさんとの約束だぞ!!
-
-ちなみに UTF-8-MAC → UTF-8 変換した結果は NFC ではないぞ。NFC いうな!
 
 以下、本題。
 
@@ -59,7 +60,7 @@ iconv: (stdin):819:6: cannot convert
 ```console
 $ echo 😀 |iconv -f UTF-8-MAC -t UTF-8
 iconv: (stdin):1:0: cannot convert
-$ echo 😀 |iconv -f UTF-8 -t UTF-8-MAC 
+$ echo 😀 |iconv -f UTF-8 -t UTF-8-MAC
 �
 $ echo 😀 |iconv -f UTF-8 -t UTF-8-MAC |od -tcx1
 0000000    �  **  **  \n
@@ -73,7 +74,7 @@ $ echo 😀 |iconv -f UTF-8 -t UTF-8-MAC |od -tcx1
 趣味でオリジナルの GNU libiconv に macOS 版 GNU libiconv の UTF-8-MAC
 を移植したものを作って公開しているのですが、そちらで修正してみました。
 
-* GNU libiconv with UTF-8-MAC support (Port from Apple's GNU libiconv) 
+* GNU libiconv with UTF-8-MAC support (Port from Apple's GNU libiconv)
     * <https://github.com/fumiyas/libiconv-utf8mac>
 
 macOS でビルドできるかは試していません。駄目だったらパッチください。
