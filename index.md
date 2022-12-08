@@ -7,6 +7,7 @@ Blog、再開しました。
 ----------------------------------------------------------------------
 
   * Linux
+      * [Debian デスクトップ環境](linux/debian/desktop.md)
       * [Raspberry Pi 2 + Debian](linux/debian/rpi2.md)
       * [Linux オートマウント](linux/autofs.md)
       * [rsync](linux/rsync.md)
