@@ -48,7 +48,8 @@ $ systemctl --user --now enable wireplumber.service
 キーボードマッピングの変更
 ----------------------------------------------------------------------
 
-initramfs に `setkeycodes`(1) の実行を組込む。
+initramfs に `setkeycodes`(1) を実行するフックスクリプトを組込む。
+`initramfs-tools`(7) などを参照。
 
 `/etc/initramfs-tools/scripts/init-top/setkeycodes.sh`:
 
@@ -79,12 +80,18 @@ setkeycodes 0x29 1
 #setkeycodes 0x29 XXXX
 ```
 
-`PREREQS="keymap"` は `/usr/share/initramfs-tools/scripts/init-top/*`
-のスクリプトのうち、先に実行してほしいものの名前。
+* `PREREQS="..."` は `/usr/share/initramfs-tools/scripts/init-top/*`
+  のフックスクリプトのうち、先に実行してほしいものの名前を記述する。
+* フックスクリプトには実行権が必要。
+* initramfs に `setkeycodes` コマンドを組込むには:
+    * busybox パッケージが必要。
+    * `/etc/initramfs-tools/initramfs.conf` に `BUSYBOX=auto` か `BUSYBOX=y` 設定が必要。
+* initramfs の更新を忘れないように。
 
 ```console
-# chmod +x /etc/initramfs-tools/scripts/init-top/setkeycodes.sh
-# update-initramfs -u
+$ sudo chmod +x /etc/initramfs-tools/scripts/init-top/setkeycodes.sh
+$ sudo apt install busybox
+$ sudo update-initramfs -u
 ..
 ```
 
