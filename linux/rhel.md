@@ -61,5 +61,36 @@ protocol@TLS = +TLS1.1 +TLS1.0
 暗号化ポリシー設定にモジュールを追加する:
 
 ```console
-# update-crypto-policies  --set DEFAULT:TLS1.0
+# update-crypto-policies --set DEFAULT:TLS1.0
 ```
+
+logrotate
+======================================================================
+
+logrotate の実行時間
+----------------------------------------------------------------------
+
+<https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/ch-automating_system_tasks/etc/anacrontab:>
+
+```sh
+# the maximal random delay added to the base delay of the jobs
+RANDOM_DELAY=45
+# the jobs will be started during the following hours only
+START_HOURS_RANGE=3-22
+```
+
+```crontab
+#period in days   delay in minutes   job-identifier   command
+1       5       cron.daily              nice run-parts /etc/cron.daily
+7       25      cron.weekly             nice run-parts /etc/cron.weekly
+@monthly 45     cron.monthly            nice run-parts /etc/cron.monthly
+```
+
+* システムが連続稼動しているなら `/etc/cron.daily/logrotate` などは毎日 3:11 〜 3:50 の間に実行される。
+    * `START_HOURS_RANGE=3-22` なので、この時間帯の中で `period in days` 期間経過したジョブが実行対象になる。
+      よって 3:00 が基点になる。
+    * 基点の 3:00 から `delay in minutes + (6 〜 RANDOM_DELAY)` の遅延が差し込まれる。
+      よって、`cron.daily` は 3:11 〜 3:50 の時間帯に実行される。
+* ある日にシステムを 0:00 から停止していた場合、もし 5:30 にシステムを起動
+  (`anacron`(8) を毎時起動する `crond` を起動) すると 6:00 が基点となるので
+  6:11 〜 6:50 の時間帯に実行される。
