@@ -72,12 +72,13 @@ set -x
 ## `showkey -s` on a conole to get scancodes
 ## `showkey -k` on a conole to get keycodes
 
-## Map Ctrl (left) scancode to CapsLock key(code)
+## CapsLock scancode -> Ctrl (left) keycode
 setkeycodes 0x3a 29
-## Map Esc scancode to Hankaku/Zenkaku key(code)
+## Hiragana/Katanaka scancode -> Ctrl (right) keycode
+setkeycodes 0x70 97
+
+## Hankaku/Zenkaku scancode -> Esc keycode
 setkeycodes 0x29 1
-## Map Hankaku/Zenkaku scancode to XXXX key(code)
-#setkeycodes 0x29 XXXX
 ```
 
 * `PREREQS="..."` は `/usr/share/initramfs-tools/scripts/init-top/*`
