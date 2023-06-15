@@ -79,7 +79,7 @@ Enter passphrase for /dev/VolGroup/crypthome.alice: <ユーザー alice のロ�
 # mkdir -p -m 0755 ~alice
 # mount /dev/mapper/decrypthome.alice ~alice
 # cp -a /etc/skel/. ~alice/
-# chown -hR alice: ~alice
+# chown -R alice: ~alice
 # chmod 0750 ~alice
 # umount ~alice
 # cryptsetup close decrypthome.alice
