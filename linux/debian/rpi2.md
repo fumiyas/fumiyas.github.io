@@ -241,7 +241,7 @@ $ sudo sed -i '$s/[^:]*$/\/bin\/bash/' /mnt/etc/passwd
 
 ```console
 $ sudo mkdir -p -m 0755 /mnt$HOME/.ssh
-$ sudo chown -hR `id -un`: /mnt$HOME
+$ sudo chown -R `id -un`: /mnt$HOME
 $ cp -p ~/.ssh/id_rsa.pub /mnt$HOME/.ssh/authorized_keys
 ```
 

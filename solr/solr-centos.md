@@ -103,7 +103,7 @@ log4j.appender.file.layout.ConversionPattern=%d %p [%c{3}] - [%t] - %X{ip}: %m%n
 ```
 # mkdir -p -m 02750 /var/solr
 # cp -rp example/solr/* /var/solr/
-# chown -hR root:tomcat /var/solr
+# chown -R root:tomcat /var/solr
 # mv /var/solr/collection1 /var/solr/dovecot-fts
 # perl -pi -e 's/^(name)=.*/$1=dovecot-fts/' /var/solr/dovecot-fts/core.properties
 # mkdir -m 02750 /var/solr/dovecot-fts/data

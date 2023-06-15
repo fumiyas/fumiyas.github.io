@@ -72,7 +72,7 @@ getent group "$groupname" |sudo tee -a "$mnt/etc/group" >/dev/null
 
 sudo mkdir -p -m 0755 "$mnt$home/.ssh"
 sudo cp -p "$home/.ssh/id_rsa.pub" "$mnt$home/.ssh/authorized_keys"
-sudo chown -hR "$username:" "$mnt$home"
+sudo chown -R "$username:" "$mnt$home"
 
 ## ======================================================================
 

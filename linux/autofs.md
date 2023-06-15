@@ -78,7 +78,7 @@ user_home="$home_root/$user_name"
 if [ ! -d "$user_home" ]; then
   mkdir -p -m "$home_umask" "$user_home"
   cp -a /etc/skel/. "$user_home/"
-  chown -hR "$user_name:" "$user_home"
+  chown -R "$user_name:" "$user_home"
 fi
 
 echo "localhost:$user_home"
