@@ -13,7 +13,7 @@ Twitter Emoji (Twemoji) の PNG 画像ファイルを使います。
 $ mkdir -p ~/git/twitter
 $ cd ~/git/twitter
 $ git clone --depth 1 git@github.com:twitter/twemoji.git
-$ ln -s ln -s ~/git/twitter/twemoji/2/72x72 ~/.mlterm/emoji
+$ ln -sf ~/git/twitter/twemoji/assets/72x72 ~/.mlterm/emoji
 ```
 
 いくつか制限がある。
