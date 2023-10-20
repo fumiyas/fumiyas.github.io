@@ -6,6 +6,10 @@ layout: default
 
 メモ。
 
+Dovecot 3 (2.4?) から Dovecot Director 機能は削除される。
+商用製品の Dovecot クラスターを使ってくれとのこと。
+すでにドキュメントが消されている様子。
+
 複数の LMTP/POP3/IMAP/ManageSieve サーバー構成時にフロントに Dovecot Director を立てて利用する。
 あるユーザーを同一のサーバーに割り振ることができる (ユーザー名による sticky
 あるいは persistent な振り分け機能)。
@@ -13,11 +17,8 @@ layout: default
 メールボックスを共有ファイルシステムに置いたとき、
 共有ファイルシステムのキャッシュを有効に活用することが可能。
 
-* Dovecot Wiki:
-    * <http://wiki2.dovecot.org/Director>
-    * <http://wiki2.dovecot.org/NFS>
-* Dovecot Director 概要
-    * <http://www.slideshare.net/fumiyas/dovecot-director>
+* [Dovecot Director — Dovecot documentation](https://doc.dovecot.org/admin_manual/director/dovecotdirector/)
+* [Dovecot Director 概要](http://www.slideshare.net/fumiyas/dovecot-director)
 
 バックエンドに接続するときのポート番号と SSL/TLS
 ----------------------------------------------------------------------
@@ -187,17 +188,13 @@ director1# service dovecot-poolmon start
 director2# service dovecot-poolmon start
 ```
 
-参考:
-  <http://wiki2.dovecot.org/Director#Forcefully_moving_users_to_a_different_backend>
-
 TODO
 ----------------------------------------------------------------------
 
 * Director サービスのポート (9090/TCP が標準らしい) のアクセス制限どうすんだよ。
 * LMTP サービスのアクセス制限もどうすんだよ。
-    * Dovecot に
-      [TCP Wrappers サポート](http://wiki2.dovecot.org/LoginProcess#TCP_wrappers_support)
-      があるが、こいつはユーザー認証しない Director や LMTP サービスには効かない。
+    * Dovecot に TCP Wrappers サポートがあるが、
+      こいつはユーザー認証しない Director や LMTP サービスには効かない。
 * バックエンドに Doveadm サーバーを立てればフロントエンドの Director から
   `doveadm` によるメールボックス操作も振り分け可能。
 * ~~Wiki に Doveadm server の設定も載っているが、何が嬉しいのかわからない。

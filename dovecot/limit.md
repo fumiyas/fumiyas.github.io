@@ -4,8 +4,8 @@ tags: [dovecot]
 layout: default
 ---
 
-* Service limits - Dovecot Wiki
-    * <http://wiki2.dovecot.org/Services#Service_limits>
+* [Service configuration](https://doc.dovecot.org/configuration_manual/service_configuration/)
+* [Login processes — Dovecot documentation](https://doc.dovecot.org/admin_manual/login_processes/)
 
 サービス毎のデフォルト値
 ----------------------------------------------------------------------
