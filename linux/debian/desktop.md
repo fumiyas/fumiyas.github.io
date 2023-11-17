@@ -86,14 +86,14 @@ setkeycodes 0x29 1
 * フックスクリプトには実行権が必要。
 * initramfs に `setkeycodes` コマンドを組込むには:
     * busybox パッケージが必要。
-    * `/etc/initramfs-tools/initramfs.conf` に `BUSYBOX=auto` か `BUSYBOX=y` 設定が必要。
+    * `/etc/initramfs-tools/initramfs.conf` に `BUSYBOX=auto` か `BUSYBOX=y` 設定も必要。
 * initramfs の更新を忘れないように。
 
 ```console
 $ sudo chmod +x /etc/initramfs-tools/scripts/init-top/setkeycodes.sh
 $ sudo apt install busybox
 $ sudo update-initramfs -u
-..
+...
 ```
 
 SKK
