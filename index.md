@@ -13,6 +13,7 @@ Blog、再開しました。
       * [rsync](linux/rsync.md)
       * [Red Hat Enterprise Linux](linux/rhel.md)
   * Windows
+      * [Windows デスクトップ環境](windows/desktop.md)
       * [Windows スクリプティング](windows/script.md)
   * Apache HTTPD
       * [mod_allowfileowner](apache/mod-allowfileowner.md)
