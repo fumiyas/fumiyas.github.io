@@ -31,10 +31,10 @@ DNS 実装部分は [github.com/miekg/dns](https://github.com/miekg/dns)
 ここを `PATH` に追加しておくとよいでしょう。
 
 ```console
-$ go get github.com/fumiyas/dnsq-go/cmd/dnsq
-$ go get github.com/fumiyas/dnsq-go/cmd/dnsqr
+$ go install github.com/fumiyas/dnsq-go/cmd/dnsq@latest
+$ go install github.com/fumiyas/dnsq-go/cmd/dnsqr@latest
 $ ls ~/go/bin/dnsq*
-...
+dnsq  dnsqr
 ```
 
 Windows 向けバイナリーをクロスビルドしたいときは、次のように
@@ -47,7 +47,7 @@ $ cd dnsq-go
 $ GOOS=windows go build ./cmd/dnsq
 $ GOOS=windows go build ./cmd/dnsqr
 $ ls *.exe
-...
+dnsq.exe  dnsqr.exe
 ```
 
 `dnsq` の使い方
