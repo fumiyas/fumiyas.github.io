@@ -98,3 +98,7 @@ $ python3 -c 'import hashlib; print(sorted(hashlib.algorithms_available))'
 $ openssl-legacy python3 -c 'import hashlib; print(sorted(hashlib.algorithms_available))'
 ... 'md4' が含まれる! ...
 ```
+
+* * *
+
+{% include wishlist-dec.html %}

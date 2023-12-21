@@ -85,3 +85,7 @@ openldap_db_providers_by_hostname:
     - ldaps://ldap2.example.com/
 ```
 {% endraw %}
+
+* * *
+
+{% include wishlist-dec.html %}
