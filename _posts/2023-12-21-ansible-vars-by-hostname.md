@@ -65,9 +65,10 @@ openldap_db_providers:
 
 `host_vars/all/openldap.yml`:
 
+{% raw %}
 ```yaml
-openldap_server_id: "{{openldap_server_id_by_hostname.get(inventory_hostname, 0)}}"
-openldap_db_provider: "{{openldap_db_provider_by_hostname.get(inventory_hostname, [])}}"
+openldap_server_id: "{{ openldap_server_id_by_hostname.get(inventory_hostname, 0) }}"
+openldap_db_provider: "{{ openldap_db_provider_by_hostname.get(inventory_hostname, []) }}"
 
 openldap_server_id_by_hostname:
   ldap1: 1
@@ -83,3 +84,4 @@ openldap_db_providers_by_hostname:
     - ldaps://ldap1.example.com/
     - ldaps://ldap2.example.com/
 ```
+{% endraw %}
