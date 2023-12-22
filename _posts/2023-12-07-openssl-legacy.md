@@ -1,6 +1,6 @@
 ---
 title: "現代の OpenSSL 環境で古来の暗号アルゴリズムをサッと使う - シェル芸 / 闇の魔術に対する防衛術 Advent Calendar 2023"
-tags: [sh, shell]
+tags: [sh, shell, crypto]
 layout: default
 ---
 

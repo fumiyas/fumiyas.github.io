@@ -1,6 +1,6 @@
 ---
 title: "Ansible の一つの vars ファイルで複数ホスト別の値を定義する - Ansible Advent Calendar 2023"
-tags: [sh, shell]
+tags: [ansible, cms]
 layout: default
 ---
 
