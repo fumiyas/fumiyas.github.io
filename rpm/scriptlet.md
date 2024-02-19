@@ -118,7 +118,7 @@ if [[ ! -f %{_sysconfdir}/foo.conf.rpmnew ]]; then
   ## 新版で追加あるいは更新がされた設定ファイルは、
   ## 新版の設定ファイルで上書きせずに、*.rpmnew としてインストールする。
   ## 以下で無効化するので、RPM の動作に倣う。
-  cp -p \
+  cp -a \
     %{_sysconfdir}/foo.conf \
     %{_sysconfdir}/foo.conf.rpmnew \
   || exit $?
