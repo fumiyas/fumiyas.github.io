@@ -203,11 +203,11 @@ SSH 公開鍵を登録します。
 rsync 以外の実行や各種オプション機能を無効にして、
 バックアップ以外の用途に利用されないようにします。
 実行優先度を調整したい場合は `rsync ...` の前に`nice ` を、
-IO 優先度を調整したい場合は `ionice -n7 `
+IO 優先度を調整したい場合は `ionice -n3`
 などを追加してもいいでしょう。
 
 ```
-command="rsync --server --daemon --config=/srv/etc/backup/rsyncd.conf .",no-agent-forwarding,no-port-forwarding,no-pty,no-x11-forwarding <target-host:/srv/etc/backup/id_rsa.pub の内容>
+restrict,command="rsync --server --daemon --config=/srv/etc/backup/rsyncd.conf ." <target-host:/srv/etc/backup/id_rsa.pub の内容>
 ```
 
 設定ファイルとバックアップデータ保存先のディレクトリを作成します。
