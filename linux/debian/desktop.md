@@ -272,6 +272,10 @@ DKMS によるカーネルモジュールビルド時の並列ジョブ数
 Ubuntu の unzip パッケージの利用
 ----------------------------------------------------------------------
 
+ファイル名の文字エンコード変更オプション `-O`, `-I` に対応するため。
+[ziprename2utf8](https://github.com/fumiyas/home-commands/blob/master/ziprename2utf8)
+で充分?
+
 `/etc/apt/preferences`:
 
 ```
