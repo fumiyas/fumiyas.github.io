@@ -36,18 +36,19 @@ Mailman のサイトパスワードを設定する (ただしパスワード設�
 ```yaml
 - name: "Set site password"
   no_log: "{{not (site_ansible_sensitive_task_log |default(false))}}"
-  shell: |
-    set -x
-    [ -s /etc/mailman/adm.pw ] && {
-      echo 'RESULT:OK:Site password already set' >&2
-      exit 0
-    }
-    /usr/sbin/mmsitepass '{{mailman_site_password}}' || {
-      rc=$?
-      echo 'RESULT:NG:Setting site password failed' >&2
-      exit $rc
-    }
-    echo 'RESULT:OK:Done' >&2
+  shell:
+    cmd: |
+      set -xu
+      [ -s {{mailman_sysconf_dir |quote}}/adm.pw ] && {
+        echo 'RESULT:OK:Site password already set' >&2
+        exit 0
+      }
+      /usr/sbin/mmsitepass {{mailman_site_password |quote}} || {
+        rc=$?
+        echo 'RESULT:NG:Setting site password failed' >&2
+        exit $rc
+      }
+      echo 'RESULT:OK:Done' >&2
   become: true
   register: result
   changed_when: result.stderr_lines[-1] == 'RESULT:OK:Done'
@@ -96,7 +97,7 @@ site_ansible_sensitive_task_log: "{{inventory == 'staging'}}"
 気もしますが…悩ましい…。Ansible が `no_log` でなく `log` という名前で
 このオプションを用意してくれていたらよかったのに。
 
-`shell: |`
+`shell: <シェルスクリプト>` (`cmd: 〜` を使用しない) 記述の問題点
 ======================================================================
 
 `shell` モジュールで実行するシェルスクリプトは YAML の文字列として
@@ -107,7 +108,9 @@ site_ansible_sensitive_task_log: "{{inventory == 'staging'}}"
 `shell: |` が書きやすいと思います。
 
 ただし問題が 2 つあることに気付いたのでご注意ください。
-(Ansible のバグ、あるいは制限)
+
+  * Unexpected shell module behaviors (with and without cmd:) · Issue #32800 · ansiblensible
+      * https://github.com/ansible/ansible/issues/32800
 
 問題の一つは、何故かヒアドキュメントがうまく動作しませんでした。
 簡単に調べた限りでは、Ansible が YAML に記述したスクリプトの改行を
@@ -154,7 +157,7 @@ The offending line appears to be:
 このようにスクリプトの最初に実行しておくとよいでしょう。
 
 
-`[ -s /etc/mailman/adm.pw ] && { 〜 exit 0 }`
+`[ -s {{mailman_sysconf_dir |quote}}/adm.pw ] && { 〜 exit 0 }`
 ======================================================================
 
 この後に実行する Mailman サイトパスワード設定コマンド `mmsitepass` は
