@@ -1,5 +1,8 @@
-デバイス
-======================================================================
+---
+title: "Linux デスクトップ"
+layout: default
+tags: [linux, desktop, kde]
+---
 
 デバイスへのアクセス権限
 ----------------------------------------------------------------------
@@ -179,7 +182,7 @@ $ echo gtk-key-theme-name=Emacs >>~/.config/gtk-3.0/settings.ini
 $ gsettings set org.gnome.desktop.interface gtk-key-theme Emacs
 ```
 
-KDE
+KDE (KWin, Plasma)
 ----------------------------------------------------------------------
 
 FIXME: GUI でなく CLI で変更を適用する方法
@@ -328,6 +331,6 @@ Pin-Priority: 90
 `/etc/apt/sources.list`:
 
 ```
-deb [arch=amd64] http://jp.archive.ubuntu.com/ubuntu trusty-updates main
-deb [arch=amd64] http://jp.archive.ubuntu.com/ubuntu trusty main
+deb [arch=amd64] http://jp.archive.ubuntu.com/ubuntu noble-updates main
+deb [arch=amd64] http://jp.archive.ubuntu.com/ubuntu noble main
 ```
