@@ -83,7 +83,7 @@ setkeycodes 0x29 1
 
 * `PREREQS="..."` は `/usr/share/initramfs-tools/scripts/init-top/*`
   のフックスクリプトのうち、先に実行してほしいものの名前を記述する。
-* フックスクリプトには実行権が必要。
+* フックスクリプトのファイルのモードに実行権限が必要。
 * initramfs に `setkeycodes` コマンドを組込むには:
     * busybox パッケージが必要。
     * `/etc/initramfs-tools/initramfs.conf` に `BUSYBOX=auto` か `BUSYBOX=y` 設定も必要。
@@ -187,17 +187,48 @@ FIXME: GUI でなく CLI で変更を適用する方法
 KDE システム設定:
 
 * `[ワークスペース]` グループ - `[ワークスペースの挙動]` - `[スクリーンエッジ]`:
+    * `[マウスカーソルを画面の端に押し当てることでアクションを起動できます]` の左上を `[アクションなし」` に変更。
     * `[最大化(M)]` チェックを解除。
     * `[タイル化(T)]` チェックを解除。
-* `[ワークスペース]` グループ - `[ウィンドウの操作]` - `[ウィンドウの挙動]`:
+* `[ワークスペース]` グループ - `[ワークスペースの挙動]` - `[デスクトップ効果]`:
+    * `[管理者モードでスクリーンを暗くする]` を有効化。
+    * `[半透明性]` を有効化、プロパティは適宜変更。
+* `[ワークスペース]` グループ - `[ウィンドウの管理]` - `[ウィンドウの挙動]`:
     * `[ウィンドウの挙動]` タブ:
         * `[ウィンドウの内部、タイトルバー、枠の操作]` グループ -
           `[修飾キー(D)]` を `[Alt]` に変更。
     * `[移動]` タブ:
         * `[ウィンドウのジオメトリ(G)]` - `[移動およびリサイズ中に表示]` チェックを付与。
-* `[ワークスペース]` グループ - `[ウィンドウの操作]` - `[KWin スクリプト]`:
+* `[ワークスペース]` グループ - `[ウィンドウの管理]` - `[KWin スクリプト]`:
     * `[新しいスクリプトを入手...]` ボタン - `[新しい Window Manager Scripts をダウンロード]` ウィンドウ:
         * `[検索...]` 欄で `Window Geometry Inormation` を検索してインストール。
+* `[ワークスペース]` グループ - `[ウィンドウの管理]` - `[ウィンドウのルール]`:
+
+  下記内容の `*.kwinrule` ファイルを作成してインポート。
+
+  ```
+  [端末 (*term) の閉じるボタンを消去]
+  Description=端末 (*term) の閉じるボタンを消去
+  clientmachine=localhost
+  closeablerule=2
+  title=sugar:/etc/services (/home/fumiyas/factory/osstech/paper/yearly/2023) - VIM
+  types=1
+  wmclass=term$
+  wmclasscomplete=true
+  wmclassmatch=3
+
+  [端末 (*term) 上の Vim 実行時のアイコン表示]
+  Description=端末 (*term) 上の Vim 実行時のアイコン表示
+  clientmachine=localhost
+  desktopfile=/usr/share/applications/vim.desktop
+  desktopfilerule=2
+  title=- VIM$
+  titlematch=3
+  types=1
+  wmclass=term$
+  wmclasscomplete=true
+  wmclassmatch=3
+  ```
 * `[ワークスペース]` グループ - `[起動と終了]` - `[デスクトップセッション]`:
     * `[ログイン時]` を `[最後に手動で保存したセッションを復元]` に変更。
 * `[個人設定]` グループ - `[地域の設定]` - `[入力メソッド]` - `[グローバルオプションを設定…]`:
