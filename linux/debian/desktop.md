@@ -206,12 +206,10 @@ KDE システム設定:
 
   下記内容の `*.kwinrule` ファイルを作成してインポート。
 
-  ```
+  ```ini
   [端末 (*term) の閉じるボタンを消去]
   Description=端末 (*term) の閉じるボタンを消去
-  clientmachine=localhost
   closeablerule=2
-  title=sugar:/etc/services (/home/fumiyas/factory/osstech/paper/yearly/2023) - VIM
   types=1
   wmclass=term$
   wmclasscomplete=true
@@ -219,7 +217,6 @@ KDE システム設定:
 
   [端末 (*term) 上の Vim 実行時のアイコン表示]
   Description=端末 (*term) 上の Vim 実行時のアイコン表示
-  clientmachine=localhost
   desktopfile=/usr/share/applications/vim.desktop
   desktopfilerule=2
   title=- VIM$
@@ -287,7 +284,7 @@ USB NIC のネットワークインターフェイス名
 ```
 SUBSYSTEM=="net", \
 ACTION=="add", \
-KERNEL=="usb0", \
+KERNEL=="eth0", \
   NAME="usb0"
 ```
 
