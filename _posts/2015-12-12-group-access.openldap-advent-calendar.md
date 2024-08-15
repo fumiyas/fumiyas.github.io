@@ -35,7 +35,7 @@ RDN の値となるのが特徴です。
 
 ```
 dn: cn=managers,ou=Groups,dc=example,dc=jp
-objectClass: groupOfNames
+objectClass: posixGroup
 cn: managers
 gidNumber: 1000
 memberUid: alice
