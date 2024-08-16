@@ -210,8 +210,10 @@ KDE システム設定:
   下記内容の `*.kwinrule` ファイルを作成してインポート。
 
   ```ini
-  [端末 (*term) の閉じるボタンを消去]
-  Description=端末 (*term) の閉じるボタンを消去
+  [端末 (*term) のアイコン表示、閉じるボタン非表示]
+  Description=端末 (*term) のアイコン表示、閉じるボタン非表示
+  desktopfile=/usr/share/kservicetypes5/terminalemulator.desktop
+  desktopfilerule=2
   closeablerule=2
   types=1
   wmclass=term$
