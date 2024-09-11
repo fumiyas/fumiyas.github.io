@@ -176,8 +176,9 @@ $ xdpyinfo |sed -n '/^number of extensions:/,/^[^ ]/p' |grep ' DRI'
 GTK
 ----------------------------------------------------------------------
 
-```console
 FIXME: どっち?
+
+```console
 $ echo gtk-key-theme-name=Emacs >>~/.config/gtk-3.0/settings.ini
 $ gsettings set org.gnome.desktop.interface gtk-key-theme Emacs
 ```
@@ -224,27 +225,42 @@ KDE システム設定:
   下記内容の `*.kwinrule` ファイルを作成してインポート。
 
   ```ini
-  [端末 (*term) のアイコン表示、閉じるボタン非表示]
-  Description=端末 (*term) のアイコン表示、閉じるボタン非表示
-  desktopfile=/usr/share/kservicetypes5/terminalemulator.desktop
-  desktopfilerule=2
-  closeablerule=2
-  types=1
-  wmclass=term$
-  wmclasscomplete=true
-  wmclassmatch=3
+  [Wanderlust]
+  Description=Wanderlust
+  desktopfile=emacs-mail.desktop
+  desktopfilerule=3
+  wmclass=Wanderlust
+  wmclassmatch=1
 
-  [端末 (*term) 上の Vim 実行時のアイコン表示]
-  Description=端末 (*term) 上の Vim 実行時のアイコン表示
-  desktopfile=/usr/share/applications/vim.desktop
+  [端末アイコン VIM]
+  Description=端末アイコン VIM
+  desktopfile=vim.desktop
   desktopfilerule=2
   title=- VIM$
   titlematch=3
-  types=1
   wmclass=term$
-  wmclasscomplete=true
   wmclassmatch=3
+
+  [端末アイコン WezTerm]
+  Description=端末アイコン WezTerm
+  desktopfile=org.wezfurlong.wezterm.desktop
+  desktopfilerule=2
+  title=(?<! - VIM)$
+  titlematch=3
+  wmclass=org.wezfurlong.wezterm
+  wmclassmatch=1
+
+  [端末アイコン mlterm]
+  Description=端末アイコン mlterm
+  desktopfile=mlterm.desktop
+  desktopfilerule=2
+  title=(?<! - VIM)$
+  titlematch=3
+  wmclass=mlterm
+  wmclassmatch=1
   ```
+
+  `*.kwinrule` ファイルにエクスポートするときにルールの順番を維持してくれないし、インポートしたときにファイル内の順番通りにならないため、インポート後に順番を調整する必要があるかもしれない。現在のルール設定は順番に依存しないように記述したので、そのままで問題ない。
 * `[システム]` グループ - `[セッション]`:
     * `[ログイン時]` を `[手動で保存したセッションを復元する]` に変更。
 * `[システム]` グループ - `[電源管理]`:
