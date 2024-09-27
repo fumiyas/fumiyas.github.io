@@ -250,8 +250,8 @@ KDE システム設定:
   desktopfilerule=2
   title=(?<! - VIM)$
   titlematch=3
-  wmclass=org.wezfurlong.wezterm
-  wmclassmatch=1
+  wmclass=wezterm
+  wmclassmatch=2
 
   [端末アイコン mlterm]
   Description=端末アイコン mlterm
@@ -260,7 +260,7 @@ KDE システム設定:
   title=(?<! - VIM)$
   titlematch=3
   wmclass=mlterm
-  wmclassmatch=1
+  wmclassmatch=2
   ```
 
   `*.kwinrule` ファイルにエクスポートするときにルールの順番を維持してくれないし、インポートしたときにファイル内の順番通りにならないため、インポート後に順番を調整する必要があるかもしれない。現在のルール設定は順番に依存しないように記述したので、そのままで問題ない。
