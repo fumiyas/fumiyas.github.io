@@ -190,37 +190,47 @@ FIXME: GUI でなく CLI で変更を適用する方法
 
 KDE システム設定:
 
-* `[入出力デバイス]` グループ - `[マウスとタッチパッド]` - `[スクリーンエッジ]`:
+* `[入出力デバイス]` グループ
+  - `[マウスとタッチパッド]`
+  - `[スクリーンエッジ]`:
     * `[マウスカーソルを画面の端に押し当てることでアクションを起動できます]` の左上を `[アクションなし」` に変更。
     * `[最大化(M)]` チェックを解除。
     * `[タイル化(T)]` チェックを解除。
     * `[Edge barrier]` を `None` (`0 px`) に設定。
-* `[入力/出力デバイス]` グループ - `[キーボード]`:
+* `[入力/出力デバイス]` グループ
+  - `[キーボード]`:
     * `[キーボード]` - `[Hardware]` タブ:
         * `[Delay]` を `[300]` に変更。
         * `[Rate]` を `[30.00]` に変更。
-* `[入力/出力デバイス]` グループ - `[マウスとタッチパッド]`:
+* `[入力/出力デバイス]` グループ
+  - `[マウスとタッチパッド]`:
     * `[マウス]`:
         * `[スクロール]` - `[スクロール方向を反転]` チェックを付与。
     * `[タッチパッド]`:
         * `[Pointer accelaration]` を `[0.40]` に変更。
         * `[タップ]` - `[タップしてクリック]`, `[タップしてドラッグ]` チェックを付与。
         * `[スクロール]` - `[スクロールの方向を反転 (自然なスクロール)]` チェックを付与。
-* `[外観とスタイル]` グループ - `[ウィンドウの管理]` - `[ウィンドウの挙動]`:
+* `[外観とスタイル]` グループ
+  - `[ウィンドウの管理]`
+  - `[ウィンドウの挙動]`:
     * `[ウィンドウの挙動]` タブ:
         * `[ウィンドウの内部、タイトルバー、枠の操作]` グループ -
           `[修飾キー(D)]` を `[Alt]` に変更。
-    * `[移動]` タブ:
-        * `[ウィンドウのジオメトリ(G)]` - `[移動およびリサイズ中に表示]` チェックを付与。
-* `[外観とスタイル]` グループ - `[ウィンドウの管理]` - `[タスクスイッチャー]`:
+* `[外観とスタイル]` グループ
+  - `[ウィンドウの管理]`
+  - `[タスクスイッチャー]`:
     * `[Get New Task Switchers...]` で「Modern Informative」をインストールして選択。
-* `[外観とスタイル]` グループ - `[ウィンドウの管理]` - `[デスクトップ効果]`:
+* `[外観とスタイル]` グループ
+  - `[ウィンドウの管理]`
+- `[デスクトップ効果]`:
     * `フォーカス` グループ:
         * `[管理者モードでスクリーンを暗くする]` を有効化。
         * `[非アクティブなウィンドウを暗くする]` を有効化、プロパティの `[Strength]` を `10` に設定。
     * `[外観]` グループ:
         * `[半透明性]` を有効化、プロパティの `[Inactive windows]` の透明度を 90 程度に設定。
-* `[外観とスタイル]` グループ - `[ウィンドウの管理]` - `[KWin スクリプト]`:
+* `[外観とスタイル]` グループ
+  - `[ウィンドウの管理]`
+  - `[KWin スクリプト]`:
     * `[新しいスクリプトを入手...]` ボタン - `[新しい Window Manager Scripts をダウンロード]` ウィンドウ:
         * `[検索...]` 欄で `Window Geometry Inormation` を検索してインストール。
 * `[外観とスタイル]` グループ - `[ウィンドウの管理]` - `[ウィンドウのルール]`:
@@ -232,22 +242,39 @@ KDE システム設定:
   Description=Wanderlust
   desktopfile=emacs-mail.desktop
   desktopfilerule=3
+  opacityactiverule=2
+  opacityinactive=90
+  opacityinactiverule=2
   wmclass=Wanderlust
   wmclassmatch=1
 
+  [localhost 以外]
+  Description=localhost 以外
+  clientmachinematch=1
+  opacityinactive=90
+  opacityinactiverule=2
+
   [端末アイコン VIM]
   Description=端末アイコン VIM
+  decocolor=Oxygen
+  decocolorrule=2
   desktopfile=vim.desktop
   desktopfilerule=2
+  opacityactiverule=2
+  opacityinactive=90
+  opacityinactiverule=2
   title=- VIM$
   titlematch=3
-  wmclass=term$
+  wmclass=term(-gui)?$
   wmclassmatch=3
 
   [端末アイコン WezTerm]
   Description=端末アイコン WezTerm
   desktopfile=org.wezfurlong.wezterm.desktop
   desktopfilerule=2
+  opacityactiverule=2
+  opacityinactive=90
+  opacityinactiverule=2
   title=(?<! - VIM)$
   titlematch=3
   wmclass=wezterm
@@ -257,6 +284,9 @@ KDE システム設定:
   Description=端末アイコン mlterm
   desktopfile=mlterm.desktop
   desktopfilerule=2
+  opacityactiverule=2
+  opacityinactive=90
+  opacityinactiverule=2
   title=(?<! - VIM)$
   titlematch=3
   wmclass=mlterm
