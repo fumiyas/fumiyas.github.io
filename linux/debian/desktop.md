@@ -327,12 +327,13 @@ SSH サーバーの `PubkeyAuthentication` 認証設定以外の無効化
 ----------------------------------------------------------------------
 
 ```console
-# sed -i.dist \
-  -e 's/^\(PermitRootLogin\).*/\1 prohibit-password/' \
-  -e 's/^#*\([a-zA-Z]*Authentication\).*/\1 no/' \
-  -e 's/^\(PubkeyAuthentication\).*/\1 yes/' \
-  /etc/ssh/sshd_config \
+# sed -n -E \
+    -e '/^#*Pubkey/d' \
+    -e 's/^#*([a-zA-Z]*Authentication).*/\1 no/p'
+    /etc/ssh/sshd_config \
+>/etc/sshd_config.d/local.conf \
 ;
+# systemctl reload sshd
 ```
 
 USB NIC のネットワークインターフェイス名
