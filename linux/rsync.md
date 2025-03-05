@@ -16,66 +16,63 @@ layout: default
 
 Debian / Ubuntu の場合:
 
-``` console
+```console
 # apt-get install rsync openssh-client
 ```
 
 RHEL の場合:
 
-``` console
+```console
 # yum install rsync openssh-clients
 ```
 
 よく利用するオプション
 ----------------------------------------------------------------------
 
-  * `--dry-run` (`-n`)  
-    テストモード。実際の同期処理は実行しない。
-  * `--verbose` (`-v`)  
-    冗長モード。`--dry-run` と組み合せて同期前の確認に利用することが多い。
-  * `--stats`  
-    同期完了時に統計情報を表示する。
-  * `--compress` (`-z`)  
-    同期データを圧縮して転送する。
-  * `--archive` (`-a`)   
-    以下のオプションの列挙に相当する。
-    (**注意**: `--acls`, `--xattrs`, `--hard-links` は含まれない)
-    + `--recursive` (`-r`)  
-      ディレクトリ階層を再帰的に同期する。
-    + `--links` (`-l`)  
-      シンボリックリンクを保持する。
-    + `--perms` (`-p`)  
-      パーミッションを保持する。
-    + `--times` (`-t`)  
-      タイムスタンプを保持する。
-    + `--owner` (`-o`)  
-      所有ユーザーを保持する。
-	(root で実行した場合のみ)
-    + `--group` (`-g`)  
-      所有グループを保持する。
-    + `--devices`  
-      デバイスファイルを保持する。
-      (root で実行した場合のみ)
-    + `--specials`  
-      特殊ファイルを保持する。
-  * `--acls` (`-A`)  
-    POSIX ACL ファイルを保持する。
-  * `--xattrs` (`-X`)  
-    拡張属性 (XATTR あるいは EA) を保持する。
-  * `--hard-links` (`-H`)  
-    ハードリンクを保持する。
-  * `--relative` (`-R`)  
-    同期先に相対パスを含めて転送する。
+* `--dry-run` (`-n`)
+    * テストモード。実際の同期処理は実行しない。
+* `--verbose` (`-v`)
+    * 冗長モード。`--dry-run` と組み合せて同期前の確認に利用することが多い。
+* `--stats`
+    * 同期完了時に統計情報を表示する。
+* `--compress` (`-z`)
+    * 同期データを圧縮して転送する。
+* `--archive` (`-a`)
+    * 以下のオプションの列挙に相当する。
+        (**注意**: `--acls`, `--xattrs`, `--hard-links` は含まれない)
+        + `--recursive` (`-r`)
+            * ディレクトリ階層を再帰的に同期する。
+        + `--links` (`-l`)
+            * シンボリックリンクを保持する。
+        + `--perms` (`-p`)
+            * パーミッションを保持する。
+        + `--times` (`-t`)
+            * タイムスタンプを保持する。
+        + `--owner` (`-o`)
+            * 所有ユーザーを保持する。(root で実行した場合のみ)
+        + `--group` (`-g`)
+            * 所有グループを保持する。
+        + `--devices`
+            * デバイスファイルを保持する。(root で実行した場合のみ)
+        + `--specials`
+            * 特殊ファイルを保持する。
+* `--acls` (`-A`)
+    * POSIX ACL ファイルを保持する。
+* `--xattrs` (`-X`)
+    * 拡張属性 (XATTR あるいは EA) を保持する。
+* `--hard-links` (`-H`)
+    * ハードリンクを保持する。
+* `--relative` (`-R`)
+    * 同期先に相対パスを含めて転送する。
     (同期元を複数指定した場合に便利)
-  * `--omit-dir-times`  
-    ディレクトリのタイムスタンプを保持しない。
-  * `--delete`  
-    同期元に存在しないファイルを同期先から削除する。
-  * `--delete-excluded`  
-    `--exclude` で除外したファイルを同期先から削除する。
-  * `--exclude <拡張 glob パターン>`  
-    パターンに一致するファイルを同期から除外する。
-    (`**` が `/` を含むすべての文字に一致する)
+* `--omit-dir-times`
+    * ディレクトリのタイムスタンプを保持しない。
+* `--delete`
+    * 同期元に存在しないファイルを同期先から削除する。
+* `--delete-excluded`
+    * `--exclude` で除外したファイルを同期先から削除する。
+* `--exclude <拡張 glob パターン>`
+    * パターンに一致するファイルを同期から除外する。(`**` が `/` を含むすべての文字に一致する)
 
 rsyncd over SSH によるプッシュ方式のバックアップ
 ----------------------------------------------------------------------
@@ -87,25 +84,25 @@ rsyncd over SSH (rsync server over SSH) 環境を構築し、
 
 次の条件とします。
 
-  * バックアップ対象のファイルがあるホストでバックアップスクリプトを実行する。
-  * rsyncd over SSH を利用して安全にデータを送受信する。
-  * rsyncd over SSH 専用の SSH 鍵ペアを用意する。
-    (**rsync 以外のシェルログイン等の操作は抑制する**)
-  * バックアップデータの世代管理は必要であれば別途実施すること。
-  * バックアップ対象
-      * ホスト名: `target-host`
-      * 実行ユーザー: `root`
-      * バックアップスクリプト: `/srv/sbin/backup-target-host`
-      * SSH 鍵ペア: `/srv/etc/backup/id_rsa*`
-      * バックアップ対象パス:
-          * `/etc`
-          * `/var/lib`
-          * `/home`
-  * バックアップ先
-      * ホスト名: `backup-host`
-      * 実行ユーザー: `backupuser`
-      * バックアップディレクトリ: `/srv/var/backup/target-host`
-      * rsync デーモン設定ファイル: `/srv/etc/backup/rsyncd.conf`
+* バックアップ対象のファイルがあるホストでバックアップスクリプトを実行する。
+* rsyncd over SSH を利用して安全にデータを送受信する。
+* rsyncd over SSH 専用の SSH 鍵ペアを用意する。
+  (**rsync 以外のシェルログイン等の操作は抑制する**)
+* バックアップデータの世代管理は必要であれば別途実施すること。
+* バックアップ対象
+    * ホスト名: `target-host`
+    * 実行ユーザー: `root`
+    * バックアップスクリプト: `/srv/sbin/backup-target-host`
+    * SSH 鍵ペア: `/srv/etc/backup/id_rsa*`
+    * バックアップ対象パス:
+        * `/etc`
+        * `/var/lib`
+        * `/home`
+* バックアップ先
+    * ホスト名: `backup-host`
+    * 実行ユーザー: `backupuser`
+    * バックアップディレクトリ: `/srv/var/backup/target-host`
+    * rsync デーモン設定ファイル: `/srv/etc/backup/rsyncd.conf`
 
 ### バックアップ対象ホスト target-host での環境構築
 
@@ -113,7 +110,7 @@ rsyncd over SSH (rsync server over SSH) 環境を構築し、
 SSH 鍵ペア `/srv/etc/backup/id_rsa*` を作成します。
 SSH 接続を無人で行なえるようにするため、パスフレーズなしにします。
 
-``` console
+```console
 # mkdir -p /srv/etc/backup
 # ssh-keygen -t rsa -N '' -f /srv/etc/backup/id_rsa
 ```
@@ -123,7 +120,7 @@ SSH 接続を無人で行なえるようにするため、パスフレーズな�
 **`ssh`(1) のオプションや
 rsync の `--exclude` オプション (除外ファイル) は適宜調整してください**。
 
-``` sh
+```sh
 #!/bin/bash
 
 set -u
@@ -183,8 +180,7 @@ rsync \
   "$@" \
   "${src_paths[@]}" \
   "$dst" \
-  ;
-
+;
 ```
 
 ### バックアップ先ホスト backup-host での環境構築
@@ -192,7 +188,7 @@ rsync \
 バックアップ先ホスト backup-host
 にバックアップ実行ユーザー `backup-user` を作成します。
 
-```
+```console
 # useradd --system --create-home backup-user
 ```
 
@@ -212,7 +208,7 @@ restrict,command="rsync --server --daemon --config=/srv/etc/backup/rsyncd.conf .
 
 設定ファイルとバックアップデータ保存先のディレクトリを作成します。
 
-```
+```console
 # mkdir -m 0755 -p /srv/etc/backup
 # mkdir -m 0755 -p /srv/var/backup/target-host
 # chown backup-user: /srv/var/backup/target-host
@@ -221,7 +217,7 @@ restrict,command="rsync --server --daemon --config=/srv/etc/backup/rsyncd.conf .
 バックアップ先ホスト backup-host で rsync デーモンの設定ファイル
 `/srv/etc/backup/rsyncd.conf` を用意します。
 
-``` ini
+```ini
 [global]
 ## バックアップ先ホストで root 権限で実行しない場合
 use chroot = no
@@ -246,7 +242,7 @@ read only = no
 かつ実際の転送なし (`--dry-run`) で実行し、
 想定通りのファイルが転送されることを確認します。
 
-```
+```console
 # /srv/sbin/backup-target-host --verbose --dry-run
 …
 ```
@@ -258,7 +254,7 @@ read only = no
 IO 優先度を調整するために `ionice`(1) を、
 rsync で圧縮転送を利用するために `--compress` オプションを指定しています。
 
-```
+```crontab
 00 04 * * * root nice ionice -n7 /srv/sbin/backup --compress
 ```
 
@@ -266,7 +262,7 @@ rsync で圧縮転送を利用するために `--compress` オプションを指
 
 必要に応じて rsync に `--acls`, `--xattrs`, `--hard-links` オプションを指定すること。
 
-``` console
+```console
 # rsync \
   --rsh 'ssh -i /srv/etc/backup/id_rsa' \
   --archive \
@@ -275,4 +271,3 @@ rsync で圧縮転送を利用するために `--compress` オプションを指
   /path/to/restore \
   ;
 ```
-
