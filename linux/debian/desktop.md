@@ -108,7 +108,7 @@ $ mkdir ~/.config/libskk/rules
 $ cp -rp /usr/share/libskk/rules/default ~/.config/libskk/rules/fumiyas
 ```
 
-GUI
+デスクトップ環境
 ======================================================================
 
 ディスプレイの解像度の追加
@@ -317,6 +317,20 @@ $ sudo apt install kdeconnect
 $ sudo firewall-cmd --permanent --zone=public --add-service=kdeconnect
 $ sudo firewall-cmd --reload
 ```
+
+Firefox
+----------------------------------------------------------------------
+
+### 拡張
+
+* [CopyTabTitleUrl](https://addons.mozilla.org/ja/firefox/addon/copytabtitleurl/)
+    * `[Extensions and themes]` - `[Extensions]`:
+        * `[CopyTabTitleUrl]`:
+            * `format`: `[${title}](${url})`
+            * `format2`: `${title}${enter}${url}`
+        * `[⚙️]` - `[Manage Extensions shortcuts]` - `[CopyTabTitleUrl]`:
+            * `format`: Alt+C
+            * `format2`: Alt+Q
 
 ネットワーク
 ======================================================================
