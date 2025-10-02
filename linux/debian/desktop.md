@@ -399,9 +399,17 @@ Pin: release l=Ubuntu
 Pin-Priority: 90
 ```
 
-`/etc/apt/sources.list`:
+`/etc/apt/sources.list.d/ubuntu.sources`:
 
 ```
-deb [arch=amd64] http://jp.archive.ubuntu.com/ubuntu noble-updates main
-deb [arch=amd64] http://jp.archive.ubuntu.com/ubuntu noble main
+Types: deb
+URIs: http://jp.archive.ubuntu.com/ubuntu
+Suites:
+# Ubuntu 24.04 LTS
+  noble
+  noble-updates
+  noble-security
+Components: main
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+Enabled: yes
 ```
