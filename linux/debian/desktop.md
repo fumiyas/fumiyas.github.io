@@ -188,126 +188,163 @@ KDE 6 (KWin, Plasma)
 
 FIXME: GUI でなく CLI で変更を適用する方法
 
-KDE システム設定:
+### KDE システム設定 (`systemsettings`):
 
-* `[入力/出力デバイス]` グループ
-  - `[マウスとタッチパッド]`
-  - `[スクリーンエッジ]`:
-    * `[マウスカーソルを画面の端に押し当てることでアクションを起動できます]` の左上を `[アクションなし」` に変更。
-    * `[最大化(M)]` チェックを解除。
-    * `[タイル化(T)]` チェックを解除。
-    * `[Edge barrier]` を `None` (`0 px`) に設定。
-* `[入力/出力デバイス]` グループ
-  - `[キーボード]`:
-    * `[キーボード]` - `[Hardware]` タブ:
-        * `[Delay]` を `[300]` に変更。
-        * `[Rate]` を `[30.00]` に変更。
-* `[入力/出力デバイス]` グループ
-  - `[マウスとタッチパッド]`:
+#### `入力/出力デバイス` グループ
+
+* `[マウスとタッチパッド]`:
     * `[マウス]`:
         * `[スクロール]` - `[スクロール方向を反転]` チェックを付与。
     * `[タッチパッド]`:
-        * `[Pointer accelaration]` を `[0.40]` に変更。
-        * `[タップ]` - `[タップしてクリック]`, `[タップしてドラッグ]` チェックを付与。
+        * `[ポインタの速度]` を `[0.80]` に変更。
         * `[スクロール]` - `[スクロールの方向を反転 (自然なスクロール)]` チェックを付与。
-* `[外観とスタイル]` グループ
-  - `[ウィンドウの管理]`
-  - `[ウィンドウの挙動]`:
-    * `[ウィンドウの挙動]` タブ:
-        * `[ウィンドウの内部、タイトルバー、枠の操作]` グループ -
-          `[修飾キー(D)]` を `[Alt]` に変更。
-* `[外観とスタイル]` グループ
-  - `[ウィンドウの管理]`
-  - `[タスクスイッチャー]`:
-    * `[Get New Task Switchers...]` で「Modern Informative」をインストールして選択。
-* `[外観とスタイル]` グループ
-  - `[ウィンドウの管理]`
-- `[デスクトップ効果]`:
-    * `フォーカス` グループ:
-        * `[管理者モードでスクリーンを暗くする]` を有効化。
-        * `[非アクティブなウィンドウを暗くする]` を有効化、プロパティの `[Strength]` を `10` に設定。
-    * `[外観]` グループ:
-        * `[半透明性]` を有効化、プロパティの `[Inactive windows]` の透明度を 90 程度に設定。
-* `[外観とスタイル]` グループ
-  - `[ウィンドウの管理]`
-  - `[KWin スクリプト]`:
-    * `[新しいスクリプトを入手...]` ボタン - `[新しい Window Manager Scripts をダウンロード]` ウィンドウ:
-        * `[検索...]` 欄で `Window Geometry Inormation` を検索してインストール。
-* `[外観とスタイル]` グループ - `[ウィンドウの管理]` - `[ウィンドウのルール]`:
+        * `[統合右クリック]` - `[二本指で押して中クリック]` に変更。
+* `[キーボード]`:
+    * `[キーボード]`:
+        * `[遅延]` を `[300 ミリ秒]` に変更。
+        * `[レート]` を `[30 リピート/秒]` に変更。
+* `[ディスプレイとモニタ]`:
+    * `[スクリーンエッジ]`:
+        * `[マウスカーソルを対応する画面のエッジまたは角に当てることで、アクションを実行できます]` の左上を `[アクションなし」` に変更。
+        * `[最大化(M)]` チェックを解除。
+        * `[タイル化(T)]` チェックを解除。
+        * `[エッジバリア]` を `なし` に設定。
 
-  下記内容の `*.kwinrule` ファイルを作成してインポート。
+#### `[外観とスタイル]` グループ
 
-  ```ini
-  [Wanderlust]
-  Description=Wanderlust
-  desktopfile=emacs-mail.desktop
-  desktopfilerule=3
-  opacityactiverule=2
-  opacityinactive=90
-  opacityinactiverule=2
-  wmclass=Wanderlust
-  wmclassmatch=1
+* `[色とテーマ]`:
+    * `[グローバルテーマ]` を `Breeze` に変更。(変更するとほか全体の設定がリセットされるので初回のみ)
+    * `[色彩]`:
+        * `[Oxygen Cold]` の `[✎]` ボタンをクリック
+          -> `[Save As...]` ボタン
+          -> `カラスキームの名前を入力]` を  `Oxygen Cold local` に変更して `[OK]` ボタンを押す。
+        * `[Oxygen Cold local]` の `[✎]` ボタンをクリック:
+            * `[色]` タブ:
+                * `[アクティブなタイトルバー]` の色を `#af4748` (小豆色) へ変更`
+            * `[保存]` ボタンを押す。
+    * `[ウィンドウの装飾]`:
+        * `[Breeze]` の `[✎]` ボタンをクリック:
+            * `[全般]` タブ:
+                * `[タイトルの位置]` を `[左]` に変更。
+            * `[影と輪郭]` タブ:
+                * `[影の色]` を `#ff0000` (赤) に変更。
+            * `[ウィンドウ固有の設定]` タブ -> `[追加...]` ボタン:
+                * `[識別に用いるウィンドウのプロパティ]` を `[ウィンドウクラス名]` に設定。
+                * `[マッチさせる正規表現]` を `Slack` に設定。
+                * `[ウィンドウのタイトルバーを表示しない]` チェックを解除。
+    * `[カーソル]`:
+        * `[Oxygen Yellow]` を選択。
+        * `[サイズ]` を `[48]` に変更。
+* `[ウィンドウの管理]`
+    * `[タスクスイッチャー]`:
+        * `[Get New Task Switchers...]` で `Modern Informative` をインストールして選択。
+    * `[ウィンドウのルール]`:
+        * 下記内容の `*.kwinrule` ファイルを作成してインポート。
+          ```ini
+          [Wanderlust]
+          Description=Wanderlust
+          desktopfile=emacs-mail.desktop
+          desktopfilerule=3
+          wmclass=Wanderlust
+          wmclassmatch=1
+  
+          [default]
+          Description=default
+          opacityactiverule=2
+          opacityinactive=90
+          opacityinactiverule=2
+          types=66463
+          wmclasscomplete=true
+  
+          [localhost]
+          Description=localhost
+          Enabled=false
+          clientmachine=localhost
+          clientmachinematch=1
+          decocolor=BreezeDark
+          decocolorrule=2
+          opacityactiverule=2
+          opacityinactiverule=2
+          wmclass=firefox
+          wmclassmatch=1
+  
+          [端末アイコン Nvim]
+          Description=端末アイコン Nvim
+          decocolor=OxygenCold
+          decocolorrule=2
+          desktopfile=nvim.desktop
+          desktopfilerule=2
+          title=- Nvim$
+          titlematch=3
+          wmclass=term(-gui)?$
+          wmclassmatch=3
+  
+          [端末アイコン VIM]
+          Description=端末アイコン VIM
+          decocolor=BreezeDark
+          decocolorrule=2
+          desktopfile=vim.desktop
+          desktopfilerule=2
+          title=- VIM$
+          titlematch=3
+          wmclass=term(-gui)?$
+          wmclassmatch=3
+  
+          [端末アイコン WezTerm]
+          Description=端末アイコン WezTerm
+          Enabled=false
+          desktopfile=org.wezfurlong.wezterm.desktop
+          desktopfilerule=2
+          title=(?<! - VIM)$
+          titlematch=3
+          wmclass=wezterm
+          wmclassmatch=2
+  
+          [端末アイコン mlterm]
+          Description=端末アイコン mlterm
+          desktopfile=mlterm.desktop
+          desktopfilerule=2
+          title=(?<! - VIM)$
+          titlematch=3
+          wmclass=mlterm
+          wmclassmatch=2
+          ```
+        * `*.kwinrule` ファイルにエクスポートするときにルールの順番を維持してくれないし、インポートしたときにファイル内の順番通りにならないため、インポート後に順番を調整する必要があるかもしれない。現在のルール設定は順番に依存しないように記述したので、そのままで問題ないはず。
 
-  [localhost 以外]
-  Description=localhost 以外
-  clientmachinematch=1
-  opacityinactive=90
-  opacityinactiverule=2
+#### `[ワークスペース]` グループ
 
-  [端末アイコン VIM]
-  Description=端末アイコン VIM
-  decocolor=Oxygen
-  decocolorrule=2
-  desktopfile=vim.desktop
-  desktopfilerule=2
-  opacityactiverule=2
-  opacityinactive=90
-  opacityinactiverule=2
-  title=- VIM$
-  titlematch=3
-  wmclass=term(-gui)?$
-  wmclassmatch=3
+* `[検索]`:
+    * `[ファイルの検索]`:
+        * `[ファイルのインデックスを作成]` `[有効]` チェックボックスを解除。
 
-  [端末アイコン WezTerm]
-  Description=端末アイコン WezTerm
-  desktopfile=org.wezfurlong.wezterm.desktop
-  desktopfilerule=2
-  opacityactiverule=2
-  opacityinactive=90
-  opacityinactiverule=2
-  title=(?<! - VIM)$
-  titlematch=3
-  wmclass=wezterm
-  wmclassmatch=2
+#### `[言語と時刻]` グループ
 
-  [端末アイコン mlterm]
-  Description=端末アイコン mlterm
-  desktopfile=mlterm.desktop
-  desktopfilerule=2
-  opacityactiverule=2
-  opacityinactive=90
-  opacityinactiverule=2
-  title=(?<! - VIM)$
-  titlematch=3
-  wmclass=mlterm
-  wmclassmatch=2
-  ```
+* `[入力メソッド]`:
+    *  `[SKK]` -> 設定アイコン:
+        * `[入力方式]` を [`fumiyas`](https://github.com/fumiyas/home-dot-files/tree/master/.config/libskk/rules/fumiyas) に変更。
+        * `[ページサイズ]` を `9` に変更。
+        * `[確定時にリターンキーを押しても改行を挿入しない]` チェックボックスを解除。
+    *  `[グローバルオプションを設定…]`:
+        * `[ホットキー]` グループ:
+            * 不要なホットキー設定を削除する。
+            * `[入力メソッドを有効にする]` を `[変換]` に変更。
+            * `[入力メソッドをオフにする]` を `[Ctrl+無変換]` に変更。
+        * `[動作]` グループ:
+            * `[フォーカス時に状態をリセット]` を `[すべて]` に変更。
+            * `[入力状態を共有する]` を `[すべて]` に変更。
+            * `[フォーカスを変更する際に入力メソッドの情報を表示する]` チェックを付与。
+            * `[入力メソッドの情報をコンパクトに表示する]` チェックを解除。
+            * `[デフォルトのページサイズ]` を `9` に変更。
 
-  `*.kwinrule` ファイルにエクスポートするときにルールの順番を維持してくれないし、インポートしたときにファイル内の順番通りにならないため、インポート後に順番を調整する必要があるかもしれない。現在のルール設定は順番に依存しないように記述したので、そのままで問題ない。
-* `[言語と地域]` グループ - `[入力メソッド]` - `[グローバルオプションを設定…]`:
-    * `[ホットキー]` グループ:
-        * 不要なホットキー設定を削除する。
-        * `[入力メソッドを有効にする]` を `[変換]` に変更。
-        * ~~`[入力メソッドをオフにする]` を `[無変換]` に変更。~~ SKK のまま使うので不要 (削除する)。
-    * `[動作]` グループ:
-        * `[入力状態を共有する]` を `[すべて]` に変更。
-        * `[フォーカスを変更する際に入力メソッドの情報を表示する]` チェックを付与。
-        * `[デフォルトのページサイズ]` を `9` に変更。
-* `[システム]` グループ - `[セッション]`:
-    * `[ログイン時]` を `[手動で保存したセッションを復元する]` に変更。
-* `[システム]` グループ - `[電源管理]`:
-    * `[省エネルギー]`:
-        * `[AC 電源使用時]` / `[バッテリ使用時]` - `[ラップトップのふたが閉じられたとき]` を `[何もしない]` に変更。
+#### `[システム]` グループ
+
+* `[電源管理]`:
+    * `[AC 電源使用時]` / `[バッテリ使用時]` タブ:
+        * `[セッションをサスペンド]` グループ:
+            * `[非アクティブ時]` を `[何もしない]` に変更。
+* `[セッション]`:
+    * `[セッションの復元]` グループ:
+        * `[ログイン時]` を `[手動で保存したセッションを復元する]` に変更。
 
 KDE Connect
 ----------------------------------------------------------------------
